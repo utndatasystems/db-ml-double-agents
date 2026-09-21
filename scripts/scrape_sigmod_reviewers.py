@@ -12,7 +12,7 @@ candidate generation, not as a final person identifier.
 
 Usage:
     pip install requests beautifulsoup4
-    python scrape_sigmod_reviewers.py --years 2022 2023 2024 2025 2026
+    python scripts/scrape_sigmod_reviewers.py --years 2022 2023 2024 2025 2026
 
 Optional polite user-agent:
     export SIGMOD_SCRAPER_UA='my-research-project/1.0 (mailto:me@example.edu)'
@@ -30,6 +30,7 @@ import time
 import unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urljoin, urlparse
 from urllib.robotparser import RobotFileParser
@@ -37,6 +38,9 @@ from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup
 
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = REPO_ROOT / "data" / "sigmod_reviewers.sqlite"
 
 DEFAULT_UA = os.environ.get(
     "SIGMOD_SCRAPER_UA",
@@ -389,8 +393,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument(
         "--db",
-        default="sigmod_reviewers.sqlite",
-        help="SQLite output file (default: sigmod_reviewers.sqlite)",
+        default=str(DEFAULT_DB),
+        help=f"SQLite output file (default: {DEFAULT_DB})",
     )
     parser.add_argument(
         "--delay",

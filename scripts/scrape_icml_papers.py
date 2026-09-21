@@ -2,7 +2,7 @@
 """Collect accepted ICML paper titles and authors from official PMLR volumes.
 
 Example:
-  python scrape_icml_papers.py --years 2022 2023 2024 2025 --db data/icml_papers.sqlite
+  python scripts/scrape_icml_papers.py --years 2022 2023 2024 2025 --db data/icml_papers.sqlite
 """
 
 from __future__ import annotations
@@ -18,6 +18,9 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup, Tag
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = REPO_ROOT / "data" / "icml_papers.sqlite"
 
 USER_AGENT = (
     "AcademicMetadataCollector/1.0 "
@@ -243,7 +246,7 @@ def print_summary(con: sqlite3.Connection) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--years", nargs="+", type=int, default=[2022, 2023, 2024, 2025])
-    ap.add_argument("--db", default="icml_papers.sqlite")
+    ap.add_argument("--db", default=str(DEFAULT_DB))
     ap.add_argument("--delay", type=float, default=1.0)
     ap.add_argument("--min-papers", type=int, default=100)
     args = ap.parse_args()

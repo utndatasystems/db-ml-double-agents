@@ -25,9 +25,9 @@ Install:
     pip install requests beautifulsoup4
 
 Examples:
-    python scrape_vldb_reviewers.py --years 2024 2025 2026
-    python scrape_vldb_reviewers.py --years 2026 --db vldb_reviewers.sqlite
-    python scrape_vldb_reviewers.py --years 2025 2026 --include-eic
+    python scripts/scrape_vldb_reviewers.py --years 2024 2025 2026
+    python scripts/scrape_vldb_reviewers.py --years 2026 --db vldb_reviewers.sqlite
+    python scripts/scrape_vldb_reviewers.py --years 2025 2026 --include-eic
 
 Optional polite user-agent:
     export VLDB_SCRAPER_UA='my-research-project/1.0 (mailto:me@example.edu)'
@@ -45,6 +45,7 @@ import time
 import unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
@@ -52,6 +53,9 @@ from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup
 
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = REPO_ROOT / "data" / "vldb_reviewers.sqlite"
 
 DEFAULT_UA = os.environ.get(
     "VLDB_SCRAPER_UA",
@@ -488,8 +492,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument(
         "--db",
-        default="vldb_reviewers.sqlite",
-        help="SQLite output file (default: vldb_reviewers.sqlite)",
+        default=str(DEFAULT_DB),
+        help=f"SQLite output file (default: {DEFAULT_DB})",
     )
     parser.add_argument(
         "--delay",

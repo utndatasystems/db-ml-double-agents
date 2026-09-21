@@ -18,8 +18,8 @@ Install:
     pip install requests beautifulsoup4
 
 Examples:
-    python scrape_icde_reviewers.py --years 2024 2025 2026
-    python scrape_icde_reviewers.py --years 2026 --include-chairs
+    python scripts/scrape_icde_reviewers.py --years 2024 2025 2026
+    python scripts/scrape_icde_reviewers.py --years 2026 --include-chairs
 """
 
 from __future__ import annotations
@@ -34,6 +34,7 @@ import time
 import unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
@@ -41,6 +42,9 @@ from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup, NavigableString, Tag
 
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = REPO_ROOT / "data" / "icde_reviewers.sqlite"
 
 DEFAULT_UA = os.environ.get("ICDE_SCRAPER_UA", "icde-reviewer-research/1.2")
 MIN_EXPECTED_REVIEWERS = 20
@@ -505,7 +509,7 @@ def parse_source_overrides(values: list[str]) -> dict[int, str]:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--years", nargs="+", type=int, default=[2026])
-    parser.add_argument("--db", default="icde_reviewers.sqlite")
+    parser.add_argument("--db", default=str(DEFAULT_DB))
     parser.add_argument("--include-chairs", action="store_true")
     parser.add_argument("--delay", type=float, default=1.0)
     parser.add_argument("--source", action="append", default=[], metavar="YEAR=URL")

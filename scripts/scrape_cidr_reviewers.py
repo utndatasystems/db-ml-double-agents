@@ -16,8 +16,8 @@ Install:
     pip install requests beautifulsoup4
 
 Examples:
-    python scrape_cidr_reviewers.py --years 2024 2025 2026
-    python scrape_cidr_reviewers.py --years 2026 --include-chairs
+    python scripts/scrape_cidr_reviewers.py --years 2024 2025 2026
+    python scripts/scrape_cidr_reviewers.py --years 2026 --include-chairs
 
 Optional polite user-agent:
     export CIDR_SCRAPER_UA='my-research-project/1.0 (mailto:me@example.edu)'
@@ -35,6 +35,7 @@ import time
 import unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
@@ -42,6 +43,9 @@ from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup, Tag
 
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = REPO_ROOT / "data" / "cidr_reviewers.sqlite"
 
 DEFAULT_UA = os.environ.get("CIDR_SCRAPER_UA", "cidr-reviewer-research/1.0")
 OFFICERS_URL = "https://www.cidrdb.org/cidr{year}/officers.html"
@@ -353,7 +357,7 @@ def parse_source_overrides(values: list[str]) -> dict[int, str]:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--years", nargs="+", type=int, default=[2026])
-    parser.add_argument("--db", default="cidr_reviewers.sqlite")
+    parser.add_argument("--db", default=str(DEFAULT_DB))
     parser.add_argument("--include-chairs", action="store_true")
     parser.add_argument("--delay", type=float, default=1.0)
     parser.add_argument(

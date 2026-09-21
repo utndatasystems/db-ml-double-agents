@@ -1,0 +1,18 @@
+DB <-> ML entity-resolution summary
+=================================
+
+DB reviewer name groups: 1360
+DB reviewer name groups with resolved DBLP PID: 953 (70.1%)
+Distinct resolved DB reviewer PIDs: 944
+
+ML author occurrences: 200979
+ML author occurrences with resolved DBLP PID: 164305 (81.8%)
+Distinct resolved ML PIDs: 65384
+
+Distinct high-confidence DB<->ML PID-overlap people: 201
+PID overlap among distinct resolved DB PIDs: 201/944 (21.3%)
+PID-overlap people with ORCID evidence: 126
+
+Interpretation:
+- the same persistent DBLP PID is the high-confidence identity evidence used for DB<->ML overlap.
+- the distinct PID-overlap count is a lower bound because unresolved/ambiguous DB reviewer names and unresolved ML author occurrences are excluded.

@@ -1,0 +1,17 @@
+.venv/
+
+# Large/local data products.
+data/dblp_snapshot/
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+data/*.sqlite-journal
+
+# Python caches.
+__pycache__/
+*.py[cod]
+
+# Local review/OS artifacts.
+.files-to-zip.txt
+Thumbs.db
+.DS_Store
