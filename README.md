@@ -1,217 +1,477 @@
-# DB ↔ ML Crossovers
+# Database × Machine Learning Explorer
 
-A small static explorer for researchers who participate in major database-systems conference service and also publish at major machine-learning venues.
+A public-facing website for exploring **database-community researchers who also publish at the main NeurIPS, ICML, or ICLR conferences**.
 
-The repository has two parts:
+The project combines database-community service data with DBLP publication data using a conservative, identity-first pipeline.
 
-- a Python data pipeline that collects and enriches reviewer and paper metadata; and
-- a dependency-free static website that reads one generated dataset.
+## What the project measures
 
-The public website is deliberately results-focused. Identity-resolution and data-processing details stay in the pipeline rather than being shown in the main UI.
+A researcher counts as a **DB × ML crossover** only when both of the following belong to the **same resolved DBLP person ID**:
 
-## Repository layout
+1. the person appears in database-community service data from **CIDR, EDBT, ICDE, SIGMOD, or VLDB**;
+2. the person has at least one exact **main-conference** publication at **NeurIPS/NIPS, ICML, or ICLR** in DBLP.
+
+Other DBLP publications are retained so a researcher's broader publication history can be inspected, but they do **not** count as crossover evidence.
+
+The pipeline does not maintain a separate ML-paper scraper or a separate ML-side person-resolution system. Once a database researcher has been resolved to a DBLP PID, DBLP is the canonical source for that person's publication history.
+
+---
+
+## Pipeline overview
+
+The workflow is:
 
 ```text
-ml-db-paper-traitor-website/
-├─ .venv/                         # local Python environment; gitignored
-├─ data/
-│  ├─ *.sqlite                    # local working databases; gitignored
-│  ├─ dblp_snapshot/              # ~1 GB DBLP snapshot; gitignored
-│  ├─ *.csv                       # derived review/export files
-│  └─ *.txt                       # derived summaries
+DB conference/service pages
+        │
+        ▼
+scraped DB service records
+        │
+        ▼
+DBLP person resolution
+        │
+        ▼
+resolved DBLP PIDs
+        │
+        ▼
+DBLP publication scan
+        │
+        ▼
+publication corpus
+        │
+        ▼
+static website data
+        │
+        ▼
+website
+```
+
+The important principle is that **identity is resolved before publication history is collected**.
+
+This avoids independently matching the same person across multiple ML data sources.
+
+---
+
+## Core repository layout
+
+```text
+.
 ├─ scripts/
-│  ├─ scrape_*                    # conference collectors
+│  ├─ scrape_cidr_reviewers.py
+│  ├─ scrape_edbt_reviewers.py
+│  ├─ scrape_icde_reviewers.py
+│  ├─ scrape_sigmod_reviewers.py
+│  ├─ scrape_vldb_reviewers.py
+│  ├─ scraper_repairs.py
+│  │
 │  ├─ enrich_reviewers_with_dblp.py
-│  ├─ enrich_ml_with_dblp.py
-│  ├─ summarize_db_ml_entity_resolution.py
-│  └─ build_site_data.py
+│  ├─ audit_unresolved_entity_resolution.py
+│  ├─ apply_high_precision_entity_resolution.py
+│  │
+│  ├─ scan_dblp_publications.py
+│  ├─ build_site_data.py
+│  ├─ build_matrix_stats.py
+│  └─ display_cleaning.py
+│
+├─ data/
+│  ├─ README.md
+│  └─ dblp_snapshot/
+│
+├─ docs/
+│  └─ PIPELINE.md
+│
 ├─ website/
 │  ├─ index.html
+│  ├─ README.md
 │  ├─ assets/
 │  │  ├─ app.js
 │  │  └─ styles.css
 │  └─ data/
-│     ├─ site_data.js             # generated + committed for static hosting
-│     └─ site_data.json           # same data in reusable JSON form
-├─ requirements.txt
+│
+├─ run_entity_resolution_audit.bat
+├─ run_high_precision_entity_resolution.bat
+├─ apply_high_precision_entity_resolution.bat
+├─ run_dblp_publication_scan.bat
 ├─ run_website.bat
-└─ README.md
+└─ requirements.txt
 ```
 
-`website/data/site_data.js` and `website/data/site_data.json` are generated files. Do not hand-edit them; rebuild them from the current enrichment databases.
+### What the main parts do
 
-## Windows setup
+**`scripts/scrape_*_reviewers.py`**
+Collect database-community service records from the supported conference/service pages.
 
-From the repository root in PowerShell:
+**`scripts/scraper_repairs.py`**
+Contains explicit source-specific cleanup rules for known scraper irregularities. These repairs are applied during downstream processing rather than modifying the raw scraped records.
+
+**`scripts/enrich_reviewers_with_dblp.py`**
+Builds the DB researcher identity layer. It matches scraped researcher names conservatively to DBLP people and stores resolved DBLP PIDs together with relevant DBLP person metadata.
+
+**`scripts/audit_unresolved_entity_resolution.py`**
+Produces an audit queue for names that could not be resolved automatically.
+
+**`scripts/apply_high_precision_entity_resolution.py`**
+Applies only the additional matches that satisfy the project's guarded high-precision rules.
+
+**`scripts/scan_dblp_publications.py`**
+Scans the pinned DBLP snapshot for publications belonging to the already-resolved researchers.
+
+**`scripts/build_site_data.py`**
+Transforms resolved people, service history, affiliations, and publications into the browser data used by the website.
+
+**`scripts/build_matrix_stats.py`**
+Builds the DB-venue × ML-venue crossover statistics shown on the site.
+
+**`website/`**
+Contains the static front end. No backend is required once the generated website data exists.
+
+---
+
+# Setup
+
+The project is intended to be run from Windows PowerShell.
+
+Create and activate a virtual environment:
 
 ```powershell
-py -3 -m venv .venv
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r .\requirements.txt
+pip install -r requirements.txt
 ```
 
-All commands below assume they are run from the repository root.
+---
 
-## Run the website
+# Run the complete pipeline from scratch
+
+A fresh run does **not** require an existing `entity_resolution.sqlite`.
+
+## 1. Scrape database-community service
+
+Run the five database venue scrapers:
 
 ```powershell
-.\run_website.bat
+python .\scripts\scrape_cidr_reviewers.py
+python .\scripts\scrape_edbt_reviewers.py
+python .\scripts\scrape_icde_reviewers.py
+python .\scripts\scrape_sigmod_reviewers.py
+python .\scripts\scrape_vldb_reviewers.py
 ```
 
-Then open:
+These produce venue-specific SQLite databases under:
 
 ```text
-http://localhost:8000
+data/
 ```
 
-If `data/entity_resolution.sqlite` and `data/ml_entity_resolution.sqlite` exist locally, the launcher first rebuilds the website dataset. If the local SQLite files are absent, for example in a fresh clone, it serves the committed `website/data/site_data.js` instead.
+They contain the observed database-community service records used as the starting population for the project.
 
-To rebuild website data without starting the server:
+When no explicit year range is supplied, the scrapers use their configured default range.
 
-```powershell
-python .\scripts\build_site_data.py
-```
+---
 
-## Data pipeline
+## 2. Resolve database researchers to DBLP people
 
-The scripts default to the repository's `data/` directory, so explicit `--db` or `--data-dir` arguments are optional unless you want another location.
-
-### 1. Collect database-conference reviewer/service records
-
-```powershell
-python .\scripts\scrape_sigmod_reviewers.py --years 2022 2023 2024 2025 2026
-python .\scripts\scrape_vldb_reviewers.py   --years 2024 2025 2026
-python .\scripts\scrape_cidr_reviewers.py   --years 2023 2024 2025 2026
-python .\scripts\scrape_icde_reviewers.py   --years 2024 2025 2026
-python .\scripts\scrape_edbt_reviewers.py   --years 2019 2020 2021
-```
-
-Default outputs:
-
-```text
-data/sigmod_reviewers.sqlite
-data/vldb_reviewers.sqlite
-data/cidr_reviewers.sqlite
-data/icde_reviewers.sqlite
-data/edbt_reviewers.sqlite
-```
-
-The EDBT scraper includes the corrected PDF-column parsing used for the 2019–2021 committee lists.
-
-### 2. Collect ML papers and authors
-
-```powershell
-python .\scripts\scrape_neurips_papers.py --years 2022 2023 2024 2025
-python .\scripts\scrape_icml_papers.py     --years 2022 2023 2024 2025
-python .\scripts\scrape_iclr_papers.py     --years 2024 2025 2026
-```
-
-Default outputs:
-
-```text
-data/neurips_papers.sqlite
-data/icml_papers.sqlite
-data/iclr_papers.sqlite
-```
-
-### 3. Enrich DB reviewers with DBLP identities
+Run:
 
 ```powershell
 python .\scripts\enrich_reviewers_with_dblp.py
 ```
 
-On the first run this downloads the pinned DBLP monthly XML snapshot into `data/dblp_snapshot/`. The snapshot is intentionally gitignored and reused by later runs.
-
-Important outputs include:
+This creates the central identity database:
 
 ```text
 data/entity_resolution.sqlite
-data/dblp_name_resolution.csv
-data/dblp_candidates.csv
-data/invalid_reviewer_names.csv
 ```
 
-### 4. Enrich ML paper authors with DBLP identities
+It also creates CSV outputs that make the resolution process auditable.
+
+### DBLP snapshot
+
+The resolver uses the pinned DBLP snapshot:
+
+```text
+data/dblp_snapshot/dblp-2026-09-01.xml.gz
+data/dblp_snapshot/dblp-2023-06-28.dtd
+```
+
+If the pinned files are not present locally, the pipeline can obtain and checksum-verify them.
+
+The same snapshot is reused later for the publication scan.
+
+### Resolution policy
+
+Automatic matching is intentionally conservative.
+
+A DBLP PID is assigned automatically only when the resolver has sufficiently strong identity evidence. Ambiguous names and weaker candidates remain unresolved rather than being guessed.
+
+The resulting entity database also stores DBLP person metadata used by the site, including person aliases, verified identifiers where available, and DBLP affiliation information.
+
+---
+
+## 3. Audit unresolved identities
+
+Generate the unresolved-person audit:
 
 ```powershell
-python .\scripts\enrich_ml_with_dblp.py
+.\run_entity_resolution_audit.bat
 ```
 
-This reuses the local DBLP snapshot and matches ML papers to DBLP publication records before resolving their author signatures.
+This reports the remaining unresolved names and the available DBLP candidates.
 
-Important outputs include:
-
-```text
-data/ml_entity_resolution.sqlite
-data/ml_dblp_paper_resolution.csv
-data/ml_dblp_author_occurrences.csv
-data/ml_dblp_people.csv
-data/db_ml_dblp_pid_matches.csv
-```
-
-### 5. Build the one-row-per-person DB ↔ ML overlap summary
+For the additional guarded high-precision pass, first generate a dry-run plan:
 
 ```powershell
-python .\scripts\summarize_db_ml_entity_resolution.py
+.\run_high_precision_entity_resolution.bat
 ```
 
-The crossover result is based on the same persistent DBLP PID appearing on the database-service side and the ML-publication side.
+Review the generated plan before applying it.
 
-Important outputs:
-
-```text
-data/db_ml_resolved_people.csv
-data/db_ml_entity_resolution_summary.txt
-```
-
-### 6. Regenerate the static website dataset
+Then run:
 
 ```powershell
-python .\scripts\build_site_data.py
+.\apply_high_precision_entity_resolution.bat
+.\run_entity_resolution_audit.bat
 ```
 
-This writes:
+The apply step changes only matches accepted by the high-precision rules.
+
+Researchers that remain ambiguous should remain unresolved unless they are reviewed separately.
+
+---
+
+## 4. Collect DBLP publications
+
+Once the researcher identities are resolved, run:
+
+```powershell
+.\run_dblp_publication_scan.bat
+```
+
+The scanner reads the same pinned DBLP snapshot and collects paper-like DBLP publications for the resolved researchers.
+
+The resulting publication corpus is:
 
 ```text
-website/data/site_data.json
-website/data/site_data.js
+data/dblp_publications_for_db_people.csv
 ```
 
-The browser only consumes this generated, person-centric dataset; it does not read SQLite directly.
+### Publication-author identity
 
-## Current website views
+Publication matching remains strict.
 
-The initial frontend is intentionally small and easy to extend:
+The scanner can associate a publication with a resolved researcher using DBLP identity evidence such as:
 
-- summary cards;
-- DB venue × ML venue crossover matrix;
-- researcher search/filter/sort table; and
-- researcher detail dialog with DB service history and ML publications.
+1. a direct DBLP author PID;
+2. a verified ORCID associated with the resolved DBLP person;
+3. an exact case-sensitive DBLP author signature that belongs uniquely to that person.
 
-The frontend uses plain HTML, CSS, and JavaScript. There is no framework, build tool, API server, or npm dependency.
+It does **not** use fuzzy author-name matching to attach publications to people.
 
-## Extending the project
+---
 
-New data should normally be added in this order:
+## 5. Build and run the website
 
-1. extend the SQLite/enrichment pipeline;
-2. expose the new fields in `scripts/build_site_data.py`; and
-3. render the fields in `website/assets/app.js`.
+Run:
 
-That keeps raw-source quirks and identity logic out of the frontend.
+```powershell
+.\run_website.bat
+```
 
-Natural future extensions include topic tags, coauthor summaries, additional venues, richer affiliation history, citation metadata, and manually resolved ambiguous identities.
-
-## Git / large files
-
-The following are intentionally not committed:
+This rebuilds the generated website data from:
 
 ```text
-.venv/
-data/*.sqlite
-data/dblp_snapshot/
+data/entity_resolution.sqlite
+data/dblp_publications_for_db_people.csv
 ```
 
-The generated static website dataset **is** committed so that the website can be hosted or previewed without the local SQLite databases or the 1 GB DBLP snapshot.
+and writes browser-ready data under:
+
+```text
+website/data/
+```
+
+It then serves the site locally at:
+
+```text
+http://localhost:8000
+```
+
+The DBLP publication scan is **not** performed during normal website startup.
+
+---
+
+# Publication semantics
+
+The publication corpus distinguishes two fundamental scopes.
+
+## Main ML
+
+`main`
+
+Exact main-conference publications at:
+
+```text
+NeurIPS / NIPS
+ICML
+ICLR
+```
+
+Only these publications count toward DB × ML crossover status.
+
+## Context publications
+
+`side`
+
+Other included DBLP paper-like publications belonging to the same resolved researcher.
+
+These publications provide context in the researcher detail view but do not affect crossover membership.
+
+---
+
+## Publication classes used by the website
+
+For presentation, `build_site_data.py` assigns publications to descriptive classes:
+
+```text
+main_ml
+database
+other_conference
+journal
+workshop
+preprint
+other
+```
+
+These classes are for display only.
+
+They do not change whether someone qualifies as a DB × ML researcher.
+
+Workshop classification is deliberately conservative: DBLP metadata must provide explicit workshop evidence.
+
+CoRR records are treated as preprints unless stronger DBLP metadata identifies another publication context.
+
+---
+
+# Website semantics
+
+The public website focuses on the question:
+
+> **Which database researchers publish at main NeurIPS, ICML, or ICLR venues, and when?**
+
+## Crossovers
+
+A read-only all-years summary showing the overlap between:
+
+```text
+DB service venue × main ML publication venue
+```
+
+The denominator for each database venue is the set of resolved researchers observed in that database-service community.
+
+## Publication activity
+
+Shows the main NeurIPS, ICML, and ICLR publication activity of the DB researchers in the dataset over time.
+
+Only exact main-ML publications appear in this primary timeline.
+
+## Research explorer
+
+By default, the explorer shows resolved DB researchers with at least one main-ML publication.
+
+Filters include database venue, database role, ML venue, and ML publication year.
+
+A direct researcher-name search can also surface a resolved DB researcher with no main-ML publication. This makes it possible to inspect their database service and broader DBLP publication history without changing the definition of a DB × ML crossover.
+
+## Researcher detail
+
+The person popup separates:
+
+```text
+Main ML
+```
+
+from:
+
+```text
+Other publications
+```
+
+The Main ML timeline contains only NeurIPS, ICML, and ICLR main-conference papers.
+
+The collapsed Other publications section contains the broader DBLP publication history for context.
+
+---
+
+# Important data products
+
+| Path                                       | Meaning                                                       |
+| ------------------------------------------ | ------------------------------------------------------------- |
+| `data/*_reviewers.sqlite`                  | Raw/local database-community service records                  |
+| `data/dblp_snapshot/`                      | Pinned DBLP XML snapshot and DTD                              |
+| `data/entity_resolution.sqlite`            | DB researcher → DBLP identity state and DBLP person metadata  |
+| `data/dblp_name_resolution.csv`            | Human-readable entity-resolution summary                      |
+| `data/dblp_candidates.csv`                 | Candidate DBLP identities considered during resolution        |
+| `data/dblp_publications_for_db_people.csv` | Publication corpus for resolved DB researchers                |
+| `data/reports/`                            | Entity-resolution and cleanup audit outputs                   |
+| `website/data/site_data.js`                | Generated researcher/publication data consumed by the browser |
+| `website/data/matrix_stats.js`             | Generated crossover matrix data                               |
+
+Most of these are derived and can be rebuilt.
+
+`entity_resolution.sqlite` is also rebuildable, but keeping it avoids repeating expensive identity-resolution work and preserves already-applied reviewed decisions.
+
+---
+
+# When to rebuild
+
+| What changed?                                  | What to run                                          |
+| ---------------------------------------------- | ---------------------------------------------------- |
+| HTML, CSS, or JavaScript only                  | restart/refresh the website                          |
+| DB service scraping results                    | entity resolution → publication scan → website build |
+| entity-resolution decisions                    | publication scan → website build                     |
+| DBLP snapshot                                  | entity resolution → publication scan → website build |
+| publication matching or main-ML classification | publication scan → website build                     |
+| website publication/display classification     | website build                                        |
+| display-only affiliation cleanup               | website build                                        |
+
+---
+
+# Static hosting
+
+The deployed website does not require Python, SQLite, or a backend.
+
+For static hosting, publish the contents of:
+
+```text
+website/
+```
+
+including the generated files under:
+
+```text
+website/data/
+```
+
+The research pipeline and the large DBLP snapshot only need to exist on the machine used to regenerate the data.
+
+---
+
+# Further documentation
+
+For more detail about identity resolution, DBLP matching, publication classification, and generated artifacts:
+
+```text
+docs/PIPELINE.md
+```
+
+For front-end structure and behavior:
+
+```text
+website/README.md
+```
+
+For notes about files under the data directory:
+
+```text
+data/README.md
+```

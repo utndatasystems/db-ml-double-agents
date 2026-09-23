@@ -16,7 +16,7 @@ Install:
     pip install requests beautifulsoup4
 
 Examples:
-    python scripts/scrape_cidr_reviewers.py --years 2024 2025 2026
+    python scripts/scrape_cidr_reviewers.py --years 2022 2023 2024 2025 2026
     python scripts/scrape_cidr_reviewers.py --years 2026 --include-chairs
 
 Optional polite user-agent:
@@ -46,6 +46,15 @@ from bs4 import BeautifulSoup, Tag
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = REPO_ROOT / "data" / "cidr_reviewers.sqlite"
+
+DEFAULT_START_YEAR = 2022
+
+def default_years() -> list[int]:
+    """Years collected when --years is omitted: 2022 through last calendar year."""
+    last_complete_year = datetime.now(timezone.utc).year - 1
+    if last_complete_year < DEFAULT_START_YEAR:
+        return []
+    return list(range(DEFAULT_START_YEAR, last_complete_year + 1))
 
 DEFAULT_UA = os.environ.get("CIDR_SCRAPER_UA", "cidr-reviewer-research/1.0")
 OFFICERS_URL = "https://www.cidrdb.org/cidr{year}/officers.html"
@@ -259,7 +268,9 @@ def fetch_page(session: requests.Session, url: str, ignore_robots: bool = False)
 
 
 def open_db(path: str) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
+    db_path = Path(path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(db_path)
     conn.execute(
         """
         CREATE TABLE IF NOT EXISTS source_pages (
@@ -305,25 +316,28 @@ def save_records(
     fetched_at: str,
     html: bytes,
 ) -> int:
-    conn.execute(
-        "INSERT OR IGNORE INTO source_pages(year, url, fetched_at, sha256) VALUES (?, ?, ?, ?)",
-        (year, url, fetched_at, hashlib.sha256(html).hexdigest()),
-    )
-    before = conn.total_changes
-    conn.executemany(
-        """
-        INSERT OR IGNORE INTO reviewer_records(
-            year, role, name, affiliation, name_key, raw_text, source_url, fetched_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        [
-            (r.year, r.role, r.name, r.affiliation, r.name_key, r.raw_text, r.source_url, r.fetched_at)
-            for r in records
-        ],
-    )
-    conn.commit()
-    return conn.total_changes - before
-
+    """Replace only the successfully parsed requested year."""
+    rows = list(records)
+    with conn:
+        conn.execute(
+            "INSERT OR IGNORE INTO source_pages(year, url, fetched_at, sha256) VALUES (?, ?, ?, ?)",
+            (year, url, fetched_at, hashlib.sha256(html).hexdigest()),
+        )
+        conn.execute("DELETE FROM reviewer_records WHERE year = ?", (year,))
+        before = conn.total_changes
+        conn.executemany(
+            """
+            INSERT INTO reviewer_records(
+                year, role, name, affiliation, name_key, raw_text, source_url, fetched_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                (r.year, r.role, r.name, r.affiliation, r.name_key, r.raw_text, r.source_url, r.fetched_at)
+                for r in rows
+            ],
+        )
+        inserted = conn.total_changes - before
+    return inserted
 
 def print_summary(conn: sqlite3.Connection) -> None:
     print("\nDatabase summary:")
@@ -356,7 +370,13 @@ def parse_source_overrides(values: list[str]) -> dict[int, str]:
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--years", nargs="+", type=int, default=[2026])
+    parser.add_argument(
+        "--years", nargs="+", type=int, default=None,
+        help=(
+            "Years to collect. Omit for 2022 through the last completed calendar year; "
+            "explicit values override the default (for example: --years 2026)."
+        ),
+    )
     parser.add_argument("--db", default=str(DEFAULT_DB))
     parser.add_argument("--include-chairs", action="store_true")
     parser.add_argument("--delay", type=float, default=1.0)
@@ -374,7 +394,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
     overrides = parse_source_overrides(args.source)
-    years = sorted(set(args.years))
+    years = sorted(set(args.years if args.years is not None else default_years()))
 
     session = requests.Session()
     session.headers.update({"User-Agent": DEFAULT_UA, "Accept": "text/html,application/xhtml+xml"})
@@ -395,7 +415,7 @@ def main(argv: list[str] | None = None) -> int:
                 inserted = save_records(
                     conn, records, year=year, url=url, fetched_at=fetched_at, html=html
                 )
-                print(f"  parsed {len(records)} records; inserted {inserted} new rows")
+                print(f"  parsed {len(records)} records; replaced year with {inserted} rows")
             except Exception as exc:
                 print(f"  ERROR for {year}: {exc}", file=sys.stderr)
 

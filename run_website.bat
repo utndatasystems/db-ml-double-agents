@@ -1,37 +1,37 @@
 @echo off
 setlocal
 
-rem Repository root = directory containing this launcher.
 set "ROOT=%~dp0"
 set "PY=python"
-
-rem Prefer the repository-local virtual environment when available.
 if exist "%ROOT%.venv\Scripts\python.exe" set "PY=%ROOT%.venv\Scripts\python.exe"
 
 set "DB_ER=%ROOT%data\entity_resolution.sqlite"
-set "ML_ER=%ROOT%data\ml_entity_resolution.sqlite"
+set "PUBS=%ROOT%data\dblp_publications_for_db_people.csv"
 set "SITE_DATA=%ROOT%website\data\site_data.js"
-set "CAN_BUILD="
 
-if exist "%DB_ER%" if exist "%ML_ER%" set "CAN_BUILD=1"
+if exist "%DB_ER%" (
+    if not exist "%PUBS%" (
+        echo ERROR: Resolved DB people exist, but the DBLP publication corpus is missing.
+        echo Run .\run_dblp_publication_scan.bat once, then run this launcher again.
+        echo Expected: %PUBS%
+        exit /b 1
+    )
 
-rem Rebuild generated frontend data when the local enrichment databases exist.
-rem The SQLite databases are intentionally gitignored, so a fresh clone can
-rem still serve the committed static dataset without them.
-if defined CAN_BUILD (
-    echo Rebuilding website data from local enrichment databases...
+    echo Rebuilding website data from resolved DB service and DBLP publications...
     "%PY%" "%ROOT%scripts\build_site_data.py" --data-dir "%ROOT%data" --output-dir "%ROOT%website\data"
+    if errorlevel 1 exit /b 1
+
+    echo Rebuilding normalized main-venue crossover matrix...
+    "%PY%" "%ROOT%scripts\build_matrix_stats.py" --entity-db "%DB_ER%" --site-data "%ROOT%website\data\site_data.json" --output-dir "%ROOT%website\data"
     if errorlevel 1 exit /b 1
 ) else (
     if not exist "%SITE_DATA%" (
-        echo ERROR: Local enrichment databases are missing and no committed website dataset exists.
-        echo Expected either both local enrichment databases or the committed website dataset.
-        echo DB:   %DB_ER%
-        echo ML:   %ML_ER%
-        echo Site: %SITE_DATA%
+        echo ERROR: entity_resolution.sqlite is missing and no committed website dataset exists.
+        echo Expected DB:   %DB_ER%
+        echo Expected site: %SITE_DATA%
         exit /b 1
     )
-    echo Local enrichment SQLite files not found; serving the committed website dataset.
+    echo Local entity-resolution database not found; serving the committed website dataset.
 )
 
 echo.

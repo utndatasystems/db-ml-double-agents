@@ -79,6 +79,8 @@ from typing import Any, Iterable
 import requests
 from lxml import etree
 
+from scraper_repairs import repair_scraped_reviewer, previous_affiliation_fragment
+
 # ---------------------------------------------------------------------------
 # Reproducible DBLP snapshot
 # ---------------------------------------------------------------------------
@@ -106,6 +108,7 @@ OUTPUT_DB = "entity_resolution.sqlite"
 RESOLUTION_CSV = "dblp_name_resolution.csv"
 CANDIDATES_CSV = "dblp_candidates.csv"
 INVALID_NAMES_CSV = "invalid_reviewer_names.csv"
+SCRAPER_REPAIRS_CSV = "reviewer_scraper_repairs.csv"
 
 SPACE_RE = re.compile(r"\s+")
 NON_ALNUM_RE = re.compile(r"[^a-z0-9 ]+")
@@ -376,6 +379,23 @@ def create_schema(conn: sqlite3.Connection) -> None:
             logged_at TEXT NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS scraper_repair_log (
+            repair_id INTEGER PRIMARY KEY,
+            source_db TEXT NOT NULL,
+            source_rowid INTEGER,
+            venue TEXT,
+            year INTEGER,
+            action TEXT NOT NULL,
+            reason TEXT NOT NULL,
+            raw_name TEXT NOT NULL,
+            repaired_name TEXT,
+            raw_affiliation TEXT,
+            repaired_affiliation TEXT,
+            source_url TEXT,
+            raw_text TEXT,
+            logged_at TEXT NOT NULL
+        );
+
         CREATE TABLE IF NOT EXISTS name_groups (
             name_key TEXT PRIMARY KEY,
             representative_name TEXT NOT NULL,
@@ -393,6 +413,8 @@ def create_schema(conn: sqlite3.Connection) -> None:
             canonical_name TEXT,
             aliases_json TEXT NOT NULL,
             affiliations_json TEXT NOT NULL,
+            current_affiliations_json TEXT NOT NULL DEFAULT '[]',
+            former_affiliations_json TEXT NOT NULL DEFAULT '[]',
             verified_orcids_json TEXT NOT NULL,
             source_key TEXT,
             snapshot_id TEXT NOT NULL
@@ -430,6 +452,18 @@ def create_schema(conn: sqlite3.Connection) -> None:
             value TEXT NOT NULL
         );
         """)
+
+    dblp_people_columns = {
+        row[1] for row in conn.execute("PRAGMA table_info(dblp_people)")
+    }
+    if "current_affiliations_json" not in dblp_people_columns:
+        conn.execute(
+            "ALTER TABLE dblp_people ADD COLUMN current_affiliations_json TEXT NOT NULL DEFAULT '[]'"
+        )
+    if "former_affiliations_json" not in dblp_people_columns:
+        conn.execute(
+            "ALTER TABLE dblp_people ADD COLUMN former_affiliations_json TEXT NOT NULL DEFAULT '[]'"
+        )
     conn.commit()
 
 
@@ -478,19 +512,34 @@ def ingest_reviewers(
     db_paths: list[Path],
 ) -> None:
     conn.execute("DELETE FROM technical_duplicate_log")
+    conn.execute("DELETE FROM scraper_repair_log")
     conn.execute("DELETE FROM reviewer_observations")
     conn.execute("DELETE FROM name_groups")
     conn.commit()
+
+    def append_affiliation_fragment(base: str, fragment: str) -> str:
+        base = clean_text(base)
+        fragment = clean_text(fragment)
+        if not fragment:
+            return base
+        if not base:
+            return fragment
+        if base.casefold().endswith(fragment.casefold()):
+            return base
+        return clean_text(f"{base} {fragment}")
 
     for db_path in db_paths:
         src = sqlite3.connect(db_path)
         src.row_factory = sqlite3.Row
         kept = 0
         skipped = 0
+        prepared: list[dict[str, Any]] = []
+        repair_logs: list[tuple[Any, ...]] = []
+        last_primary: dict[str, Any] | None = None
 
         try:
             for row in src.execute(
-                f'SELECT rowid AS _rowid, * FROM "{REVIEWER_TABLE}"'
+                f'SELECT rowid AS _rowid, * FROM "{REVIEWER_TABLE}" ORDER BY rowid'
             ):
                 raw = dict(row)
 
@@ -500,11 +549,50 @@ def ingest_reviewers(
                 except (TypeError, ValueError):
                     year = None
 
-                name = clean_text(pick(raw, "name", default=""))
-                if not name:
+                raw_name = clean_text(pick(raw, "name", default=""))
+                if not raw_name:
                     continue
 
+                raw_affiliation = clean_text(
+                    pick(raw, "affiliation", default="")
+                )
+                name, affiliation, repair = repair_scraped_reviewer(
+                    raw_name, raw_affiliation
+                )
+
+                # Known collapsed-list artifacts often move the tail of the
+                # previous affiliation into the next person's name. Restore
+                # that fragment only when the current row is an exact known
+                # repair; never infer this for arbitrary reviewer names.
+                fragment = previous_affiliation_fragment(raw_name, repair)
+                if fragment and last_primary is not None:
+                    prev = last_primary["rec"]
+                    before = prev["affiliation"]
+                    after = append_affiliation_fragment(before, fragment)
+                    if after != before:
+                        prev["affiliation"] = after
+                        repair_logs.append(
+                            (
+                                prev["source_db"],
+                                prev["source_rowid"],
+                                prev["venue"],
+                                prev["year"],
+                                "repair",
+                                "restored_previous_affiliation_fragment",
+                                last_primary["raw_name"],
+                                prev["name"],
+                                before,
+                                after,
+                                prev["source_url"],
+                                prev["raw_text"],
+                                now_iso(),
+                            )
+                        )
+
                 valid, invalid_reason = validate_person_name(name)
+                if repair is not None and repair.action == "reject":
+                    valid = False
+                    invalid_reason = f"known_scraper_artifact:{repair.reason}"
 
                 rec = {
                     "source_db": db_path.name,
@@ -525,9 +613,7 @@ def ingest_reviewers(
                     "name_key": normalize_name(name),
                     "name_is_valid": int(valid),
                     "name_validation_reason": invalid_reason,
-                    "affiliation": clean_text(
-                        pick(raw, "affiliation", default="")
-                    ),
+                    "affiliation": affiliation,
                     "source_url": clean_text(
                         pick(raw, "source_url", default="")
                     ),
@@ -537,8 +623,103 @@ def ingest_reviewers(
                     ),
                     "ingested_at": now_iso(),
                 }
-                rec["technical_hash"] = technical_hash(rec)
+                current = {"rec": rec, "raw_name": raw_name}
+                prepared.append(current)
+                # Keep track of the most recent *valid person-like* observation
+                # in source order.  Rejected institution/section rows break the
+                # boundary chain so a later prefix cannot be attached across
+                # an invalid row.
+                last_primary = current if valid else None
 
+                if repair is not None:
+                    repair_logs.append(
+                        (
+                            db_path.name,
+                            raw["_rowid"],
+                            rec["venue"],
+                            year,
+                            repair.action,
+                            repair.reason,
+                            raw_name,
+                            name if repair.action == "repair" else "",
+                            raw_affiliation,
+                            affiliation if repair.action == "repair" else "",
+                            rec["source_url"],
+                            rec["raw_text"],
+                            now_iso(),
+                        )
+                    )
+
+                    # Recover only people explicitly visible in this exact
+                    # known collapsed row. They inherit the source event role
+                    # and provenance but are never inferred fuzzily.
+                    for extra in repair.recovered_reviewers:
+                        extra_valid, extra_reason = validate_person_name(extra.name)
+                        payload = dict(raw)
+                        payload["_recovered_from_scraper_row"] = {
+                            "name": extra.name,
+                            "affiliation": extra.affiliation,
+                            "parent_raw_name": raw_name,
+                        }
+                        extra_rec = {
+                            "source_db": db_path.name,
+                            "source_rowid": raw["_rowid"],
+                            "venue": rec["venue"],
+                            "year": year,
+                            "role": rec["role"],
+                            "review_round": rec["review_round"],
+                            "review_cycle": rec["review_cycle"],
+                            "track": rec["track"],
+                            "name": clean_text(extra.name),
+                            "name_key": normalize_name(extra.name),
+                            "name_is_valid": int(extra_valid),
+                            "name_validation_reason": extra_reason,
+                            "affiliation": clean_text(extra.affiliation),
+                            "source_url": rec["source_url"],
+                            "raw_text": rec["raw_text"],
+                            "source_payload_json": json.dumps(
+                                payload,
+                                ensure_ascii=False,
+                                sort_keys=True,
+                                default=str,
+                            ),
+                            "ingested_at": now_iso(),
+                        }
+                        recovered_item = {
+                            "rec": extra_rec,
+                            "raw_name": raw_name,
+                            "is_recovered": True,
+                        }
+                        prepared.append(recovered_item)
+                        # A recovered person is explicitly visible later in the
+                        # same collapsed source row, so it becomes the boundary
+                        # target for the next exact leading-fragment repair.
+                        # This is what correctly turns e.g. UMass + Amherst into
+                        # UMass Amherst, rather than appending Amherst to the
+                        # preceding person's affiliation.
+                        if extra_valid:
+                            last_primary = recovered_item
+                        repair_logs.append(
+                            (
+                                db_path.name,
+                                raw["_rowid"],
+                                rec["venue"],
+                                year,
+                                "recover",
+                                "recovered_concatenated_person",
+                                raw_name,
+                                extra_rec["name"],
+                                raw_affiliation,
+                                extra_rec["affiliation"],
+                                rec["source_url"],
+                                rec["raw_text"],
+                                now_iso(),
+                            )
+                        )
+
+            for item in prepared:
+                rec = item["rec"]
+                rec["technical_hash"] = technical_hash(rec)
                 try:
                     conn.execute(
                         """
@@ -586,6 +767,18 @@ def ingest_reviewers(
                             now_iso(),
                         ),
                     )
+
+            for log in repair_logs:
+                conn.execute(
+                    """
+                    INSERT INTO scraper_repair_log (
+                        source_db, source_rowid, venue, year, action, reason,
+                        raw_name, repaired_name, raw_affiliation,
+                        repaired_affiliation, source_url, raw_text, logged_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    log,
+                )
 
             conn.commit()
             print(
@@ -775,6 +968,8 @@ def person_record_from_www(elem: etree._Element) -> dict[str, Any] | None:
 
     aliases: list[str] = []
     affiliations: list[str] = []
+    current_affiliations: list[str] = []
+    former_affiliations: list[str] = []
     orcids: set[str] = set()
     title = ""
     crossref = ""
@@ -791,6 +986,20 @@ def person_record_from_www(elem: etree._Element) -> dict[str, Any] | None:
             tag == "note" and child.attrib.get("type") == "affiliation" and text
         ):
             affiliations.append(text)
+            label = clean_text(child.attrib.get("label", "")).casefold()
+            # DBLP uses labels such as "former", "since yyyy", "until yyyy",
+            # or a closed yyyy-yyyy range. Unlabelled affiliation notes are
+            # displayed by DBLP as current affiliations.
+            is_former = (
+                label == "former"
+                or label.startswith("former ")
+                or label.startswith("until ")
+                or label.startswith("untill ")
+                or bool(re.fullmatch(r"\d{4}\s*[-\u2013]\s*\d{4}", label))
+            )
+            target = former_affiliations if is_former else current_affiliations
+            if text not in target:
+                target.append(text)
         elif tag == "url" and text:
             oc = extract_orcid(text)
             if oc:
@@ -811,6 +1020,8 @@ def person_record_from_www(elem: etree._Element) -> dict[str, Any] | None:
         "canonical_name": aliases[0],
         "aliases": sorted(set(aliases), key=str.casefold),
         "affiliations": sorted(set(affiliations), key=str.casefold),
+        "current_affiliations": current_affiliations,
+        "former_affiliations": former_affiliations,
         "verified_orcids": sorted(orcids),
         "title": title,
         "crossref": crossref,
@@ -1005,9 +1216,10 @@ def scan_snapshot(
                                 """
                                 INSERT OR REPLACE INTO dblp_people (
                                     dblp_pid, canonical_name, aliases_json,
-                                    affiliations_json, verified_orcids_json,
+                                    affiliations_json, current_affiliations_json,
+                                    former_affiliations_json, verified_orcids_json,
                                     source_key, snapshot_id
-                                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                                 """,
                                 (
                                     pid,
@@ -1017,6 +1229,14 @@ def scan_snapshot(
                                     ),
                                     json.dumps(
                                         person["affiliations"],
+                                        ensure_ascii=False,
+                                    ),
+                                    json.dumps(
+                                        person["current_affiliations"],
+                                        ensure_ascii=False,
+                                    ),
+                                    json.dumps(
+                                        person["former_affiliations"],
                                         ensure_ascii=False,
                                     ),
                                     json.dumps(
@@ -1218,6 +1438,28 @@ def resolve_names(
 # ---------------------------------------------------------------------------
 
 
+def export_scraper_repairs(conn: sqlite3.Connection, path: Path) -> None:
+    rows = conn.execute("""
+        SELECT
+            source_db, source_rowid, venue, year, action, reason,
+            raw_name, repaired_name, raw_affiliation, repaired_affiliation,
+            source_url, raw_text
+        FROM scraper_repair_log
+        ORDER BY source_db, year, source_rowid
+        """).fetchall()
+
+    with path.open("w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(
+            [
+                "source_db", "source_rowid", "venue", "year", "action",
+                "reason", "raw_name", "repaired_name", "raw_affiliation",
+                "repaired_affiliation", "source_url", "raw_text",
+            ]
+        )
+        w.writerows(rows)
+
+
 def export_invalid_names(conn: sqlite3.Connection, path: Path) -> None:
     rows = conn.execute("""
         SELECT
@@ -1378,12 +1620,24 @@ def print_summary(conn: sqlite3.Connection) -> None:
     dupes = conn.execute(
         "SELECT COUNT(*) FROM technical_duplicate_log"
     ).fetchone()[0]
+    repairs = conn.execute(
+        "SELECT COUNT(*) FROM scraper_repair_log WHERE action='repair'"
+    ).fetchone()[0]
+    rejected_artifacts = conn.execute(
+        "SELECT COUNT(*) FROM scraper_repair_log WHERE action='reject'"
+    ).fetchone()[0]
+    recovered_artifacts = conn.execute(
+        "SELECT COUNT(*) FROM scraper_repair_log WHERE action='recover'"
+    ).fetchone()[0]
 
     print("\nLocal staging summary")
     print("---------------------")
     print(f"Reviewer observations kept:         {obs}")
     print(f"Exact technical duplicates skipped: {dupes}")
     print(f"Malformed-name observations flagged:{invalid:>8}")
+    print(f"Known scraper rows repaired:        {repairs:>8}")
+    print(f"Known scraper rows rejected:        {rejected_artifacts:>8}")
+    print(f"Reviewer observations recovered:    {recovered_artifacts:>8}")
     print(f"Valid provisional name groups:      {names}")
 
     if table_exists(conn, "name_resolution"):
@@ -1441,6 +1695,14 @@ def main() -> int:
         action="store_true",
         help="Force rescanning the local DBLP snapshot",
     )
+    ap.add_argument(
+        "--staging-only",
+        action="store_true",
+        help=(
+            "Ingest reviewer SQLite files, apply/audit known scraper repairs, "
+            "export repair/invalid-name CSVs, then stop before scanning DBLP."
+        ),
+    )
     args = ap.parse_args()
 
     data_dir = args.data_dir.resolve()
@@ -1476,8 +1738,22 @@ def main() -> int:
         ingest_reviewers(conn, reviewer_dbs)
 
         invalid_path = data_dir / INVALID_NAMES_CSV
+        scraper_repairs_path = data_dir / SCRAPER_REPAIRS_CSV
         export_invalid_names(conn, invalid_path)
+        export_scraper_repairs(conn, scraper_repairs_path)
         print_summary(conn)
+
+        if args.staging_only:
+            print("\nStaging-only outputs")
+            print("--------------------")
+            print(f"SQLite staging DB:      {output_db}")
+            print(f"Scraper repair audit:   {scraper_repairs_path}")
+            print(f"Malformed scraped names:{invalid_path}")
+            print(
+                "\nNo DBLP snapshot scan or PID resolution was performed. "
+                "Review the repair CSV, then rerun without --staging-only."
+            )
+            return 0
 
         rows = conn.execute("""
             SELECT name_key, representative_name
@@ -1574,6 +1850,7 @@ def main() -> int:
         export_resolution(conn, resolution_path)
         export_candidates(conn, candidates_path)
         export_invalid_names(conn, invalid_path)
+        export_scraper_repairs(conn, scraper_repairs_path)
 
         print_summary(conn)
 
@@ -1583,6 +1860,7 @@ def main() -> int:
         print(f"Resolution summary:     {resolution_path}")
         print(f"All DBLP candidates:    {candidates_path}")
         print(f"Malformed scraped names:{invalid_path}")
+        print(f"Scraper repair audit:   {scraper_repairs_path}")
         print(f"DBLP snapshot:          {snapshot_gz}")
         print(f"DBLP DTD:               {dtd_path}")
 

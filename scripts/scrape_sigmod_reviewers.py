@@ -42,6 +42,15 @@ from bs4 import BeautifulSoup
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = REPO_ROOT / "data" / "sigmod_reviewers.sqlite"
 
+DEFAULT_START_YEAR = 2022
+
+def default_years() -> list[int]:
+    """Years collected when --years is omitted: 2022 through last calendar year."""
+    last_complete_year = datetime.now(timezone.utc).year - 1
+    if last_complete_year < DEFAULT_START_YEAR:
+        return []
+    return list(range(DEFAULT_START_YEAR, last_complete_year + 1))
+
 DEFAULT_UA = os.environ.get(
     "SIGMOD_SCRAPER_UA",
     "sigmod-reviewer-research/1.0",
@@ -278,7 +287,9 @@ def fetch_page(session: requests.Session, url: str, ignore_robots: bool = False)
 
 
 def open_db(path: str) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
+    db_path = Path(path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute(
         """
@@ -326,40 +337,35 @@ def save_records(
     fetched_at: str,
     html: bytes,
 ) -> int:
+    """Replace only the successfully parsed requested year."""
+    rows = list(records)
     digest = hashlib.sha256(html).hexdigest()
-    conn.execute(
-        "INSERT OR IGNORE INTO source_pages(year, url, fetched_at, sha256) VALUES (?, ?, ?, ?)",
-        (year, url, fetched_at, digest),
-    )
-
-    before = conn.total_changes
-    conn.executemany(
-        """
-        INSERT OR IGNORE INTO reviewer_records(
-            year, role, review_round, name, affiliation,
-            rapid_response_reviewer, name_key, raw_text,
-            source_url, fetched_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        [
-            (
-                r.year,
-                r.role,
-                r.review_round,
-                r.name,
-                r.affiliation,
-                r.rapid_response_reviewer,
-                r.name_key,
-                r.raw_text,
-                r.source_url,
-                r.fetched_at,
-            )
-            for r in records
-        ],
-    )
-    conn.commit()
-    return conn.total_changes - before
-
+    with conn:
+        conn.execute(
+            "INSERT OR IGNORE INTO source_pages(year, url, fetched_at, sha256) VALUES (?, ?, ?, ?)",
+            (year, url, fetched_at, digest),
+        )
+        conn.execute("DELETE FROM reviewer_records WHERE year = ?", (year,))
+        before = conn.total_changes
+        conn.executemany(
+            """
+            INSERT INTO reviewer_records(
+                year, role, review_round, name, affiliation,
+                rapid_response_reviewer, name_key, raw_text,
+                source_url, fetched_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                (
+                    r.year, r.role, r.review_round, r.name, r.affiliation,
+                    r.rapid_response_reviewer, r.name_key, r.raw_text,
+                    r.source_url, r.fetched_at,
+                )
+                for r in rows
+            ],
+        )
+        inserted = conn.total_changes - before
+    return inserted
 
 def print_summary(conn: sqlite3.Connection) -> None:
     print("\nDatabase summary:")
@@ -388,8 +394,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--years",
         nargs="+",
         type=int,
-        default=[2026],
-        help="SIGMOD conference years to collect (default: 2026)",
+        default=None,
+        help=(
+            "Years to collect. Omit for 2022 through the last completed calendar year; "
+            "explicit values override the default (for example: --years 2026)."
+        ),
     )
     parser.add_argument(
         "--db",
@@ -412,6 +421,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
+    years = sorted(set(args.years if args.years is not None else default_years()))
 
     session = requests.Session()
     session.headers.update(
@@ -423,25 +433,20 @@ def main(argv: list[str] | None = None) -> int:
 
     conn = open_db(args.db)
     try:
-        for index, year in enumerate(sorted(set(args.years))):
+        for index, year in enumerate(years):
             url = PC_URL.format(year=year)
             print(f"Fetching {url}")
             try:
                 html, fetched_at = fetch_page(session, url, ignore_robots=args.ignore_robots)
                 records = parse_sigmod_pc_page(html, year, url, fetched_at)
                 inserted = save_records(
-                    conn,
-                    records,
-                    year=year,
-                    url=url,
-                    fetched_at=fetched_at,
-                    html=html,
+                    conn, records, year=year, url=url, fetched_at=fetched_at, html=html
                 )
-                print(f"  parsed {len(records)} records; inserted {inserted} new rows")
+                print(f"  parsed {len(records)} records; replaced year with {inserted} rows")
             except Exception as exc:
                 print(f"  ERROR for {year}: {exc}", file=sys.stderr)
 
-            if index < len(set(args.years)) - 1 and args.delay > 0:
+            if index < len(years) - 1 and args.delay > 0:
                 time.sleep(args.delay)
 
         print_summary(conn)

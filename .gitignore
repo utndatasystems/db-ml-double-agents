@@ -6,6 +6,11 @@ data/*.sqlite
 data/*.sqlite-shm
 data/*.sqlite-wal
 data/*.sqlite-journal
+data/backups/
+
+# Rebuildable DBLP-derived publication corpus and reports.
+data/dblp_publications_for_db_people.csv
+data/reports/
 
 # Python caches.
 __pycache__/

@@ -1,42 +1,28 @@
 #!/usr/bin/env python3
 """Scrape public EDBT research program-committee records into SQLite.
 
-EDBT is slightly different from CIDR/ICDE: for many editions the most stable
-public source for the *research* PC is the official OpenProceedings front matter
-PDF. Those PDFs label roles such as:
+Source strategy
+---------------
+EDBT 2022 onward uses the official yearly EDBT/ICDT conference committee
+pages. Older editions (2019-2021) use the official OpenProceedings front-matter
+PDFs, whose column layouts require a PDF-aware parser.
 
-    Research Program Committee Chair
-    Senior Program Committee Members
-    Program Committee Members
+When --years is omitted, the scraper collects 2022 through the last completed
+calendar year. Passing --years explicitly overrides that range, e.g.
+``--years 2026`` updates only 2026. Existing rows for other years are left
+untouched.
 
-This script first checks the official OpenProceedings year index for a
-"Front matter" link. If no such link is exposed, it tries the historical
-canonical URL pattern:
+By default Senior PC members and ordinary research PC members are stored. Use
+--include-chairs to include research PC chairs.
 
-    https://openproceedings.org/{year}/conf/edbt/frontmatter.pdf
-
-You can always override the PDF URL with --frontmatter YEAR=URL.
-
-By default the script stores Senior PC members and ordinary PC members. Use
---include-chairs to include the Research Program Committee Chair(s).
-
-Important: the output contains raw reviewer observations, not entity-resolved
-people. `name_key` is only a conservative blocking key for later ER.
-
-The parser is layout-aware: it splits visual PDF columns before whitespace
-normalization and replaces a year's old rows only after a successful parse.
+Examples:
+    python scripts/scrape_edbt_reviewers.py
+    python scripts/scrape_edbt_reviewers.py --years 2026
+    python scripts/scrape_edbt_reviewers.py --years 2020 2021
+    python scripts/scrape_edbt_reviewers.py --years 2025 --source 2025=https://official.example/committee
 
 Install:
     pip install requests beautifulsoup4 pypdf
-
-Examples:
-    python scripts/scrape_edbt_reviewers.py --years 2019 2020 2021
-    python scripts/scrape_edbt_reviewers.py --years 2021 --include-chairs
-    python scripts/scrape_edbt_reviewers.py --years 2025 \
-        --frontmatter 2025=https://official.example/frontmatter.pdf
-
-Optional polite user-agent:
-    export EDBT_SCRAPER_UA='my-research-project/1.0 (mailto:me@example.edu)'
 """
 
 from __future__ import annotations
@@ -58,11 +44,20 @@ from urllib.parse import urljoin, urlparse
 from urllib.robotparser import RobotFileParser
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 from pypdf import PdfReader
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = REPO_ROOT / "data" / "edbt_reviewers.sqlite"
+
+DEFAULT_START_YEAR = 2022
+
+def default_years() -> list[int]:
+    """Years collected when --years is omitted: 2022 through last calendar year."""
+    last_complete_year = datetime.now(timezone.utc).year - 1
+    if last_complete_year < DEFAULT_START_YEAR:
+        return []
+    return list(range(DEFAULT_START_YEAR, last_complete_year + 1))
 
 DEFAULT_UA = os.environ.get("EDBT_SCRAPER_UA", "edbt-reviewer-research/1.0")
 INDEX_URL = "https://openproceedings.org/html/pages/{year}_edbt.html"
@@ -70,24 +65,68 @@ CANONICAL_FRONTMATTER_URL = (
     "https://openproceedings.org/{year}/conf/edbt/frontmatter.pdf"
 )
 
+# Official yearly conference sites.  The 2022 site exposes the committee as a
+# direct HTML page; later editions use a ``contents=...`` page selector.  A few
+# alternative URL forms are tried because the yearly site templates changed.
+EDBT_HOME_URLS = {
+    2022: "https://conferences.inf.ed.ac.uk/edbticdt2022/",
+    2023: "https://www.cs.uoi.gr/~edbticdt2023/",
+    2024: "https://dastlab.github.io/edbticdt2024/",
+    2025: "https://edbticdt2025.upc.edu/",
+    2026: "https://edbticdt2026.github.io/",
+}
+
+EDBT_COMMITTEE_URLS = {
+    2022: [
+        "https://conferences.inf.ed.ac.uk/edbticdt2022/contents/EDBT_Committee.html",
+    ],
+    2023: [
+        "https://www.cs.uoi.gr/~edbticdt2023/?contents=EDBT_Committee.html",
+        "https://www.cs.uoi.gr/~edbticdt2023/contents/EDBT_Committee.html",
+    ],
+    2024: [
+        "https://dastlab.github.io/edbticdt2024/?contents=EDBT_Committee.html",
+        "https://dastlab.github.io/edbticdt2024/contents/EDBT_Committee.html",
+    ],
+    2025: [
+        "https://edbticdt2025.upc.edu/?contents=EDBT_Committee.html",
+        "https://edbticdt2025.upc.edu/contents/EDBT_Committee.html",
+    ],
+    2026: [
+        "https://edbticdt2026.github.io/?contents=EDBT_Committee.html",
+        "https://edbticdt2026.github.io/contents/EDBT_Committee.html",
+    ],
+}
+
+MIN_NEWER_RESEARCH_PC = 20
+
 # The front-matter layout changes between years.  In particular:
 #   * 2019 uses one-column "Name, Affiliation" rows.
 #   * 2020 uses two columns and "Name (Affiliation)" rows.
 #   * 2021 uses two columns and "Name, Affiliation" rows.
 #
-# We enter the research committee only from a specific "Research Program
-# Committee..." heading.  A generic "Program Committee Members" heading is not
-# allowed to start parsing because that text also appears in tables of contents.
+# Enter the research committee only from a heading that is explicitly
+# research-specific or EDBT-specific. A bare "Program Committee Members"
+# heading is intentionally not allowed to start parsing because similar text
+# may appear in front-matter tables of contents. Later editions sometimes
+# prefix committee headings with "EDBT" and/or the conference year.
+_EDBT_PREFIX = r"(?:EDBT(?:\s+\d{4})?\s+)?"
 RESEARCH_PC_START_RE = re.compile(
-    r"^Research\s+Program\s+Committee(?:\s+Chairs?)?$",
+    rf"^(?:(?:{_EDBT_PREFIX}Research\s+Program\s+Committee)|(?:EDBT(?:\s+\d{{4}})?\s+Program\s+Committee))(?:\s+Chairs?)?$",
     re.I,
 )
 SENIOR_PC_RE = re.compile(
-    r"^Senior\s+Program\s+Committee(?:\s+Members?)?$",
+    rf"^{_EDBT_PREFIX}Senior\s+Program\s+Committee(?:\s+Members?)?$",
     re.I,
 )
 ORDINARY_PC_RE = re.compile(
-    r"^(?:Research\s+)?Program\s+Committee\s+Members?$",
+    rf"^{_EDBT_PREFIX}(?:Research\s+)?Program\s+Committee\s+Members?$",
+    re.I,
+)
+# An explicitly EDBT-labelled member heading is also safe as an entry point in
+# editions that omit a separate umbrella "EDBT Program Committee" heading.
+EDBT_MEMBER_START_RE = re.compile(
+    r"^EDBT(?:\s+\d{4})?\s+(?:Senior\s+)?Program\s+Committee\s+Members?$",
     re.I,
 )
 
@@ -126,6 +165,11 @@ KNOWN_RESEARCH_PC_COUNTS = {
         "senior_program_committee_member": 13,
         "program_committee_member": 118,
     },
+    # Official EDBT 2022 committee page: 6 Senior PC + 35 PC members.
+    2022: {
+        "senior_program_committee_member": 6,
+        "program_committee_member": 35,
+    },
 }
 
 # Known text-extraction anomalies in the official front matter.  Keep these
@@ -146,7 +190,7 @@ class ReviewerRecord:
     affiliation: str
     name_key: str
     raw_text: str
-    source_page: int
+    source_page: int | None
     source_url: str
     fetched_at: str
 
@@ -168,7 +212,10 @@ def normalize_name_key(name: str) -> str:
 
 def is_research_pc_start(line: str) -> bool:
     value = clean_line(line).rstrip(":")
-    return bool(RESEARCH_PC_START_RE.fullmatch(value))
+    return bool(
+        RESEARCH_PC_START_RE.fullmatch(value)
+        or EDBT_MEMBER_START_RE.fullmatch(value)
+    )
 
 
 def role_for_line(line: str, *, entered_research_pc: bool) -> str | None:
@@ -335,7 +382,7 @@ def parse_edbt_frontmatter(
     current_role: str | None = None
     entered_research_pc = False
     finished_research_pc = False
-    seen: set[tuple[str, str, str]] = set()
+    seen: set[tuple[str, str]] = set()
     unparsed_candidates: list[tuple[int, str]] = []
 
     for page_number, lines in enumerate(pages, start=1):
@@ -447,6 +494,474 @@ def parse_edbt_frontmatter(
     return records
 
 
+def html_committee_role(line: str) -> str | None:
+    """Map EDBT committee headings on the yearly HTML sites to stored roles."""
+    value = clean_line(line).rstrip(":")
+    # Remove an optional leading conference label/year for simpler matching.
+    value = re.sub(r"^EDBT(?:\s+\d{4})?\s+", "", value, flags=re.I)
+    if re.fullmatch(r"Senior\s+Program\s+Committee(?:\s+Members?)?", value, re.I):
+        return "senior_program_committee_member"
+    if re.fullmatch(r"(?:Research\s+)?Program\s+Committee\s+Members?", value, re.I):
+        return "program_committee_member"
+    if re.fullmatch(r"(?:Research\s+)?Program\s+Committee\s+Chairs?", value, re.I):
+        return "program_committee_chair"
+    return None
+
+
+def is_html_research_umbrella(line: str) -> bool:
+    value = clean_line(line).rstrip(":")
+    return bool(
+        re.fullmatch(r"EDBT(?:\s+\d{4})?\s+(?:Research\s+)?Program\s+Committee", value, re.I)
+        or re.fullmatch(r"EDBT\s+Program\s+Committee", value, re.I)
+    )
+
+
+def is_html_stop_heading(line: str) -> bool:
+    value = clean_line(line).rstrip(":")
+    if re.search(r"\bICDT\b", value, re.I):
+        return True
+    return is_stop_heading(value) or bool(
+        re.search(
+            r"\b(?:Industrial|Industry|Demo|Demonstration|Tutorial|Test\s+of\s+Time|PhD)\b",
+            value,
+            re.I,
+        )
+    )
+
+
+def html_visible_lines(html: bytes) -> list[str]:
+    soup = BeautifulSoup(html, "html.parser")
+    for br in soup.find_all("br"):
+        br.replace_with("\n")
+    return [
+        clean_line(line)
+        for line in soup.get_text("\n").splitlines()
+        if clean_line(line)
+    ]
+
+
+
+EDBT_ORG_MARKERS = {
+    "university", "universita", "università", "universite", "université", "universitat",
+    "institute", "institut", "research", "center", "centre", "college", "school",
+    "laboratory", "lab", "labs", "technology", "technical", "technological", "polytechnique", "engineering", "computing", "systems", "management", "corporation", "corp", "inc", "microsoft", "google",
+    "amazon", "oracle", "alibaba", "ibm", "huawei", "meta", "snowflake", "eurecom",
+    "inria", "epfl", "eth", "kaist", "qcri", "ntu", "nus", "unsw", "sap", "cwi",
+    "dfki", "athena", "neo4j", "know-center", "hbku", "forth",
+}
+EDBT_COUNTRY_PHRASES = {
+    "usa", "uk", "canada", "china", "germany", "france", "italy", "greece", "australia",
+    "austria", "belgium", "denmark", "finland", "japan", "korea", "south korea",
+    "netherlands", "norway", "singapore", "spain", "sweden", "switzerland", "turkey",
+    "poland", "portugal", "qatar", "israel", "india", "ireland", "united states",
+    "united kingdom", "hong kong", "hong kong sar",
+}
+EDBT_NAME_CONNECTORS = {"de", "del", "da", "dos", "van", "von", "der", "den", "la", "le", "bin", "al"}
+EDBT_LOCATION_SUFFIXES = {"southern california", "california davis", "san diego", "los angeles", "new brunswick", "twin cities", "reutlingen", "mainz"}
+EDBT_CORPORATE_NAME_TOKENS = {
+    "ltd", "limited", "llc", "gmbh", "inc", "corp", "corporation",
+    "company", "technologies", "technology", "research", "center", "centre",
+}
+EDBT_COUNTRY_WORDS = {
+    word
+    for phrase in EDBT_COUNTRY_PHRASES
+    for word in phrase.split()
+    if len(word) > 2
+}
+
+
+def _edbt_nameish(value: str) -> bool:
+    value = clean_line(value).strip(" *")
+    tokens = value.split()
+    if not 2 <= len(tokens) <= 6:
+        return False
+
+    # A candidate produced by the collapsed-list splitter must look like a
+    # complete personal name, not the tail of an affiliation.  This rejects
+    # failures such as ``(UK) Ltd`` while preserving legitimate nickname forms
+    # such as ``Tsz Nam (Edison) Chan``.
+    if tokens[0].startswith("(") or "&" in value:
+        return False
+
+    normalized_words = [
+        re.sub(r"[^a-zà-öø-ÿ]+", "", token.casefold())
+        for token in tokens
+    ]
+    low_words = {word for word in normalized_words if word}
+    if (
+        low_words & EDBT_ORG_MARKERS
+        or low_words & EDBT_CORPORATE_NAME_TOKENS
+        or value.casefold() in EDBT_COUNTRY_PHRASES
+        or value.casefold() in EDBT_LOCATION_SUFFIXES
+    ):
+        return False
+
+    first_word = normalized_words[0] if normalized_words else ""
+    if first_word in EDBT_COUNTRY_WORDS:
+        return False
+    if tokens[0].strip(".,").casefold() in EDBT_NAME_CONNECTORS:
+        return False
+
+    for token in tokens:
+        core = token.strip("()[]{}.,;:'\"“”‘’")
+        if not core:
+            return False
+        if core.casefold() in EDBT_NAME_CONNECTORS:
+            continue
+        if re.fullmatch(r"[A-Z]\.", core):
+            continue
+        if core[0].isupper():
+            continue
+        return False
+    return plausible_name(value)
+
+
+def _edbt_affiliation_score(value: str, *, prior_affiliation: str = "") -> int:
+    value = clean_line(value).strip(" ,;:-")
+    if not value:
+        return 0
+    low = value.casefold().strip(" .")
+    last_word = re.sub(r"[^a-z]+", "", value.split()[-1].casefold()) if value.split() else ""
+    if last_word in {"of", "and", "de", "di", "del", "at", "in"}:
+        return 0
+    if low in EDBT_COUNTRY_PHRASES:
+        return 12
+    words = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9.+&/-]+", value)
+    lows = {w.casefold().strip(".") for w in words}
+    if len(words) == 1 and (words[0].isupper() or low in EDBT_ORG_MARKERS):
+        return 11
+    score = 0
+    if lows & EDBT_ORG_MARKERS:
+        score += 7
+    if any(len(w) >= 2 and w.isupper() for w in words):
+        score += 5
+    if any(ch.isdigit() for ch in value) or any(ch in value for ch in "/&.-"):
+        score += 3
+    if prior_affiliation and _edbt_affiliation_score(prior_affiliation) >= 5 and len(words) <= 3:
+        score += 4
+    return score
+
+
+def _edbt_name_suffix(value: str, *, prior_affiliation: str = "") -> tuple[str, str] | None:
+    value = clean_line(value).strip()
+    tokens = value.split()
+    best: tuple[int, str, str] | None = None
+    for n in range(2, min(6, len(tokens)) + 1):
+        name = " ".join(tokens[-n:]).strip(" *")
+        prefix = " ".join(tokens[:-n]).strip()
+        if not prefix or not _edbt_nameish(name):
+            continue
+        aff_score = _edbt_affiliation_score(prefix, prior_affiliation=prior_affiliation)
+        if aff_score < 4:
+            continue
+        # Once the prefix is clearly an affiliation, prefer the longest valid
+        # personal-name suffix.  The old 2-token preference truncated names
+        # such as ``Björn Þ Jónsson`` and ``Tsz Nam (Edison) Chan``.
+        score = min(aff_score, 8) * 100 + n
+        if best is None or score > best[0]:
+            best = (score, prefix, name)
+    if best is None:
+        return None
+    return best[1], best[2]
+
+
+def parse_edbt_collapsed_people(text: str) -> list[tuple[str, str]]:
+    """Split a flattened official EDBT committee section into person rows."""
+    text = clean_line(text)
+    text = re.sub(r"\s+NOTE:\s+PC members annotated.*$", "", text, flags=re.I)
+    chunks = [clean_line(x) for x in text.split(",")]
+    if len(chunks) < 2:
+        return []
+    current_name = chunks[0].strip(" *")
+    current_aff: list[str] = []
+    rows: list[tuple[str, str]] = []
+    for chunk in chunks[1:]:
+        prior = clean_line(", ".join(current_aff))
+        split = _edbt_name_suffix(chunk, prior_affiliation=prior)
+        if split is None:
+            current_aff.append(chunk)
+            continue
+        aff_piece, next_name = split
+        if aff_piece:
+            current_aff.append(aff_piece)
+        affiliation = clean_line(", ".join(x for x in current_aff if x)).strip(" ,")
+        if _edbt_nameish(current_name):
+            rows.append((current_name.strip(" *"), affiliation))
+        current_name = next_name.strip(" *")
+        current_aff = []
+    affiliation = clean_line(", ".join(x for x in current_aff if x)).strip(" ,")
+    if _edbt_nameish(current_name):
+        rows.append((current_name.strip(" *"), affiliation))
+    return rows
+
+
+def iter_edbt_heading_blocks(soup: BeautifulSoup):
+    """Yield (role, raw text) for content between EDBT committee headings."""
+    headings = soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
+    for h in headings:
+        role = html_committee_role(clean_line(h.get_text(" ", strip=True)))
+        if role is None:
+            continue
+        parts: list[str] = []
+        for node in h.next_siblings:
+            if isinstance(node, Tag) and node.name in {"h1", "h2", "h3", "h4", "h5", "h6"}:
+                break
+            if isinstance(node, NavigableString):
+                t = clean_line(str(node))
+            elif isinstance(node, Tag):
+                t = clean_line(" ".join(node.stripped_strings))
+            else:
+                t = ""
+            if t:
+                parts.append(t)
+        text = clean_line(" ".join(parts))
+        if text:
+            yield role, text
+
+def parse_edbt_committee_html(
+    html: bytes,
+    *,
+    year: int,
+    source_url: str,
+    fetched_at: str,
+    include_chairs: bool = False,
+) -> list[ReviewerRecord]:
+    """Parse research-PC rows from an official yearly EDBT committee page.
+
+    Yearly sites use a mixture of lists, paragraphs, and HTML tables.  Parse
+    semantic blocks first (including table cells) and then use visible lines as
+    a fallback.  Sanity guards prevent a collapsed page from silently replacing
+    a complete local year.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    for br in soup.find_all("br"):
+        br.replace_with("\n")
+
+    records: list[ReviewerRecord] = []
+    seen: set[tuple[str, str, str]] = set()
+    current_role: str | None = None
+    entered = False
+    stopped = False
+
+    def add_row(role: str, name: str, affiliation: str, raw: str) -> None:
+        if role == "program_committee_chair" and not include_chairs:
+            return
+        name = clean_line(name).strip(" \t\"'“”")
+        affiliation = clean_line(affiliation).strip(" \t\"'“”")
+        if not plausible_name(name):
+            return
+        key = (role, normalize_name_key(name))
+        if key in seen:
+            return
+        seen.add(key)
+        records.append(
+            ReviewerRecord(
+                year=year,
+                role=role,
+                name=name,
+                affiliation=affiliation,
+                name_key=normalize_name_key(name),
+                raw_text=clean_line(raw),
+                source_page=None,
+                source_url=source_url,
+                fetched_at=fetched_at,
+            )
+        )
+
+    # Preferred pass for the 2022+ yearly sites. Their raw HTML often
+    # concatenates the visually separate people into one section-level string.
+    for block_role, block_text in iter_edbt_heading_blocks(soup):
+        entered = True
+        for name, affiliation in parse_edbt_collapsed_people(block_text):
+            add_row(block_role, name, affiliation, block_text)
+
+    # First pass: semantic HTML blocks.  Table rows are handled specially so
+    # layouts with separate Name / Affiliation / Country cells remain parseable.
+    for node in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "tr", "li", "p"]):
+        text = clean_line(node.get_text(" ", strip=True))
+        if not text:
+            continue
+
+        role = html_committee_role(text)
+        if role is not None:
+            current_role = role
+            entered = True
+            continue
+        if is_html_research_umbrella(text):
+            entered = True
+            current_role = None
+            continue
+        if entered and is_html_stop_heading(text):
+            if records:
+                stopped = True
+                break
+            current_role = None
+            continue
+        if not entered or current_role is None:
+            continue
+
+        if node.name == "tr":
+            cells = [
+                clean_line(cell.get_text(" ", strip=True))
+                for cell in node.find_all(["td", "th"], recursive=False)
+                if clean_line(cell.get_text(" ", strip=True))
+            ]
+            if len(cells) >= 2 and plausible_name(cells[0]):
+                add_row(current_role, cells[0], ", ".join(cells[1:]), text)
+                continue
+
+        parsed = parse_person_line(text)
+        if parsed is not None:
+            name, affiliation, role_override = parsed
+            add_row(role_override or current_role, name, affiliation, text)
+
+    # Second pass: visible lines. Useful for older layouts that use plain text
+    # and <br> separators rather than semantic list/table rows.
+    if not stopped:
+        current_role = None
+        entered_lines = False
+        for line in [clean_line(x) for x in soup.get_text("\n").splitlines() if clean_line(x)]:
+            role = html_committee_role(line)
+            if role is not None:
+                current_role = role
+                entered_lines = True
+                continue
+            if is_html_research_umbrella(line):
+                entered_lines = True
+                current_role = None
+                continue
+            if entered_lines and is_html_stop_heading(line):
+                if records:
+                    break
+                current_role = None
+                continue
+            if not entered_lines or current_role is None:
+                continue
+            parsed = parse_person_line(line)
+            if parsed is None:
+                continue
+            name, affiliation, role_override = parsed
+            add_row(role_override or current_role, name, affiliation, line)
+        entered = entered or entered_lines
+
+    if not entered:
+        raise ValueError("No EDBT research program-committee heading found")
+    if not records:
+        raise ValueError("EDBT research committee heading found, but no reviewer rows parsed")
+
+    actual: dict[str, int] = {}
+    for record in records:
+        actual[record.role] = actual.get(record.role, 0) + 1
+
+    expected = KNOWN_RESEARCH_PC_COUNTS.get(year)
+    if expected:
+        mismatches = [
+            f"{role}: expected {count}, parsed {actual.get(role, 0)}"
+            for role, count in expected.items()
+            if actual.get(role, 0) != count
+        ]
+        if mismatches:
+            raise ValueError("EDBT committee count sanity check failed: " + "; ".join(mismatches))
+    elif sum(actual.get(role, 0) for role in (
+        "senior_program_committee_member", "program_committee_member"
+    )) < MIN_NEWER_RESEARCH_PC:
+        raise ValueError(
+            f"Only {len(records)} EDBT research-PC rows parsed from {source_url}; "
+            f"expected at least {MIN_NEWER_RESEARCH_PC}."
+        )
+    return records
+
+
+def discover_committee_links(html: bytes, base_url: str) -> list[str]:
+    """Find EDBT committee links advertised by a yearly conference homepage."""
+    soup = BeautifulSoup(html, "html.parser")
+    found: list[tuple[int, str]] = []
+    for a in soup.find_all("a", href=True):
+        text = clean_line(a.get_text(" ", strip=True))
+        href = str(a.get("href"))
+        combined = f"{text} {href}".casefold()
+        if "committee" not in combined:
+            continue
+        # Prefer links explicitly mentioning EDBT over generic committee pages,
+        # and avoid clearly ICDT-only links.
+        if "icdt" in combined and "edbt" not in combined:
+            continue
+        score = 0
+        if "edbt" in combined:
+            score -= 10
+        if "program" in combined:
+            score -= 3
+        found.append((score, urljoin(base_url, href)))
+    return [url for _, url in sorted(set(found), key=lambda x: x)]
+
+
+def committee_source_candidates(
+    session: requests.Session,
+    *,
+    year: int,
+    override: str | None,
+    ignore_robots: bool,
+) -> list[str]:
+    if override:
+        return [override]
+
+    candidates = list(EDBT_COMMITTEE_URLS.get(year, []))
+    home = EDBT_HOME_URLS.get(year)
+    if home:
+        try:
+            home_html, _, _ = fetch_bytes(
+                session,
+                home,
+                ignore_robots=ignore_robots,
+                accept="text/html,application/xhtml+xml",
+            )
+            candidates = discover_committee_links(home_html, home) + candidates
+        except Exception as exc:
+            print(f"  warning: could not inspect EDBT {year} homepage: {exc}", file=sys.stderr)
+
+    # De-duplicate while keeping discovery/known-source priority.
+    out: list[str] = []
+    seen: set[str] = set()
+    for url in candidates:
+        if url not in seen:
+            seen.add(url)
+            out.append(url)
+    return out
+
+
+def fetch_and_parse_edbt_source(
+    session: requests.Session,
+    *,
+    year: int,
+    url: str,
+    ignore_robots: bool,
+    include_chairs: bool,
+) -> tuple[list[ReviewerRecord], bytes, str, str]:
+    content, fetched_at, content_type = fetch_bytes(
+        session,
+        url,
+        ignore_robots=ignore_robots,
+        accept="text/html,application/xhtml+xml,application/pdf,*/*",
+    )
+    if content.startswith(b"%PDF") or "pdf" in content_type.casefold():
+        records = parse_edbt_frontmatter(
+            content,
+            year=year,
+            source_url=url,
+            fetched_at=fetched_at,
+            include_chairs=include_chairs,
+        )
+    else:
+        records = parse_edbt_committee_html(
+            content,
+            year=year,
+            source_url=url,
+            fetched_at=fetched_at,
+            include_chairs=include_chairs,
+        )
+    return records, content, fetched_at, content_type
+
+
 def robots_allows(session: requests.Session, target_url: str) -> bool:
     parsed = urlparse(target_url)
     robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
@@ -545,7 +1060,9 @@ def resolve_frontmatter_url(
 
 
 def open_db(path: str) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
+    db_path = Path(path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(db_path)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS source_documents (
             id INTEGER PRIMARY KEY,
@@ -691,16 +1208,26 @@ def parse_overrides(values: list[str]) -> dict[int, str]:
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--years", nargs="+", type=int, default=[2021])
+    parser.add_argument(
+        "--years", nargs="+", type=int, default=None,
+        help="Years to collect. Omit for 2022 through the last completed calendar year; explicit values override the default.",
+    )
     parser.add_argument("--db", default=str(DEFAULT_DB))
     parser.add_argument("--include-chairs", action="store_true")
     parser.add_argument("--delay", type=float, default=1.0)
+    parser.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        metavar="YEAR=URL",
+        help="Override the official committee page/PDF for a year; may be repeated.",
+    )
     parser.add_argument(
         "--frontmatter",
         action="append",
         default=[],
         metavar="YEAR=URL",
-        help="Override the official front-matter PDF URL for a year; may be repeated.",
+        help=argparse.SUPPRESS,  # backwards-compatible alias for older PDF runs
     )
     parser.add_argument("--ignore-robots", action="store_true")
     return parser.parse_args(argv)
@@ -709,7 +1236,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
     overrides = parse_overrides(args.frontmatter)
-    years = sorted(set(args.years))
+    overrides.update(parse_overrides(args.source))
+    years = sorted(set(args.years if args.years is not None else default_years()))
 
     session = requests.Session()
     session.headers.update({"User-Agent": DEFAULT_UA})
@@ -717,51 +1245,71 @@ def main(argv: list[str] | None = None) -> int:
     try:
         for i, year in enumerate(years):
             try:
-                pdf_url, index_html, index_fetched_at, index_url = (
-                    resolve_frontmatter_url(
+                # 2019-2021 retain the verified OpenProceedings PDF parser.
+                if year <= 2021 and year not in overrides:
+                    pdf_url, index_html, index_fetched_at, index_url = resolve_frontmatter_url(
+                        session,
+                        year=year,
+                        override=None,
+                        ignore_robots=args.ignore_robots,
+                    )
+                    if index_html is not None and index_fetched_at and index_url:
+                        save_source(
+                            conn,
+                            year=year,
+                            url=index_url,
+                            content=index_html,
+                            fetched_at=index_fetched_at,
+                            content_type="text/html",
+                        )
+                    candidates = [pdf_url]
+                else:
+                    candidates = committee_source_candidates(
                         session,
                         year=year,
                         override=overrides.get(year),
                         ignore_robots=args.ignore_robots,
                     )
-                )
-                if index_html is not None and index_fetched_at and index_url:
-                    save_source(
-                        conn,
-                        year=year,
-                        url=index_url,
-                        content=index_html,
-                        fetched_at=index_fetched_at,
-                        content_type="text/html",
+
+                if not candidates:
+                    raise RuntimeError(
+                        f"No built-in official EDBT committee source is configured for {year}. "
+                        f"Pass --source {year}=URL."
                     )
 
-                print(f"Fetching {pdf_url}")
-                pdf_bytes, fetched_at, content_type = fetch_bytes(
-                    session,
-                    pdf_url,
-                    ignore_robots=args.ignore_robots,
-                    accept="application/pdf",
-                )
-                if not pdf_bytes.startswith(b"%PDF"):
-                    raise ValueError(
-                        f"Expected a PDF at {pdf_url}, got Content-Type={content_type!r}. "
-                        "If this edition uses another official URL, pass --frontmatter YEAR=URL."
+                errors: list[str] = []
+                parsed = None
+                for source_url in candidates:
+                    print(f"Fetching {source_url}")
+                    try:
+                        records, content, fetched_at, content_type = fetch_and_parse_edbt_source(
+                            session,
+                            year=year,
+                            url=source_url,
+                            ignore_robots=args.ignore_robots,
+                            include_chairs=args.include_chairs,
+                        )
+                        parsed = (source_url, records, content, fetched_at, content_type)
+                        break
+                    except Exception as exc:
+                        errors.append(f"{source_url}: {exc}")
+                        print(f"  source failed: {exc}", file=sys.stderr)
+
+                if parsed is None:
+                    raise RuntimeError(
+                        "No EDBT source candidate parsed successfully:\n  " + "\n  ".join(errors)
                     )
 
-                records = parse_edbt_frontmatter(
-                    pdf_bytes,
-                    year=year,
-                    source_url=pdf_url,
-                    fetched_at=fetched_at,
-                    include_chairs=args.include_chairs,
-                )
+                source_url, records, content, fetched_at, content_type = parsed
                 save_source(
                     conn,
                     year=year,
-                    url=pdf_url,
-                    content=pdf_bytes,
+                    url=source_url,
+                    content=content,
                     fetched_at=fetched_at,
-                    content_type=content_type or "application/pdf",
+                    content_type=content_type or (
+                        "application/pdf" if content.startswith(b"%PDF") else "text/html"
+                    ),
                 )
                 previous, inserted = replace_year_records(
                     conn,
@@ -770,7 +1318,7 @@ def main(argv: list[str] | None = None) -> int:
                 )
                 print(
                     f"  parsed {len(records)} records; replaced {previous} old rows "
-                    f"with {inserted} corrected rows"
+                    f"with {inserted} rows"
                 )
             except Exception as exc:
                 print(f"  ERROR for {year}: {exc}", file=sys.stderr)

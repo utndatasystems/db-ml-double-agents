@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Explore researchers who connect major database systems and machine-learning venues." />
-  <title>DB ↔ ML Crossovers · UTN Data Systems</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Explore database researchers and their exact NeurIPS, ICML, and ICLR publications, with broader DBLP publication context." />
+  <title>DB × ML Crossovers · UTN Data Systems</title>
+  <link rel="stylesheet" href="assets/styles.css?v=31" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -15,43 +15,29 @@
       <a class="brand" href="#top" aria-label="DB ML Crossovers home">
         <span class="brand-mark" aria-hidden="true">DS</span>
         <span class="brand-copy">
-          <strong>DB ↔ ML Crossovers</strong>
+          <strong>DB × ML Crossovers</strong>
           <small>Data Systems Lab · UTN</small>
         </span>
       </a>
       <nav class="top-nav" aria-label="Primary navigation">
-        <a href="#explore">Explore</a>
         <a href="#matrix">Crossovers</a>
+        <a href="#publication-timeline">Publications</a>
+        <a href="#explore">Explore</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section id="top" class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Database systems × machine learning</p>
-          <h1>Who works across both communities?</h1>
-          <p class="lede">
-            Explore senior database-community reviewers and editors who also publish at
-            NeurIPS, ICML, or ICLR. Browse people, venues, service history, and ML publications.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#explore">Explore researchers</a>
-          </div>
-        </div>
-        <div class="hero-signal" aria-hidden="true">
-          <div class="signal-node signal-db">DB</div>
-          <div class="signal-line"></div>
-          <div class="signal-node signal-ml">ML</div>
-          <div class="signal-dot dot-a"></div>
-          <div class="signal-dot dot-b"></div>
-          <div class="signal-dot dot-c"></div>
-        </div>
+    <section id="top" class="hero snap-hero">
+      <div class="shell hero-inner">
+        <p class="eyebrow hero-eyebrow">Database × machine learning</p>
+        <h1 class="hero-title"><span>Database minds.</span><span>Machine learning impact.</span></h1>
+        <p class="lede">See which database researchers publish at NeurIPS, ICML, and ICLR — and when.</p>
+        <a class="hero-link" href="#explore">Explore researchers <span aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <section class="summary-band" aria-labelledby="summary-title">
+    <section id="overview" class="summary-band snap-after-hero" aria-labelledby="summary-title">
       <div class="shell">
         <h2 id="summary-title" class="sr-only">Dataset summary</h2>
         <div id="summary-cards" class="summary-grid"></div>
@@ -59,16 +45,27 @@
       </div>
     </section>
 
-    <section id="matrix" class="section section-ruled">
-      <div class="shell">
-        <div class="section-heading">
+    <section id="matrix" class="section section-ruled matrix-section">
+      <div class="shell matrix-shell">
+        <div class="section-heading matrix-heading">
           <div>
-            <p class="eyebrow">Conference crossover</p>
-            <h2>Where do the communities overlap?</h2>
+            <h2>Crossovers</h2>
           </div>
-          <p class="section-note">Each cell counts confirmed people who appear in both venue communities. Click a cell to filter the explorer.</p>
+          <p id="matrix-note" class="section-note">All years · main ML only.</p>
         </div>
         <div id="matrix-wrap" class="matrix-wrap" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="publication-timeline" class="section section-ruled timeline-section">
+      <div class="shell">
+        <div class="section-heading timeline-heading">
+          <div>
+            <h2>Publication activity</h2>
+          </div>
+        </div>
+        <div id="timeline-legend" class="timeline-legend" aria-label="Publication timeline filters"></div>
+        <div id="global-timeline" class="global-timeline" aria-live="polite"></div>
       </div>
     </section>
 
@@ -76,16 +73,17 @@
       <div class="shell">
         <div class="section-heading explorer-heading">
           <div>
-            <p class="eyebrow">Researcher explorer</p>
-            <h2>Find cross-community researchers</h2>
+            <h2>Research explorer</h2>
           </div>
-          <p id="results-count" class="results-count"></p>
+          <div class="explorer-meta">
+            <p id="results-count" class="results-count"></p>
+          </div>
         </div>
 
         <div class="controls" aria-label="Researcher filters">
           <label class="control control-search">
             <span>Search</span>
-            <input id="search-input" type="search" placeholder="Name, affiliation, venue…" autocomplete="off" />
+            <input id="search-input" type="search" placeholder="Name, affiliation, venue, paper…" autocomplete="off" />
           </label>
           <label class="control">
             <span>DB venue</span>
@@ -96,20 +94,25 @@
             <select id="ml-venue-filter"><option value="">All ML venues</option></select>
           </label>
           <label class="control">
+            <span>ML publication year</span>
+            <select id="year-filter"><option value="">All ML years</option></select>
+          </label>
+          <label class="control">
             <span>DB role</span>
             <select id="role-filter"><option value="">All roles</option></select>
           </label>
           <label class="control">
             <span>Sort</span>
             <select id="sort-filter">
-              <option value="mlPapers">ML papers</option>
+              <option value="mlPapers">Main ML papers</option>
+              <option value="recent">Latest ML paper</option>
               <option value="dbService">DB service</option>
-              <option value="breadth">Venue breadth</option>
-              <option value="recent">Recent ML activity</option>
               <option value="name">Name</option>
             </select>
           </label>
-
+          <div class="control control-reset">
+            <button id="reset-filters" class="reset-filters" type="button">Reset filters</button>
+          </div>
         </div>
 
         <div class="table-wrap">
@@ -118,29 +121,48 @@
               <tr>
                 <th scope="col">Researcher</th>
                 <th scope="col">Database service</th>
-                <th scope="col">ML activity</th>
-                <th scope="col">Years</th>
+                <th scope="col">Main ML</th>
+                <th scope="col">ML timeline</th>
               </tr>
             </thead>
             <tbody id="people-body"></tbody>
           </table>
         </div>
+
+        <nav id="pagination" class="pagination" aria-label="Researcher pages">
+          <button id="prev-page" class="pagination-button pagination-prev" type="button" aria-label="Previous researcher page">← Previous</button>
+          <div class="pagination-center">
+            <p id="page-summary" class="pagination-summary"></p>
+            <div class="pagination-meta">
+              <label class="page-size-inline" for="page-size-filter">
+                <span>Rows</span>
+                <select id="page-size-filter" aria-label="Researchers per page">
+                  <option value="auto" selected>Auto</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="250">250</option>
+                </select>
+              </label>
+              <span class="pagination-separator" aria-hidden="true">·</span>
+              <span id="page-status" class="page-status" aria-live="polite"></span>
+            </div>
+          </div>
+          <button id="next-page" class="pagination-button pagination-next" type="button" aria-label="Next researcher page">Next →</button>
+        </nav>
+
         <div id="empty-state" class="empty-state" hidden>
           <strong>No researchers match these filters.</strong>
-          <span>Try clearing a venue or search filter.</span>
+          <span>Try clearing a venue, year, or search filter.</span>
+          <button id="empty-reset-filters" class="empty-reset-filters" type="button">Reset all filters</button>
         </div>
       </div>
     </section>
-
-
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div>
-        <strong>DB ↔ ML Crossovers</strong>
-        <p>An exploratory project from the UTN Data Systems context.</p>
-      </div>
+      <div><strong>DB × ML Crossovers</strong></div>
       <div class="footer-links">
         <a href="https://utndatasystems.github.io/" rel="noreferrer">Data Systems Lab</a>
         <a href="https://www.utn.de/en/departments/department-computer-science-artificial-intelligence/data-systems/" rel="noreferrer">UTN Data Systems</a>
@@ -155,7 +177,15 @@
     </div>
   </dialog>
 
-  <script src="data/site_data.js"></script>
-  <script src="assets/app.js"></script>
+  <dialog id="timeline-dialog" class="timeline-dialog">
+    <div class="dialog-shell">
+      <button id="timeline-dialog-close" class="dialog-close" type="button" aria-label="Close publication list">×</button>
+      <div id="timeline-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <script src="data/site_data.js?v=30"></script>
+  <script src="data/matrix_stats.js?v=30"></script>
+  <script src="assets/app.js?v=30"></script>
 </body>
 </html>

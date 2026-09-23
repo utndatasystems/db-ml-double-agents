@@ -25,7 +25,7 @@ Install:
     pip install requests beautifulsoup4
 
 Examples:
-    python scripts/scrape_vldb_reviewers.py --years 2024 2025 2026
+    python scripts/scrape_vldb_reviewers.py --years 2022 2023 2024 2025 2026
     python scripts/scrape_vldb_reviewers.py --years 2026 --db vldb_reviewers.sqlite
     python scripts/scrape_vldb_reviewers.py --years 2025 2026 --include-eic
 
@@ -53,9 +53,17 @@ from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = REPO_ROOT / "data" / "vldb_reviewers.sqlite"
+
+DEFAULT_START_YEAR = 2022
+
+def default_years() -> list[int]:
+    """Years collected when --years is omitted: 2022 through last calendar year."""
+    last_complete_year = datetime.now(timezone.utc).year - 1
+    if last_complete_year < DEFAULT_START_YEAR:
+        return []
+    return list(range(DEFAULT_START_YEAR, last_complete_year + 1))
 
 DEFAULT_UA = os.environ.get(
     "VLDB_SCRAPER_UA",
@@ -72,7 +80,12 @@ PAGE_HEADER_RE = re.compile(
 ROLE_PATTERNS = [
     (re.compile(r"^Editors?\s+in\s+Chief$", re.I), "editor_in_chief"),
     (re.compile(r"^Associate\s+Editors?$", re.I), "associate_editor"),
-    (re.compile(r"^(?:Members?\s+of\s+the\s+Review\s+Board|Review\s+Board)$", re.I), "review_board_member"),
+    (
+        re.compile(
+            r"^(?:Members?\s+of\s+the\s+Review\s+Board|Review\s+Board)$", re.I
+        ),
+        "review_board_member",
+    ),
 ]
 
 # Headings that may follow the review-board listing on older templates.
@@ -119,7 +132,9 @@ def normalize_name_key(name: str) -> str:
 def volume_for_year(conference_year: int) -> int:
     volume = conference_year - 2007
     if volume <= 0:
-        raise ValueError(f"Conference year {conference_year} does not map to a valid PVLDB volume")
+        raise ValueError(
+            f"Conference year {conference_year} does not map to a valid PVLDB volume"
+        )
     return volume
 
 
@@ -247,7 +262,9 @@ def parse_vldb_review_board_page(
             break
 
     if start is None:
-        raise ValueError(f"Could not locate PVLDB Review Board heading on {source_url}")
+        raise ValueError(
+            f"Could not locate PVLDB Review Board heading on {source_url}"
+        )
     if actual_volume != expected_volume:
         raise ValueError(
             f"Expected PVLDB volume {expected_volume}, but page says volume {actual_volume}: {source_url}"
@@ -277,7 +294,11 @@ def parse_vldb_review_board_page(
 
         # Some historical pages render two people in one textual row separated
         # by a vertical bar.  Treat each side as its own source fragment.
-        fragments = [clean_line(part) for part in re.split(r"\s+\|\s+", line) if clean_line(part)]
+        fragments = [
+            clean_line(part)
+            for part in re.split(r"\s+\|\s+", line)
+            if clean_line(part)
+        ]
         for fragment in fragments:
             parsed = parse_person_line(fragment)
             if parsed is None:
@@ -303,9 +324,13 @@ def parse_vldb_review_board_page(
             )
 
     if not saw_review_role:
-        raise ValueError(f"No Associate Editor / Review Board sections found on {source_url}")
+        raise ValueError(
+            f"No Associate Editor / Review Board sections found on {source_url}"
+        )
     if not records:
-        raise ValueError(f"Review-board sections were found, but no records parsed from {source_url}")
+        raise ValueError(
+            f"Review-board sections were found, but no records parsed from {source_url}"
+        )
 
     return records
 
@@ -347,7 +372,9 @@ def fetch_page(
     ignore_robots: bool = False,
 ) -> tuple[bytes, str]:
     if not ignore_robots and not robots_allows(session, url):
-        raise PermissionError(f"robots.txt does not allow this user-agent to fetch {url}")
+        raise PermissionError(
+            f"robots.txt does not allow this user-agent to fetch {url}"
+        )
 
     response = session.get(url, timeout=30)
     response.raise_for_status()
@@ -356,11 +383,12 @@ def fetch_page(
 
 
 def open_db(path: str) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
+    db_path = Path(path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON")
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS source_pages (
             id INTEGER PRIMARY KEY,
             conference_year INTEGER NOT NULL,
@@ -370,11 +398,9 @@ def open_db(path: str) -> sqlite3.Connection:
             sha256 TEXT NOT NULL,
             UNIQUE(conference_year, pvldb_volume, url, sha256)
         )
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS reviewer_records (
             id INTEGER PRIMARY KEY,
             conference_year INTEGER NOT NULL,
@@ -391,8 +417,7 @@ def open_db(path: str) -> sqlite3.Connection:
             fetched_at TEXT NOT NULL,
             UNIQUE(conference_year, pvldb_volume, role, name, affiliation, source_url)
         )
-        """
-    )
+        """)
 
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_vldb_reviewers_year ON reviewer_records(conference_year)"
@@ -429,48 +454,57 @@ def save_records(
         (conference_year, pvldb_volume, url, fetched_at, digest),
     )
 
-    before = conn.total_changes
-    conn.executemany(
-        """
-        INSERT OR IGNORE INTO reviewer_records(
-            conference_year, pvldb_volume, review_cycle, role,
-            name, affiliation, name_key, raw_text, source_url, fetched_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        [
-            (
-                r.conference_year,
-                r.pvldb_volume,
-                r.review_cycle,
-                r.role,
-                r.name,
-                r.affiliation,
-                r.name_key,
-                r.raw_text,
-                r.source_url,
-                r.fetched_at,
-            )
-            for r in records
-        ],
-    )
-    conn.commit()
-    return conn.total_changes - before
+    rows = list(records)
+    with conn:
+        # One official review-board source is used per conference year. Replace
+        # a year's old rows only after the new page parsed successfully, so a
+        # parser/source fix cannot leave stale partial rows behind.
+        conn.execute(
+            "DELETE FROM reviewer_records WHERE conference_year = ?",
+            (conference_year,),
+        )
+        before = conn.total_changes
+        conn.executemany(
+            """
+            INSERT INTO reviewer_records(
+                conference_year, pvldb_volume, review_cycle, role,
+                name, affiliation, name_key, raw_text, source_url, fetched_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                (
+                    r.conference_year,
+                    r.pvldb_volume,
+                    r.review_cycle,
+                    r.role,
+                    r.name,
+                    r.affiliation,
+                    r.name_key,
+                    r.raw_text,
+                    r.source_url,
+                    r.fetched_at,
+                )
+                for r in rows
+            ],
+        )
+        inserted = conn.total_changes - before
+    return inserted
 
 
 def print_summary(conn: sqlite3.Connection) -> None:
     print("\nDatabase summary:")
-    rows = conn.execute(
-        """
+    rows = conn.execute("""
         SELECT conference_year, pvldb_volume, review_cycle, role, COUNT(*) AS n
         FROM reviewer_records
         GROUP BY conference_year, pvldb_volume, review_cycle, role
         ORDER BY conference_year, role
-        """
-    ).fetchall()
+        """).fetchall()
 
     for year, volume, cycle, role, count in rows:
         cycle_label = f" [{cycle}]" if cycle else ""
-        print(f"  VLDB {year} / PVLDB vol. {volume}{cycle_label}: {role}: {count}")
+        print(
+            f"  VLDB {year} / PVLDB vol. {volume}{cycle_label}: {role}: {count}"
+        )
 
     total = conn.execute("SELECT COUNT(*) FROM reviewer_records").fetchone()[0]
     distinct_keys = conn.execute(
@@ -487,8 +521,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--years",
         nargs="+",
         type=int,
-        default=[2026],
-        help="VLDB conference years to collect (default: 2026)",
+        default=None,
+        help=(
+            "Years to collect. Omit for 2022 through the last completed calendar year; "
+            "explicit values override the default (for example: --years 2026)."
+        ),
     )
     parser.add_argument(
         "--db",
@@ -516,7 +553,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
-    years = sorted(set(args.years))
+    years = sorted(set(args.years if args.years is not None else default_years()))
 
     session = requests.Session()
     session.headers.update(
@@ -531,7 +568,9 @@ def main(argv: list[str] | None = None) -> int:
         for index, conference_year in enumerate(years):
             volume = volume_for_year(conference_year)
             url = REVIEW_BOARD_URL.format(volume=volume)
-            print(f"Fetching VLDB {conference_year} / PVLDB volume {volume}: {url}")
+            print(
+                f"Fetching VLDB {conference_year} / PVLDB volume {volume}: {url}"
+            )
 
             try:
                 html, fetched_at = fetch_page(
@@ -556,9 +595,14 @@ def main(argv: list[str] | None = None) -> int:
                     fetched_at=fetched_at,
                     html=html,
                 )
-                print(f"  parsed {len(records)} records; inserted {inserted} new rows")
+                print(
+                    f"  parsed {len(records)} records; replaced year with {inserted} rows"
+                )
             except Exception as exc:
-                print(f"  ERROR for VLDB {conference_year}: {exc}", file=sys.stderr)
+                print(
+                    f"  ERROR for VLDB {conference_year}: {exc}",
+                    file=sys.stderr,
+                )
 
             if index < len(years) - 1 and args.delay > 0:
                 time.sleep(args.delay)
