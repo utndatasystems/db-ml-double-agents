@@ -1,0 +1,25 @@
+{
+  "qualifyingPcMembers": 1114,
+  "dbFocusedPeople": 833,
+  "groups": [
+    {
+      "label": "DB-focused",
+      "count": 833
+    },
+    {
+      "label": "ML-focused",
+      "count": 27
+    },
+    {
+      "label": "Mixed",
+      "count": 29
+    },
+    {
+      "label": "Limited evidence",
+      "count": 225
+    }
+  ],
+  "classificationChanges": [],
+  "mainAuthors": 227,
+  "mainUniqueWorks": 533
+}

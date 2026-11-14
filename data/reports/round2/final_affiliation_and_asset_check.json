@@ -1,0 +1,30 @@
+{
+  "commonAutomaticEvidencePeopleChanged": [
+    "29/5169"
+  ],
+  "automaticPeopleAdded": [
+    "62/1373"
+  ],
+  "automaticPeopleRemoved": [
+    "58/8815",
+    "86/3457-20"
+  ],
+  "coreDisplayedAffiliationsChanged": [],
+  "newGeneratedAssetCount": 1157,
+  "newGeneratedAssetBytes": 542487945,
+  "largestNewAsset": [
+    57488385,
+    "website\\data\\coverage\\flow-papers-node-candidates.2991a86b82c9.json"
+  ],
+  "snapshotManifestUnchanged": true,
+  "commonEvidenceDeltaExplanation": {
+    "pid": "29/5169",
+    "onlyChangedField": "name",
+    "before": "Pablo Barcelo",
+    "after": "Pablo Barcel\u00f3",
+    "candidatesChecksAndYearsIdentical": true,
+    "reason": "Replayed official PODS source preserves the accented service name."
+  },
+  "allCoreDisplayedAffiliationsUnchanged": true,
+  "status": "PASS: one display-name normalization explained; no evidence decision changed for common people"
+}

@@ -1,0 +1,9 @@
+{
+  "backup": "data/backups/round2_20261107T155840Z",
+  "adopted": [
+    "sigmod_reviewers.sqlite",
+    "entity_resolution.sqlite"
+  ],
+  "source": "verified same-source staged replay",
+  "snapshotManifestChanged": false
+}

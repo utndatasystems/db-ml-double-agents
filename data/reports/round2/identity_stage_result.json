@@ -1,0 +1,25 @@
+{
+  "sameServiceSourceBytes": true,
+  "observations": 4669,
+  "nameGroups": 1450,
+  "resolvedPids": 1125,
+  "identityChanges": [
+    {
+      "name": "adam lee",
+      "before": "58/8815",
+      "after": "62/1373"
+    },
+    {
+      "name": "jia yu",
+      "before": "86/3457-20",
+      "after": null
+    }
+  ],
+  "jia": [
+    [
+      "ambiguous_exact_name",
+      null,
+      "19 DBLP person identities have an exact normalized alias match. Do not merge by name alone."
+    ]
+  ]
+}

@@ -1,0 +1,71 @@
+name: Deploy website to S3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/deploy/**'
+      - '.github/workflows/deploy-s3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-s3-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      S3_BUCKET: ${{ vars.S3_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate published files and data
+        run: python3 scripts/validate_static_site.py
+
+      - name: Check deployment revision
+        id: revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$AWS_REGION"
+          test -n "$S3_BUCKET"
+          latest=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$latest" = "$GITHUB_SHA" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Skipping a revision superseded on main."
+          fi
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        if: steps.revision.outputs.current == 'true'
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Publish static site
+        if: steps.revision.outputs.current == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          destination="s3://${S3_BUCKET}/"
+          # Put dependencies first; publish the indexes and HTML afterwards.
+          aws s3 sync website/deploy/ "$destination" --only-show-errors \
+            --cache-control "no-cache" --no-follow-symlinks \
+            --exclude "*.html" --exclude "data/site_data.js" \
+            --exclude "data/matrix_stats.js" --exclude "data/home_summary.json" \
+            --exclude "data/coverage_summary.json"
+          # Force replacement even when only headers or same-size content changed.
+          for file in data/site_data.js data/matrix_stats.js data/home_summary.json data/coverage_summary.json index.html people.html all.html; do
+            aws s3 cp "website/deploy/$file" "${destination}${file}" \
+              --cache-control "no-cache" --only-show-errors
+          done
+          # Retire obsolete files after the new pages and their data are present.
+          aws s3 sync website/deploy/ "$destination" --delete \
+            --cache-control "no-cache" --no-follow-symlinks --only-show-errors

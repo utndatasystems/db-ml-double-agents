@@ -1,0 +1,364 @@
+{
+  "production_reviews": {
+    "reviews": 15,
+    "aliases": 2,
+    "plan": [],
+    "reasons": {
+      "not_sparse_exact_assignment": 468,
+      "current_has_identity_evidence": 638,
+      "no_affiliation_match": 327,
+      "already_applied": 17
+    }
+  },
+  "deleted_review_counterfactual": {
+    "applied_rows": [
+      [
+        "anthony tung",
+        "resolved_reviewed_profile",
+        "t/AnthonyKHTung"
+      ],
+      [
+        "antonis deligiannakis",
+        "resolved_reviewed_service_alias",
+        "d/ADeligiannakis"
+      ],
+      [
+        "bharat bhargava",
+        "resolved_reviewed_profile",
+        "b/BKBhargava"
+      ],
+      [
+        "bjorn jonsson",
+        "resolved_reviewed_profile",
+        "j/BjornTorJonsson1"
+      ],
+      [
+        "cindy chen",
+        "resolved_reviewed_profile",
+        "c/CindyXChen"
+      ],
+      [
+        "david woodruff",
+        "resolved_reviewed_profile",
+        "w/DPWoodruff"
+      ],
+      [
+        "eduard dragut",
+        "resolved_reviewed_profile",
+        "66/6919"
+      ],
+      [
+        "ekaterini ioanou",
+        "resolved_reviewed_service_alias",
+        "68/3366"
+      ],
+      [
+        "farhana choudhury",
+        "resolved_reviewed_profile",
+        "115/9072"
+      ],
+      [
+        "hung ngo",
+        "resolved_reviewed_profile",
+        "n/HungQNgo"
+      ],
+      [
+        "jeffrey yu",
+        "resolved_reviewed_profile",
+        "y/JXuYu"
+      ],
+      [
+        "jignesh patel",
+        "resolved_reviewed_profile",
+        "p/JMPatel"
+      ],
+      [
+        "kenneth ross",
+        "resolved_reviewed_profile",
+        "r/KARoss"
+      ],
+      [
+        "raymond wong",
+        "resolved_reviewed_profile",
+        "w/RaymondChiWingWong"
+      ],
+      [
+        "renee miller",
+        "resolved_reviewed_profile",
+        "m/RJMiller"
+      ],
+      [
+        "todd green",
+        "resolved_reviewed_profile",
+        "g/ToddJGreen"
+      ],
+      [
+        "wendy wang",
+        "resolved_reviewed_profile",
+        "52/4725"
+      ]
+    ],
+    "plan_for_rows": []
+  },
+  "production_ownership": {
+    "partial_rows": [
+      {
+        "pid": "164/7451",
+        "key": "conf/edbt/0006KAZ0K21",
+        "owned": [
+          "conf/edbt/0006KAZ0K21"
+        ],
+        "unowned": [
+          "journals/corr/abs-1908-07753"
+        ]
+      },
+      {
+        "pid": "26/6037",
+        "key": "conf/sigmod/DingMYWDLZCGKLK20",
+        "owned": [
+          "conf/sigmod/DingMYWDLZCGKLK20"
+        ],
+        "unowned": [
+          "journals/corr/abs-1905-08898"
+        ]
+      },
+      {
+        "pid": "26/6037",
+        "key": "journals/corr/abs-2103-14699",
+        "owned": [
+          "journals/corr/abs-2103-14699"
+        ],
+        "unowned": [
+          "conf/oopsla/BastaniHJBM21"
+        ]
+      },
+      {
+        "pid": "260/6910",
+        "key": "conf/ccs/Hu00N0Q024",
+        "owned": [
+          "conf/ccs/Hu00N0Q024"
+        ],
+        "unowned": [
+          "journals/corr/abs-2311-16136"
+        ]
+      },
+      {
+        "pid": "263/2590",
+        "key": "journals/corr/abs-2509-24350",
+        "owned": [
+          "journals/corr/abs-2509-24350"
+        ],
+        "unowned": [
+          "conf/adc/KeYDCH25"
+        ]
+      },
+      {
+        "pid": "36/2474",
+        "key": "journals/ws/LoizouAG15",
+        "owned": [
+          "journals/ws/LoizouAG15"
+        ],
+        "unowned": [
+          "journals/corr/abs-1304-0567"
+        ]
+      },
+      {
+        "pid": "70/6862",
+        "key": "conf/adc/KeYDCH25",
+        "owned": [
+          "conf/adc/KeYDCH25"
+        ],
+        "unowned": [
+          "journals/corr/abs-2509-24350"
+        ]
+      },
+      {
+        "pid": "74/2905",
+        "key": "journals/chinaf/OoiCCSTWXXYZZZ24",
+        "owned": [
+          "journals/chinaf/OoiCCSTWXXYZZZ24"
+        ],
+        "unowned": [
+          "journals/corr/abs-2405-03924"
+        ]
+      },
+      {
+        "pid": "78/4413",
+        "key": "journals/fcsc/LuZFFCD25",
+        "owned": [
+          "journals/fcsc/LuZFFCD25"
+        ],
+        "unowned": [
+          "journals/corr/abs-2402-05121"
+        ]
+      },
+      {
+        "pid": "86/6775",
+        "key": "conf/sigmod/Ceri0GMBM24",
+        "owned": [
+          "conf/sigmod/Ceri0GMBM24"
+        ],
+        "unowned": [
+          "journals/corr/abs-2307-07354"
+        ]
+      },
+      {
+        "pid": "86/9726",
+        "key": "journals/pacmmod/BotherRGHMTK25",
+        "owned": [
+          "journals/pacmmod/BotherRGHMTK25"
+        ],
+        "unowned": [
+          "journals/corr/abs-2312-06254"
+        ]
+      },
+      {
+        "pid": "i/YoshiharuIshikawa",
+        "key": "conf/sigmod/WangXQ0O00I21",
+        "owned": [
+          "conf/sigmod/WangXQ0O00I21"
+        ],
+        "unowned": [
+          "journals/corr/abs-2005-09908"
+        ]
+      },
+      {
+        "pid": "t/KristianTorp",
+        "key": "conf/bigdataconf/JepsenJNT18",
+        "owned": [
+          "conf/bigdataconf/JepsenJNT18"
+        ],
+        "unowned": [
+          "journals/corr/abs-1911-06217"
+        ]
+      },
+      {
+        "pid": "x/JianliangXu",
+        "key": "journals/pvldb/CaoGLXZX25",
+        "owned": [
+          "journals/pvldb/CaoGLXZX25"
+        ],
+        "unowned": [
+          "journals/corr/abs-2411-05844"
+        ]
+      }
+    ],
+    "review_rows_nonowned": [],
+    "dois_nonowned": [
+      {
+        "pid": "26/6037",
+        "key": "journals/corr/abs-2103-14699",
+        "owned": [
+          "journals/corr/abs-2103-14699"
+        ],
+        "unowned": [
+          "conf/oopsla/BastaniHJBM21"
+        ],
+        "extra_dois": [
+          "10.1145/3486607.3486750"
+        ]
+      },
+      {
+        "pid": "263/2590",
+        "key": "journals/corr/abs-2509-24350",
+        "owned": [
+          "journals/corr/abs-2509-24350"
+        ],
+        "unowned": [
+          "conf/adc/KeYDCH25"
+        ],
+        "extra_dois": [
+          "10.1007/978-981-95-6196-4_11"
+        ]
+      }
+    ],
+    "automatic_records_for_unowned_doi_cases": {
+      "26/6037": {
+        "name": "Tim Kraska",
+        "latestPublicationYear": 2026,
+        "candidates": [
+          {
+            "dblpKey": "conf/cais/NgomWMMZMK26",
+            "year": 2026,
+            "sourceDate": "2026-05-26",
+            "datePrecision": 3,
+            "rawAffiliations": [
+              "EECS, Massachusetts Institute of Technology, Cambridge, MA, USA"
+            ],
+            "authorMatch": "exact_full_name",
+            "sourceUrl": "https://doi.org/10.1145/3786335.3813143",
+            "metadataUrl": "https://api.crossref.org/works/10.1145%2F3786335.3813143",
+            "retrievedAt": "2026-10-19T06:44:40+00:00",
+            "provider": "Crossref publisher metadata"
+          }
+        ],
+        "checks": [
+          {
+            "dblpKey": "conf/cais/NgomWMMZMK26",
+            "doi": "10.1145/3786335.3813143",
+            "outcome": "matched",
+            "retrievedAt": "2026-10-19T06:44:40+00:00"
+          }
+        ],
+        "papersConsidered": 1,
+        "latestYearDoiPapers": 1,
+        "searchCapped": false
+      },
+      "263/2590": {
+        "name": "Helen Huang",
+        "latestPublicationYear": 2025,
+        "candidates": [],
+        "checks": [
+          {
+            "dblpKey": "journals/corr/abs-2509-24350",
+            "doi": "10.1007/978-981-95-6196-4_11",
+            "outcome": "no_author_affiliation",
+            "retrievedAt": "2026-10-19T06:42:20+00:00"
+          }
+        ],
+        "papersConsidered": 1,
+        "latestYearDoiPapers": 1,
+        "searchCapped": false
+      }
+    }
+  },
+  "nonowned_manual_affiliation_fixture": {
+    "affiliation": "Coauthor University",
+    "sourceIds": [
+      "publication_affiliation:7c8450229096"
+    ],
+    "notes": [
+      "Author-specific affiliation verified in a 2025 publication; undated DBLP notes do not establish recency."
+    ],
+    "publicationAffiliationEvidence": [
+      {
+        "dblpKey": "others-conference",
+        "year": 2025,
+        "personName": "Alice Example",
+        "affiliation": "Coauthor University",
+        "sourceUrl": "https://example.org/paper.pdf",
+        "verifiedOn": "2026-11-07"
+      }
+    ],
+    "decisionKey": "verified_publication_affiliation",
+    "confidence": "medium",
+    "hasConflict": true,
+    "publicationAffiliationYear": 2025
+  },
+  "deleted_alias_fixture": {
+    "plan": [],
+    "held": [
+      {
+        "name_key": "ken ross",
+        "name": "Ken Ross",
+        "reason": "not_sparse_exact_assignment"
+      }
+    ],
+    "persisted": [
+      [
+        "resolved_reviewed_service_alias",
+        "full"
+      ]
+    ]
+  }
+}

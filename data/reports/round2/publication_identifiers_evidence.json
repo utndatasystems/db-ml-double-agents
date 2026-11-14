@@ -1,0 +1,324 @@
+{
+  "matchBasisCounts": {
+    "exact_dblp_author_signature": 96155,
+    "verified_orcid": 33122,
+    "reviewed_publication_author": 2
+  },
+  "cases": [
+    {
+      "dblp_pid": "409/8145",
+      "dblp_key": "conf/kdd/FanLFDT26",
+      "title": "MLaGA: Multimodal Large Language and Graph Assistant.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7513-6047",
+      "url": "https://doi.org/10.1145/3770855.3818077",
+      "orcidOwners": [
+        "09/10814"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "h/JosephMHellerstein",
+      "dblp_key": "journals/pacmhci/ShankarGHP24",
+      "title": "\"We Have No Idea How Models will Behave in Production until Production\": How Engineers Operationalize Machine Learning.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0003-0802-4069",
+      "url": "https://doi.org/10.1145/3653697",
+      "orcidOwners": [
+        "32/2459"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "j/BjornTorJonsson1",
+      "dblp_key": "conf/mir/TranBDHHJHRSTZG26",
+      "title": "Introduction to the 9th Annual Lifelog Search Challenge, LSC'26.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0003-1304-5913",
+      "url": "https://doi.org/10.1145/3805622.3811234",
+      "orcidOwners": [
+        "j/BjornTorJonsson2"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "conf/esws/ZeakisPSK25",
+      "title": "AvengER: Ensembling and Fine-Tuning LLMs for SELECT Prompts in Entity Resolution.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1007/978-3-031-94575-5_17",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "conf/icde/ZeakisCLS25",
+      "title": "ChronoTab: Forecasting Multivariate Time Series with Tabular LLMs.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1109/ICDEW67478.2025.00025",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/vldb/ZeakisPSK25",
+      "title": "An in-depth analysis of pre-trained embeddings for entity resolution.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1007/s00778-024-00879-4",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/corr/abs-2405-14748",
+      "title": "MultiCast: Zero-Shot Multivariate Time Series Forecasting Using LLMs.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.48550/arXiv.2405.14748",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "conf/icde/Skoufis024",
+      "title": "KGSEC: A Modular Framework for Knowledge Graph Schema Extraction and Comparison.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1109/ICDE60146.2024.00426",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "conf/icde/ChatzigeorgakidisLS24",
+      "title": "MultiCast: Zero-Shot Multivariate Time Series Forecasting Using LLMs.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1109/ICDEW61823.2024.00022",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "conf/icde/PitsilouPS24",
+      "title": "Using LLMs to Extract Food Entities from Cooking Recipes.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1109/ICDEW61823.2024.00008",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/corr/abs-2312-09864",
+      "title": "Accelerating Spatio-Textual Queries with Learned Indices.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.48550/arXiv.2312.09864",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/corr/abs-2304-12329",
+      "title": "Pre-trained Embeddings for Entity Resolution: An Experimental Analysis [Experiment, Analysis & Benchmark].",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.48550/arXiv.2304.12329",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/is/WuTSL23",
+      "title": "A novel framework for the efficient evaluation of hybrid tree-pattern queries on large data graphs.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1016/j.is.2023.102249",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "journals/pvldb/ZeakisPSK23",
+      "title": "Pre-trained Embeddings for Entity Resolution: An Experimental Analysis.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://www.vldb.org/pvldb/vol16/p2225-skoutas.pdf",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "dblp_key": "books/sp/21/Chronis0AS21",
+      "title": "Link Prediction in Bibliographic Networks.",
+      "scope": "side",
+      "match_basis": "exact_dblp_author_signature",
+      "author_orcid": "0000-0002-7953-7964",
+      "url": "https://doi.org/10.1007/978-3-030-86668-6_13",
+      "orcidOwners": [
+        "s/DimitriosNSkoutas"
+      ],
+      "orcidOwnerResolved": []
+    }
+  ],
+  "persons": {
+    "s/DimitriosSkoutas": {
+      "name": "Dimitrios Skoutas 0001",
+      "orcids": [
+        "0000-0002-6118-5227"
+      ],
+      "affiliations": [
+        "Athena Research Center, Athens, Greece",
+        "National Technical University of Athens, Greece"
+      ]
+    },
+    "09/10814": {
+      "name": "Djellel Eddine Difallah",
+      "orcids": [
+        "0000-0002-7513-6047"
+      ],
+      "affiliations": []
+    },
+    "409/8145": {
+      "name": "Djellel Difallah",
+      "orcids": [],
+      "affiliations": []
+    },
+    "j/BjornTorJonsson1": {
+      "name": "Björn Þór Jónsson 0001",
+      "orcids": [
+        "0000-0003-0889-3491"
+      ],
+      "affiliations": [
+        "IT University of Copenhagen, Denmark",
+        "Reykjavik University, School of Computer Science, Iceland",
+        "Reykjavík University, Department of Computer Science, Iceland",
+        "University of Amsterdam, The Netherlands",
+        "University of Maryland, College Park, MD, USA"
+      ]
+    },
+    "s/DimitriosNSkoutas": {
+      "name": "Dimitrios N. Skoutas",
+      "orcids": [
+        "0000-0002-7953-7964"
+      ],
+      "affiliations": [
+        "University of the Aegean, Greece"
+      ]
+    },
+    "h/JosephMHellerstein": {
+      "name": "Joseph M. Hellerstein",
+      "orcids": [
+        "0000-0002-7712-4306"
+      ],
+      "affiliations": [
+        "University of California, Berkeley, CA, USA",
+        "University of Wisconsin-Madison, Madison, WI, USA"
+      ]
+    },
+    "j/BjornTorJonsson2": {
+      "name": "Björn Þór Jónsson 0002",
+      "orcids": [
+        "0000-0003-1304-5913"
+      ],
+      "affiliations": [
+        "IT University of Copenhagen, Denmark",
+        "University of Iceland, Reykjavík, Iceland"
+      ]
+    },
+    "32/2459": {
+      "name": "Joseph L. Hellerstein",
+      "orcids": [
+        "0000-0003-0802-4069"
+      ],
+      "affiliations": [
+        "Google Inc, Seattle, WA, USA",
+        "IBM Thomas J. Watson Research Center, Hawthorne, NY, USA",
+        "University of California, Los Angeles, CA, USA",
+        "University of Washington, eScience Institute, Seattle, WA, USA"
+      ]
+    }
+  },
+  "reviewedSourcePidsResolved": [
+    {
+      "sourcePid": "385/3645",
+      "resolved": false
+    },
+    {
+      "sourcePid": "385/3645",
+      "resolved": false
+    }
+  ],
+  "reviewedSameAuthorDualAssignmentFixture": {
+    "rows": [
+      {
+        "dblp_pid": "source",
+        "dblp_key": "conf/test/Paper",
+        "match_basis": "dblp_author_pid",
+        "author_signature": "Short Name"
+      },
+      {
+        "dblp_pid": "target",
+        "dblp_key": "conf/test/Paper",
+        "match_basis": "reviewed_publication_author",
+        "author_signature": "Short Name"
+      }
+    ],
+    "stats": {
+      "records": 1,
+      "accepted": 2,
+      "main": 0,
+      "side": 2
+    }
+  },
+  "globalAmbiguityFixture": {
+    "rows": [],
+    "stats": {
+      "records": 3,
+      "skipped_alias_ambiguity": 1,
+      "accepted": 0,
+      "main": 0,
+      "side": 0
+    }
+  }
+}

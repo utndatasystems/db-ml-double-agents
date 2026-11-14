@@ -1,0 +1,9 @@
+namespace,field,value,venue,min_pages,allow_unpaginated,evidence_url
+conf/sigmod/,booktitle,SIGMOD Conference,SIGMOD,6,false,https://dblp.org/db/conf/sigmod/
+conf/pods/,booktitle,PODS,PODS,6,false,https://dblp.org/db/conf/pods/
+conf/vldb/,booktitle,VLDB,VLDB,6,false,https://dblp.org/db/conf/vldb/
+conf/icde/,booktitle,ICDE,ICDE,6,false,https://dblp.org/db/conf/icde/
+conf/edbt/,booktitle,EDBT,EDBT,6,false,https://dblp.org/db/conf/edbt/
+conf/cidr/,booktitle,CIDR,CIDR,6,true,https://dblp.org/db/conf/cidr/
+journals/pvldb/,journal,Proc. VLDB Endow.,VLDB,6,false,https://www.vldb.org/pvldb/
+journals/pacmmod/,journal,Proc. ACM Manag. Data,SIGMOD/PODS,6,false,https://sigmod.org/publications/publications/

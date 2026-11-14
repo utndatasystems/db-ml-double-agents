@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="application-name" content="DB × ML Double Agents" />
+  <meta name="description" content="DB × ML Double Agents explores database researchers' contributions to machine learning at NeurIPS, ICML and ICLR." />
+  <title>DB × ML Double Agents · UTN Data Systems</title>
+  <link rel="stylesheet" href="assets/styles.css?v=151" />
+  <link rel="stylesheet" href="assets/home.css?v=31" />
+  <!-- Initialize previews before the body can paint empty chart regions. -->
+  <script src="assets/loading-preview.js?v=4"></script>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand">
+        <span class="home-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h4l8 10h4m-3-3 3 3-3 3M4 17h4L16 7h4m-3-3 3 3-3 3" /></svg></span>
+        <span class="brand-copy">
+          <a class="brand-title-link" href="index.html"><strong>DB × ML Double Agents</strong></a>
+          <small><a class="brand-sub-link" href="https://utndatasystems.github.io/" target="_blank" rel="noreferrer">Data Systems Lab</a> · <a class="brand-sub-link" href="https://www.utn.de/" target="_blank" rel="noreferrer">UTN</a></small>
+        </span>
+      </div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page"><strong>Home</strong></a>
+        <a href="people.html">People Explorer</a>
+        <a href="all.html">All Insights</a>
+        <button class="top-nav-button" type="button" data-open-methodology data-methodology-data-src="data/site_data.js?v=54" data-methodology-app-src="assets/app.js?v=165">Methodology</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main" aria-label="Home" tabindex="-1">
+    <section class="home-intro" aria-labelledby="home-title">
+      <div class="shell home-intro-inner">
+        <div class="home-intro-story">
+          <p class="home-kicker"><span class="home-status-dot" aria-hidden="true"></span> DB people. ML possibilities.</p>
+          <h1 id="home-title"><span class="home-population-count" data-home-total data-loading-kind="value" aria-busy="true" aria-live="polite">—</span> <span class="home-focus-label">DB-focused<button type="button" class="home-focus-info" aria-label="Who counts as DB-focused?" aria-expanded="false" aria-describedby="home-focus-tooltip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 10.5v6M12 7.3v.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></span> researchers served on <strong>program committees</strong> <strong>at</strong> <strong>SIGMOD/PODS</strong>, <strong>VLDB</strong>, <strong>ICDE</strong>, <strong>CIDR</strong> or <strong>EDBT</strong> in <span data-home-year-start>—</span>–<span data-home-year-end>—</span>.</h1>
+          <div id="home-focus-tooltip" class="home-focus-tooltip" role="tooltip" hidden>DB-focused: at least twice as many DB as ML conference papers. Requires five papers across three years, or two DB papers in two years plus PC service in two years. Workshops and ordinary journals do not count. <a href="all.html#population-focus">See the selection</a></div>
+          <div class="home-intro-actions"><a class="home-intro-link" href="#home-ml">Discover their ML side <span aria-hidden="true">↓</span></a><a class="home-secondary-link" href="people.html">Explore the researchers <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <aside class="home-venue-preview" aria-labelledby="home-venues-title">
+          <p class="home-preview-kicker">The DB side <span data-home-years>—</span></p>
+          <div class="home-preview-heading">
+            <h2 id="home-venues-title">Where they served</h2>
+            <span>People</span>
+          </div>
+          <dl class="home-venue-counts" data-home-venues data-loading-kind="bars" aria-busy="true"></dl>
+          <p class="home-preview-note">People may appear at more than one venue.</p>
+          <p class="home-preview-note" data-home-status role="status" hidden></p>
+        </aside>
+      </div>
+    </section>
+    <section id="home-ml" class="home-ml" aria-labelledby="home-ml-title" data-home-reveal>
+      <div class="shell home-ml-inner">
+        <div class="home-ml-story">
+          <p class="home-kicker">Already crossing over</p>
+          <h2 id="home-ml-title" class="home-ml-statement"><strong class="home-ml-percentage" data-home-ml-percentage data-loading-kind="value" aria-busy="true" aria-live="polite">—</strong> of the DB-focused PC members have published main-conference papers <strong>at</strong> <strong>NeurIPS</strong>, <strong>ICML</strong> or <strong>ICLR</strong>.</h2>
+          <p class="home-ml-invitation">Are you in the mix? <a class="home-ml-link" href="people.html">Find yourself—or your next collaborator <span aria-hidden="true">↗</span></a></p>
+        </div>
+        <aside class="home-venue-preview" aria-labelledby="home-ml-venues-title">
+          <p class="home-preview-kicker">The ML side <span data-home-ml-years>—</span></p>
+          <div class="home-preview-heading"><h3 id="home-ml-venues-title">Where they published</h3><span>People</span></div>
+          <dl class="home-venue-counts home-ml-venue-counts" data-home-ml-venues data-loading-rows="3" data-loading-kind="bars" aria-busy="true"></dl>
+          <p class="home-preview-note">People may appear at more than one venue.</p>
+        </aside>
+      </div>
+    </section>
+    <section class="home-trend" aria-labelledby="home-trend-title" data-home-reveal>
+      <div class="shell home-trend-inner">
+        <div class="home-trend-heading">
+          <p class="home-kicker">The momentum</p>
+          <h2 id="home-trend-title" class="home-section-statement">DB-focused PC members’ <strong>share</strong> of main-conference papers <strong>is growing</strong>:</h2>
+          <dl class="home-growth-metrics" data-home-growth-metrics data-loading-kind="metrics" aria-busy="true" aria-label="Annualized growth in paper share"></dl>
+          <p class="home-ml-invitation">Share your DB ideas with the ML community. <a class="home-ml-link" href="all.html?view=publication-share#publication-timeline">Explore the publication trend <span aria-hidden="true">↗</span></a></p>
+        </div>
+        <figure class="home-trend-figure">
+          <div class="home-trend-legend" aria-label="Conference lines"><span class="home-trend-neurips">NeurIPS</span><span class="home-trend-icml">ICML</span><span class="home-trend-iclr">ICLR</span></div>
+          <p class="home-trend-axis">Main-conference papers involving DB-focused researchers (%)</p>
+          <div class="home-trend-chart" data-home-trend-chart data-loading-kind="line" aria-busy="true"><p class="home-preview-note">Loading publication trend…</p></div>
+          <figcaption class="home-trend-caption"><span>DB-focused researchers’ share of conference papers. (Five-year trends)</span></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="home-newcomers" aria-labelledby="home-newcomers-title" data-home-reveal>
+      <div class="shell home-newcomers-inner">
+        <div class="home-newcomers-story">
+          <p class="home-kicker">Your move</p>
+          <h2 id="home-newcomers-title" class="home-section-statement">Among DB-focused PC members, <strong>first-time authors</strong> <strong>at</strong> <strong>NeurIPS</strong>, <strong>ICML</strong> or <strong>ICLR</strong> <span data-home-new-growth-direction>grew</span> by <span class="home-growth-phrase"><strong class="home-statement-value home-growth-with-info" data-home-new-growth>—</strong> a year</span>.</h2>
+          <p class="home-ml-invitation">Your first paper at one of these venues could be next. <a class="home-ml-link" href="all.html?view=first-time-authors#ml-participants">See who’s getting started <span aria-hidden="true">↗</span></a></p>
+        </div>
+        <figure class="home-newcomers-figure">
+          <p class="home-trend-axis">First-time authors per year</p>
+          <div class="home-trend-chart" data-home-new-chart data-loading-kind="columns" aria-busy="true"><p class="home-preview-note">Loading first-time authors…</p></div>
+          <figcaption class="home-trend-caption"><span data-home-new-curve-note>Trend line and yearly counts in grey.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+  <footer class="home-footer"><div class="shell"><a href="https://utndatasystems.github.io/" target="_blank" rel="noreferrer">Data Systems Lab · UTN</a><span>This site was built with help from Codex!</span><a href="all.html">Open the full analysis <span aria-hidden="true">↗</span></a></div></footer>
+  <dialog id="methodology-dialog" class="methodology-dialog">
+    <div class="dialog-shell methodology-dialog-shell">
+      <button id="methodology-dialog-close" class="dialog-close" type="button" aria-label="Close methodology">×</button>
+      <div id="methodology-dialog-content"></div>
+    </div>
+  </dialog>
+  <script src="assets/home-trends.js?v=5"></script>
+  <script src="assets/home.js?v=32"></script>
+  <script src="assets/home-methodology.js?v=1"></script>
+</body>
+</html>

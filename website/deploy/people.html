@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="application-name" content="DB × ML Double Agents" />
+  <meta name="description" content="Search database conference committee members and explore their publications, affiliations and DB-focused classifications." />
+  <title>People Explorer · DB × ML Double Agents · UTN Data Systems</title>
+  <link rel="stylesheet" href="assets/styles.css?v=151" />
+  <!-- Initialize previews before the body can paint empty chart regions. -->
+  <script src="assets/loading-preview.js?v=4"></script>
+</head>
+<body class="people-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand">
+        <span class="home-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h4l8 10h4m-3-3 3 3-3 3M4 17h4L16 7h4m-3-3 3 3-3 3" /></svg></span>
+        <span class="brand-copy">
+          <a class="brand-title-link" href="index.html"><strong>DB × ML Double Agents</strong></a>
+          <small><a class="brand-sub-link" href="https://utndatasystems.github.io/" target="_blank" rel="noreferrer">Data Systems Lab</a> · <a class="brand-sub-link" href="https://www.utn.de/" target="_blank" rel="noreferrer">UTN</a></small>
+        </span>
+      </div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="people.html" aria-current="page"><strong>People Explorer</strong></a>
+        <a href="all.html">All Insights</a>
+        <button class="top-nav-button" type="button" data-open-methodology>Methodology</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="explore" class="section" aria-labelledby="people-title">
+      <div class="shell">
+        <div class="section-heading explorer-heading">
+          <div>
+            <p class="eyebrow explorer-eyebrow">Look up people and papers</p>
+            <h1 id="people-title">People Explorer</h1>
+            <p class="section-helper explorer-helper">Search by researcher, affiliation, venue or paper title.</p>
+          </div>
+          <div class="explorer-meta">
+            <div class="viz-view-switch explorer-cohort-switch" inert data-loading-controls role="group" aria-label="Researchers shown in the People Explorer">
+              <button type="button" data-explorer-cohort="crossovers" class="is-active" aria-pressed="true">DB-focused PC members with an ML paper</button>
+              <button type="button" data-explorer-cohort="all" aria-pressed="false">All</button>
+            </div>
+            <p id="results-count" class="results-count"></p>
+          </div>
+        </div>
+
+        <div id="explorer-controls" inert data-loading-controls class="controls" aria-label="Researcher filters">
+          <label class="control control-search">
+            <span>Search</span>
+            <input id="search-input" type="search" placeholder="Name, affiliation, venue, paper title…" autocomplete="off" />
+          </label>
+          <label class="control">
+            <span>Database venue</span>
+            <select id="db-venue-filter"><option value="">All database venues</option></select>
+          </label>
+          <label class="control">
+            <span>ML venue</span>
+            <select id="ml-venue-filter"><option value="">All ML venues</option></select>
+          </label>
+          <label class="control control-year">
+            <span>ML publication year</span>
+            <select id="year-filter"><option value="">All ML years</option></select>
+          </label>
+        </div>
+
+        <div id="chart-selection-banner" class="chart-selection-banner" role="status" hidden>
+          <span id="chart-selection-label"></span>
+          <button id="clear-chart-selection" type="button">Clear chart selection</button>
+        </div>
+        <div id="explorer-filter-status" inert data-loading-controls class="explorer-filter-status" aria-label="Active explorer selections">
+          <div class="explorer-filter-actions">
+            <button id="reset-filters" class="reset-filters explorer-filter-action" type="button">Reset filters</button>
+            <button id="edit-explorer-filters" class="reset-filters explorer-filter-action" type="button" hidden>Edit filters</button>
+          </div>
+          <div class="explorer-list-controls">
+            <span id="explorer-population" aria-live="polite"></span>
+            <div class="explorer-sort" role="group" aria-label="Sort researchers">
+              <span>Sort by</span>
+              <div class="explorer-sort-options">
+                <button type="button" data-explorer-sort="mlPapers" class="is-active" aria-pressed="true">Most ML papers</button>
+                <button type="button" data-explorer-sort="recent" aria-pressed="false">Latest ML paper</button>
+                <button type="button" data-explorer-sort="dbService" aria-pressed="false">Most DB PC roles</button>
+                <button type="button" data-explorer-sort="name" aria-pressed="false">Name A–Z</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="people-table">
+            <thead id="researcher-table-columns" tabindex="-1">
+              <tr>
+                <th scope="col">Researcher</th>
+                <th scope="col">DB PC memberships</th>
+                <th scope="col">Main-conference papers</th>
+                <th scope="col">ML timeline</th>
+              </tr>
+            </thead>
+            <tbody id="people-body" data-loading-kind="people" aria-busy="true"></tbody>
+          </table>
+        </div>
+
+        <nav id="pagination" hidden class="pagination" aria-label="Researcher pages">
+          <button id="prev-page" class="pagination-button pagination-prev" type="button" aria-label="Previous researcher page">← Previous</button>
+          <div class="pagination-center">
+            <p id="page-summary" class="pagination-summary"></p>
+            <div class="pagination-meta">
+              <label class="page-size-inline" for="page-size-filter">
+                <span>Rows</span>
+                <select id="page-size-filter" aria-label="Researchers per page">
+                  <option value="auto" selected>Auto</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="250">250</option>
+                </select>
+              </label>
+              <span class="pagination-separator" aria-hidden="true">·</span>
+              <span id="page-status" class="page-status" aria-live="polite"></span>
+            </div>
+          </div>
+          <button id="next-page" class="pagination-button pagination-next" type="button" aria-label="Next researcher page">Next →</button>
+        </nav>
+
+        <div id="explorer-discovery-note" hidden class="empty-state">
+          <div id="empty-state" role="status" hidden>
+            <strong id="empty-title">We couldn’t find anyone matching these filters.</strong>
+          </div>
+          <strong id="results-note-title" hidden>Missing someone from these results?</strong>
+          <div class="explorer-empty-story">
+            <p class="explorer-empty-gem">Everyone is precious <span aria-hidden="true">💎</span></p>
+            <p>Even our data mining misses a few gems. <span aria-hidden="true">⛏️</span></p>
+            <p class="explorer-empty-invite">Know one we missed? <strong>Tell us where to dig next!</strong>&nbsp;<span aria-hidden="true">🧭</span></p>
+          </div>
+          <p class="explorer-empty-context">We match names from SIGMOD/PODS, VLDB, ICDE, CIDR and EDBT committee lists (2022–2025) to DBLP.<br>People whose names couldn’t be extracted from these lists or clearly matched to DBLP may not appear here.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span id="footer-data-refresh" class="footer-data-refresh"></span>
+      <small class="footer-credit">This site was built with help from Codex!</small>
+      <div class="footer-links">
+        <a href="https://utndatasystems.github.io/" rel="noreferrer">Data Systems Lab</a>
+        <a href="https://www.utn.de/en/departments/department-computer-science-artificial-intelligence/data-systems/" rel="noreferrer">UTN Data Systems</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="person-dialog" class="person-dialog">
+    <div class="dialog-shell">
+      <button id="dialog-close" class="dialog-close" type="button" aria-label="Close researcher detail">×</button>
+      <div id="dialog-content"></div>
+    </div>
+  </dialog>
+
+  <dialog id="timeline-dialog" class="timeline-dialog">
+    <div class="dialog-shell">
+      <button id="timeline-dialog-close" class="dialog-close" type="button" aria-label="Close publication list">×</button>
+      <div id="timeline-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <dialog id="methodology-dialog" class="methodology-dialog">
+    <div class="dialog-shell methodology-dialog-shell">
+      <button id="methodology-dialog-close" class="dialog-close" type="button" aria-label="Close methodology">×</button>
+      <div id="methodology-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <script src="data/site_data.js?v=54"></script>
+  <script src="assets/app.js?v=165"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "fixture": {
+    "before_cache_restore": {
+      "name": "Alice Example",
+      "latestPublicationYear": 2026,
+      "candidates": [],
+      "checks": [
+        {
+          "dblpKey": "conf/example/A26",
+          "doi": "10.1234/example",
+          "outcome": "metadata_unavailable",
+          "retrievedAt": ""
+        }
+      ],
+      "papersConsidered": 1,
+      "latestYearDoiPapers": 1,
+      "searchCapped": false
+    },
+    "ordinary_offline_after_cache_restore": {
+      "name": "Alice Example",
+      "latestPublicationYear": 2026,
+      "candidates": [],
+      "checks": [
+        {
+          "dblpKey": "conf/example/A26",
+          "doi": "10.1234/example",
+          "outcome": "metadata_unavailable",
+          "retrievedAt": ""
+        }
+      ],
+      "papersConsidered": 1,
+      "latestYearDoiPapers": 1,
+      "searchCapped": false
+    },
+    "same_inputs_forced_rebuild_after_cache_restore": {
+      "name": "Alice Example",
+      "latestPublicationYear": 2026,
+      "candidates": [
+        {
+          "dblpKey": "conf/example/A26",
+          "year": 2026,
+          "sourceDate": "2026-04-12",
+          "datePrecision": 3,
+          "rawAffiliations": [
+            "Recovered University"
+          ],
+          "authorMatch": "exact_full_name",
+          "sourceUrl": "https://doi.org/10.1234/example",
+          "metadataUrl": "https://api.crossref.org/works/10.1234%2Fexample",
+          "retrievedAt": "2026-10-19T00:00:00+00:00",
+          "provider": "Crossref publisher metadata"
+        }
+      ],
+      "checks": [
+        {
+          "dblpKey": "conf/example/A26",
+          "doi": "10.1234/example",
+          "outcome": "matched",
+          "retrievedAt": "2026-10-19T00:00:00+00:00"
+        }
+      ],
+      "papersConsidered": 1,
+      "latestYearDoiPapers": 1,
+      "searchCapped": false
+    }
+  },
+  "production": {
+    "people": 1126,
+    "people_with_candidates": 775,
+    "candidate_rows": 2275,
+    "checks": 3896,
+    "missing_doi_cache_rows": 289,
+    "metadata_unavailable_checks": 517,
+    "currently_positive_cache_for_previously_unavailable_checks": 0,
+    "positive_recovered_examples": [],
+    "evidence_if_cache_absent": 0,
+    "existing_snapshot_preserves_if_inputs_identical": true
+  },
+  "interrupted_export": {
+    "missing_referenced_assets_if_interrupted_after_main": [
+      "people\\2bd806c97f0e-6d7eb84c169c.json",
+      "publication_search.c5b3c140dc48.json"
+    ],
+    "remaining_detail_assets_after_write_failure": [],
+    "retry_restores_new_assets": true
+  }
+}

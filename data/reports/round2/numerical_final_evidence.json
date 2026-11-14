@@ -1,0 +1,249 @@
+{
+  "checks": {
+    "initialNumericalEvidenceExactlyReproduced": true,
+    "entireHomeSummaryUnchanged": true,
+    "allMainPidWorkKeyVenueYearMembershipUnchanged": true,
+    "includedCohortPidsUnchanged": true,
+    "allVenueYearDenominatorsUnchanged": true,
+    "allSeventyFiveAnnualPointsUnchanged": true,
+    "allTenFirstTimeCountsUnchanged": true
+  },
+  "finalCounts": {
+    "people": 833,
+    "mainAuthors": 227,
+    "mainWorks": 533,
+    "mainAuthorships": 648,
+    "csvMainRows": 648,
+    "exportMainRows": 648,
+    "exportDistinctSelectedKeys": 533,
+    "annualPointsMatchedToCanonicalCsv": 75
+  },
+  "mainRowsRemoved": [],
+  "mainRowsAdded": [],
+  "includedPidsRemoved": [],
+  "includedPidsAdded": [],
+  "pcCandidates": {
+    "before": 1114,
+    "after": 1114
+  },
+  "focusLabels": {
+    "before": {
+      "DB-focused": 833,
+      "Limited evidence": 225,
+      "ML-focused": 27,
+      "Mixed": 29
+    },
+    "after": {
+      "DB-focused": 833,
+      "Limited evidence": 224,
+      "ML-focused": 27,
+      "Mixed": 30
+    }
+  },
+  "summaryCounts": {
+    "before": {
+      "dbResolvedPeople": 1126,
+      "sitePeople": 833,
+      "mainCrossoverPeople": 227,
+      "uniqueMainPapers": 533
+    },
+    "after": {
+      "dbResolvedPeople": 1125,
+      "sitePeople": 833,
+      "mainCrossoverPeople": 227,
+      "uniqueMainPapers": 533
+    }
+  },
+  "mainPidScopeCount": 227,
+  "independentFinalNumerics": {
+    "counts": {
+      "people": 833,
+      "mainAuthors": 227,
+      "mainWorks": 533,
+      "mainAuthorships": 648,
+      "csvMainRows": 648,
+      "exportMainRows": 648,
+      "exportDistinctSelectedKeys": 533,
+      "annualPointsMatchedToCanonicalCsv": 75
+    },
+    "mainWorksByVenue": {
+      "ICML": 135,
+      "ICLR": 151,
+      "NeurIPS": 247
+    },
+    "duplicateWorkDisplayKeys": [],
+    "afterCurrentYearMainRecords": [],
+    "currentYear2026": {
+      "rows": 56,
+      "works": 46,
+      "authors": 43,
+      "firstTimeAuthors": 8,
+      "venues": {
+        "ICLR": 56
+      }
+    },
+    "annual2025": {
+      "NeurIPS": {
+        "year": 2025,
+        "papers": 84,
+        "total": 5823,
+        "share": 1.4425553838227718
+      },
+      "ICML": {
+        "year": 2025,
+        "papers": 45,
+        "total": 3268,
+        "share": 1.3769889840881273
+      },
+      "ICLR": {
+        "year": 2025,
+        "papers": 47,
+        "total": 3704,
+        "share": 1.2688984881209504
+      }
+    },
+    "pooled2021To2025": [
+      {
+        "venue": "NeurIPS",
+        "period": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "papers": 213,
+        "total": 19025,
+        "share": 1.1195795006570302
+      },
+      {
+        "venue": "ICML",
+        "period": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "papers": 107,
+        "total": 10123,
+        "share": 1.056998913365603
+      },
+      {
+        "venue": "ICLR",
+        "period": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "papers": 95,
+        "total": 9491,
+        "share": 1.000948266779054
+      }
+    ],
+    "currentWindowCagr": [
+      {
+        "venue": "NeurIPS",
+        "startYear": 2010,
+        "endYear": 2025,
+        "startShare": 0.684931506849315,
+        "endShare": 1.4425553838227718,
+        "rate": 0.050910400484620144
+      },
+      {
+        "venue": "ICML",
+        "startYear": 2006,
+        "endYear": 2025,
+        "startShare": 0.7142857142857143,
+        "endShare": 1.3769889840881273,
+        "rate": 0.03514950558527241
+      },
+      {
+        "venue": "ICLR",
+        "startYear": 2018,
+        "endYear": 2025,
+        "startShare": 0.8928571428571429,
+        "endShare": 1.2688984881209504,
+        "rate": 0.0514930697537912
+      }
+    ],
+    "cumulativeRelative2025": [
+      {
+        "venue": "NeurIPS",
+        "through": 2025,
+        "numerator": 247,
+        "denominator": 30610,
+        "share": 0.8069258412283568
+      },
+      {
+        "venue": "ICML",
+        "through": 2025,
+        "numerator": 135,
+        "denominator": 16483,
+        "share": 0.8190256628041012
+      },
+      {
+        "venue": "ICLR",
+        "through": 2025,
+        "numerator": 105,
+        "denominator": 11214,
+        "share": 0.9363295880149812
+      }
+    ],
+    "firstTimePoints": [
+      {
+        "year": 2016,
+        "firstTime": 1
+      },
+      {
+        "year": 2017,
+        "firstTime": 2
+      },
+      {
+        "year": 2018,
+        "firstTime": 6
+      },
+      {
+        "year": 2019,
+        "firstTime": 15
+      },
+      {
+        "year": 2020,
+        "firstTime": 12
+      },
+      {
+        "year": 2021,
+        "firstTime": 18
+      },
+      {
+        "year": 2022,
+        "firstTime": 23
+      },
+      {
+        "year": 2023,
+        "firstTime": 28
+      },
+      {
+        "year": 2024,
+        "firstTime": 44
+      },
+      {
+        "year": 2025,
+        "firstTime": 52
+      }
+    ],
+    "independentFirstTimeFit": {
+      "rate": 0.3308888752577585,
+      "squaredError": 74.7717285348323,
+      "amplitude": 4.102734163642762
+    },
+    "endpointFirstTimeCagr": 0.5511972929971547
+  },
+  "inputSha256": {
+    "website\\data\\site_data.js": "4c2c548e91e744cfc964ab59ba283579d925b4dfef55a3b53eeaec33aa47b962",
+    "website\\data\\home_summary.json": "ec51b48ac54963fd24cd1cef0a4d7485648717f083c4f9e8dd178f3d8b83837d",
+    "data\\dblp_publication_entities_for_db_people.csv": "06258c1a6f3e01190ae3d3fa93df24d18c986880de35a54d8dd830c5e9a8aa99"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "head": "5d26903f79938f8c6a91b9abe5867726ccebb7bf",
+  "branch": "audit/backend-correctness-2026-11-06",
+  "snapshots": {
+    "dblp_snapshot": "dblp-2026-10-03",
+    "ror_snapshot": "v2.14-2026-10-06"
+  },
+  "inputFingerprint": "sha256:da07158e13aa0a7e259f573574ab17ef154c5edbce3643f7ea17869e1144d7db",
+  "counts": {
+    "service_entries": 4666,
+    "name_groups": 1450,
+    "resolved_people": 1126,
+    "qualifying_pc_members": 1114,
+    "db_focused_people": 833,
+    "main_conference_works": 533,
+    "main_conference_authorships": 648,
+    "complete_authorships": 648
+  },
+  "resolution_statuses": {
+    "ambiguous_exact_name": 214,
+    "ambiguous_variant": 9,
+    "candidate_unique_variant": 31,
+    "resolved_affiliation_exact": 45,
+    "resolved_affiliation_repeated_service": 38,
+    "resolved_existing_pid_alias": 12,
+    "resolved_existing_pid_ror_alias": 4,
+    "resolved_high_precision_exact_affiliation": 30,
+    "resolved_high_precision_unique_variant": 13,
+    "resolved_reviewed_profile": 15,
+    "resolved_reviewed_service_alias": 2,
+    "resolved_ror_exact_affiliation": 17,
+    "resolved_ror_two_anchor_exact_name": 16,
+    "resolved_ror_unique_variant": 12,
+    "resolved_unique_exact": 965,
+    "unresolved_no_local_dblp_candidate": 27
+  },
+  "files": {
+    "data\\snapshot_sources.json": {
+      "bytes": 1096,
+      "sha256": "89585b497667b47fc287d842d431058b2a9a19522da2d3529b0b9a9a6fdf6019"
+    },
+    "website\\data\\site_data.js": {
+      "bytes": 13621698,
+      "sha256": "0609bfcd6c540ce7e868885031d3d47c63b43f63417631dd59e6bb2f3f012705"
+    },
+    "website\\data\\coverage_summary.json": {
+      "bytes": 97127,
+      "sha256": "25d50780c5cdfee2c24b86c3f8aac54233dc6de3d1c6a29c595fb37f79a9ee6a"
+    },
+    "website\\data\\home_summary.json": {
+      "bytes": 13142,
+      "sha256": "ec51b48ac54963fd24cd1cef0a4d7485648717f083c4f9e8dd178f3d8b83837d"
+    }
+  },
+  "python_tests": {
+    "run": 311,
+    "failures": [],
+    "errors": [],
+    "skipped": 0
+  }
+}

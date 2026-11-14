@@ -1,0 +1,599 @@
+{
+  "before": {
+    "people": 833,
+    "pcCandidates": 1114,
+    "mainAuthors": 227,
+    "mainWorks": 533
+  },
+  "after": {
+    "people": 833,
+    "pcCandidates": 1114,
+    "mainAuthors": 227,
+    "mainWorks": 533
+  },
+  "focusGroupsBefore": [
+    {
+      "label": "DB-focused",
+      "count": 833
+    },
+    {
+      "label": "ML-focused",
+      "count": 27
+    },
+    {
+      "label": "Mixed",
+      "count": 29
+    },
+    {
+      "label": "Limited evidence",
+      "count": 225
+    }
+  ],
+  "focusGroupsAfter": [
+    {
+      "label": "DB-focused",
+      "count": 833
+    },
+    {
+      "label": "ML-focused",
+      "count": 27
+    },
+    {
+      "label": "Mixed",
+      "count": 30
+    },
+    {
+      "label": "Limited evidence",
+      "count": 224
+    }
+  ],
+  "candidateAdded": [
+    "29/5169",
+    "62/1373"
+  ],
+  "candidateRemoved": [
+    "58/8815",
+    "86/3457-20"
+  ],
+  "candidateProfileChanges": [
+    {
+      "pid": "04/7892",
+      "name": "Abolfazl Asudeh",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 30,
+        "mlPapers": 1,
+        "publicationYears": 11,
+        "dbPublicationYears": 11,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 29,
+        "mlPapers": 1,
+        "publicationYears": 11,
+        "dbPublicationYears": 11,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "07/1560",
+      "name": "Byron Choi",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 44,
+        "mlPapers": 0,
+        "publicationYears": 21,
+        "dbPublicationYears": 21,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 43,
+        "mlPapers": 0,
+        "publicationYears": 21,
+        "dbPublicationYears": 21,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "11/6446",
+      "name": "Babak Salimi",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 17,
+        "mlPapers": 3,
+        "publicationYears": 9,
+        "dbPublicationYears": 8,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 16,
+        "mlPapers": 3,
+        "publicationYears": 9,
+        "dbPublicationYears": 8,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "136/7969",
+      "name": "Sainyam Galhotra",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 22,
+        "mlPapers": 3,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 21,
+        "mlPapers": 3,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "158/4862",
+      "name": "Subhadeep Sarkar 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 8,
+        "mlPapers": 0,
+        "publicationYears": 6,
+        "dbPublicationYears": 6,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 7,
+        "mlPapers": 0,
+        "publicationYears": 6,
+        "dbPublicationYears": 6,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "199/6324",
+      "name": "Romila Pradhan",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 7,
+        "mlPapers": 0,
+        "publicationYears": 5,
+        "dbPublicationYears": 5,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 6,
+        "mlPapers": 0,
+        "publicationYears": 5,
+        "dbPublicationYears": 5,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "23/7274",
+      "name": "Fatemeh Nargesian",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 15,
+        "mlPapers": 0,
+        "publicationYears": 9,
+        "dbPublicationYears": 9,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 14,
+        "mlPapers": 0,
+        "publicationYears": 9,
+        "dbPublicationYears": 9,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "29/5169",
+      "name": "Pablo Barcel\u00f3",
+      "before": null,
+      "after": {
+        "label": "Mixed",
+        "dbPapers": 17,
+        "mlPapers": 12,
+        "publicationYears": 18,
+        "dbPublicationYears": 14,
+        "serviceYears": 1,
+        "basis": "publication_balance",
+        "reason": "Neither DB nor ML papers outnumber the other two to one.",
+        "included": false
+      }
+    },
+    {
+      "pid": "43/2474-16",
+      "name": "Bo Tang 0016",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 40,
+        "mlPapers": 0,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 2,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 39,
+        "mlPapers": 0,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 2,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "55/5690",
+      "name": "Muhammad Aamir Cheema",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 23,
+        "mlPapers": 1,
+        "publicationYears": 13,
+        "dbPublicationYears": 12,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 22,
+        "mlPapers": 1,
+        "publicationYears": 12,
+        "dbPublicationYears": 11,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "58/8815",
+      "name": "Adam Lee",
+      "before": {
+        "label": "Limited evidence",
+        "dbPapers": 0,
+        "mlPapers": 1,
+        "publicationYears": 1,
+        "dbPublicationYears": 0,
+        "serviceYears": 1,
+        "basis": "insufficient_evidence",
+        "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+        "included": false
+      },
+      "after": null
+    },
+    {
+      "pid": "62/1373",
+      "name": "Adam J. Lee",
+      "before": null,
+      "after": {
+        "label": "Limited evidence",
+        "dbPapers": 2,
+        "mlPapers": 0,
+        "publicationYears": 2,
+        "dbPublicationYears": 2,
+        "serviceYears": 1,
+        "basis": "insufficient_evidence",
+        "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+        "included": false
+      }
+    },
+    {
+      "pid": "82/7402",
+      "name": "Manos Athanassoulis",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 33,
+        "mlPapers": 0,
+        "publicationYears": 14,
+        "dbPublicationYears": 14,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 32,
+        "mlPapers": 0,
+        "publicationYears": 14,
+        "dbPublicationYears": 14,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "86/3457-20",
+      "name": "Jia Yu 0020",
+      "before": {
+        "label": "Limited evidence",
+        "dbPapers": 0,
+        "mlPapers": 0,
+        "publicationYears": 0,
+        "dbPublicationYears": 0,
+        "serviceYears": 3,
+        "basis": "insufficient_evidence",
+        "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+        "included": false
+      },
+      "after": null
+    },
+    {
+      "pid": "b/SSBhowmick",
+      "name": "Sourav S. Bhowmick",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 41,
+        "mlPapers": 0,
+        "publicationYears": 20,
+        "dbPublicationYears": 20,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 40,
+        "mlPapers": 0,
+        "publicationYears": 20,
+        "dbPublicationYears": 20,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "c/SurajitChaudhuri",
+      "name": "Surajit Chaudhuri",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 147,
+        "mlPapers": 1,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 146,
+        "mlPapers": 1,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "j/ChristianSJensen",
+      "name": "Christian S. Jensen",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 162,
+        "mlPapers": 1,
+        "publicationYears": 32,
+        "dbPublicationYears": 32,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 161,
+        "mlPapers": 1,
+        "publicationYears": 32,
+        "dbPublicationYears": 32,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "j/HVJagadish",
+      "name": "H. V. Jagadish",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 152,
+        "mlPapers": 2,
+        "publicationYears": 39,
+        "dbPublicationYears": 39,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 151,
+        "mlPapers": 2,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "l/HuaLu",
+      "name": "Hua Lu 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 32,
+        "mlPapers": 2,
+        "publicationYears": 14,
+        "dbPublicationYears": 13,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 31,
+        "mlPapers": 2,
+        "publicationYears": 14,
+        "dbPublicationYears": 13,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "l/LinXuemin",
+      "name": "Xuemin Lin 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 239,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 238,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "n/VivekRNarasayya",
+      "name": "Vivek R. Narasayya",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 74,
+        "mlPapers": 0,
+        "publicationYears": 30,
+        "dbPublicationYears": 30,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 73,
+        "mlPapers": 0,
+        "publicationYears": 30,
+        "dbPublicationYears": 30,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    },
+    {
+      "pid": "t/YufeiTao",
+      "name": "Yufei Tao 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 87,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 86,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      }
+    }
+  ],
+  "referencedAssets": 1191,
+  "missingAssets": [],
+  "summaryAffiliationDiagnostics": {
+    "primaryAffiliationConflicts": 143,
+    "primaryAffiliationLowConfidence": 65,
+    "primaryAffiliationReviewRows": 742
+  }
+}

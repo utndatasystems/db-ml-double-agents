@@ -1,0 +1,252 @@
+{
+  "readonlyProduction": true,
+  "sparseExactQueueCount": 33,
+  "noCandidateUnresolvedCount": 37,
+  "unresolvedNoCandidateExamples": [
+    {
+      "name_key": "adam holley",
+      "representative_name": "Adam Holley",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Dell"
+      ],
+      "observation_count": 1,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    },
+    {
+      "name_key": "alkis polyzotis",
+      "representative_name": "Alkis Polyzotis",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Databricks",
+        "Databricks, USA"
+      ],
+      "observation_count": 2,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    },
+    {
+      "name_key": "bertram ludaescher",
+      "representative_name": "Bertram Ludaescher",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "University of Illinois"
+      ],
+      "observation_count": 2,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    },
+    {
+      "name_key": "brit youngman",
+      "representative_name": "Brit Youngman",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Tel-Aviv University, Israel"
+      ],
+      "observation_count": 1,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    },
+    {
+      "name_key": "demetris zeinalpour",
+      "representative_name": "Demetris Zeinalpour",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "University of Cyprus"
+      ],
+      "observation_count": 1,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    },
+    {
+      "name_key": "elliot scribner",
+      "representative_name": "Elliot Scribner",
+      "status": "unresolved_no_local_dblp_candidate",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Couchbase"
+      ],
+      "observation_count": 1,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 0
+    }
+  ],
+  "heldUniqueVariantExamples": [
+    {
+      "name_key": "angelos christos anadiotis",
+      "representative_name": "Angelos Christos Anadiotis",
+      "status": "candidate_unique_variant",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Ecole Polytechnique, IPP and EPFL (France)",
+        "Oracle"
+      ],
+      "observation_count": 3,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 1,
+      "candidates": [
+        {
+          "pid": "85/8852",
+          "canonical_name": "Angelos-Christos G. Anadiotis",
+          "candidate_affiliations": [
+            "CNIT UdR Catania, Catania, Italy",
+            "EFPL, Lausanne, Switzerland",
+            "National Technical University of Athens, School of Electrical and Computer Engineering, Greece"
+          ],
+          "best_match_type": "first_last_variant"
+        }
+      ]
+    },
+    {
+      "name_key": "aecio santos",
+      "representative_name": "Aécio Santos",
+      "status": "candidate_unique_variant",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "NYU"
+      ],
+      "observation_count": 1,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 1,
+      "candidates": [
+        {
+          "pid": "135/2637",
+          "canonical_name": "Aécio S. R. Santos",
+          "candidate_affiliations": [],
+          "best_match_type": "first_last_variant"
+        }
+      ]
+    },
+    {
+      "name_key": "dana m van aken",
+      "representative_name": "Dana M Van Aken",
+      "status": "candidate_unique_variant",
+      "resolved_dblp_pid": null,
+      "reviewer_affiliations": [
+        "Carnegie Mellon University"
+      ],
+      "observation_count": 2,
+      "exact_candidate_count": 0,
+      "variant_candidate_count": 1,
+      "candidates": [
+        {
+          "pid": "154/0932",
+          "canonical_name": "Dana Van Aken",
+          "candidate_affiliations": [],
+          "best_match_type": "first_last_variant"
+        }
+      ]
+    }
+  ],
+  "adamBefore": {
+    "name_key": "adam lee",
+    "representative_name": "Adam Lee",
+    "status": "resolved_unique_exact",
+    "resolved_dblp_pid": "58/8815",
+    "reviewer_affiliations": [
+      "University of Pittsburgh"
+    ],
+    "observation_count": 1,
+    "exact_candidate_count": 1,
+    "variant_candidate_count": 5
+  },
+  "adamCandidates": [
+    {
+      "pid": "58/8815",
+      "canonical_name": "Adam Lee",
+      "candidate_affiliations": [],
+      "verified_orcids": [],
+      "best_match_type": "exact_alias"
+    },
+    {
+      "pid": "140/9209",
+      "canonical_name": "Adam C. Lee",
+      "candidate_affiliations": [],
+      "verified_orcids": [],
+      "best_match_type": "first_last_variant"
+    },
+    {
+      "pid": "265/4290",
+      "canonical_name": "Adam M. Lee",
+      "candidate_affiliations": [],
+      "verified_orcids": [],
+      "best_match_type": "first_last_variant"
+    },
+    {
+      "pid": "27/6762",
+      "canonical_name": "Adam O. Lee",
+      "candidate_affiliations": [],
+      "verified_orcids": [],
+      "best_match_type": "first_last_variant"
+    },
+    {
+      "pid": "62/1373",
+      "canonical_name": "Adam J. Lee",
+      "candidate_affiliations": [],
+      "verified_orcids": [
+        "0000-0002-2596-7256"
+      ],
+      "best_match_type": "first_last_variant"
+    },
+    {
+      "pid": "l/AdamWoeiJyhLee",
+      "canonical_name": "Adam Woei-Jyh Lee",
+      "candidate_affiliations": [
+        "University of Maryland, College Park, USA"
+      ],
+      "verified_orcids": [],
+      "best_match_type": "first_last_variant"
+    }
+  ],
+  "adamCounterfactualReviewedProposal": {
+    "name_key": "adam lee",
+    "reviewer_name": "Adam Lee",
+    "status_before": "resolved_unique_exact",
+    "previous_pid": "58/8815",
+    "candidate_pid": "62/1373",
+    "candidate_name": "Adam J. Lee",
+    "proposed_status": "resolved_reviewed_profile",
+    "best_orcid": "0000-0002-2596-7256",
+    "evidence": {
+      "rule": "reviewed_service_identity",
+      "service_affiliations": [
+        "University of Pittsburgh"
+      ],
+      "previous_pid": "58/8815",
+      "evidence_urls": [
+        "https://2022.sigmod.org/org_sigmod_pc.shtml",
+        "https://people.cs.pitt.edu/~adamlee/",
+        "https://people.cs.pitt.edu/~adamlee/pubs/index.html",
+        "https://dblp.org/pid/62/1373.html"
+      ],
+      "reviewed_on": "2026-11-07",
+      "reason": "The official SIGMOD 2022 roster lists Adam Lee at University of Pittsburgh. Pitt's institutional homepage identifies Adam J. Lee, and its publications page links his DBLP bibliography. That page and the fuller DBLP candidate identify the same 2022 DIS article with Pranut Jain and Rosta Farzan (conf/ACMdis/JainFL22), independently corroborating the identity. This review corrects only the service identity within the recorded Pittsburgh affiliation; it does not transfer publications from the short-name PID."
+    }
+  },
+  "adamProposalReason": "proposed_reviewed",
+  "productionDbApplied": false,
+  "externalSources": [
+    {
+      "url": "https://2022.sigmod.org/org_sigmod_pc.shtml",
+      "claim": "Lists Adam Lee at University of Pittsburgh among PC members."
+    },
+    {
+      "url": "https://people.cs.pitt.edu/~adamlee/",
+      "claim": "Pittsburgh institutional homepage identifies Adam J. Lee."
+    },
+    {
+      "url": "https://people.cs.pitt.edu/~adamlee/pubs/index.html",
+      "claim": "Links his DBLP bibliography; the listed 2022 DIS paper and coauthors independently corroborate identity."
+    },
+    {
+      "url": "https://dblp.org/pid/62/1373.html",
+      "claim": "Canonical fuller candidate; 2022 DIS record conf/ACMdis/JainFL22 shares Pranut Jain, Rosta Farzan and Adam J. Lee."
+    }
+  ]
+}
