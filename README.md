@@ -12,6 +12,8 @@ Machine learning is becoming an increasingly important part of database research
 
 **[Explore the website](https://utndatasystems.github.io/db-ml-double-agents/)**
 
+**[Read the companion blog post](https://utndatasystems.github.io/blog/2026/db-ml-double-agents/)**
+
 The study follows DB-focused members of database conference committees and their publications at **NeurIPS, ICML and ICLR**. Explore individual researchers and publication trends, and follow the data coverage and methodology behind the results. See [who qualifies](docs/PIPELINE.md#who-qualifies) for the study population and [website structure](website/README.md) for the pages and features.
 
 The datasets and website are refreshed weekly. See [automation and hosting](HOSTING.md) for the schedule, manual runs and deployment setup.
