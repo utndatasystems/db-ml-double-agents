@@ -1,0 +1,78 @@
+{
+  "head": "567b35bd11d7f9c686cb66570d00409e9cb0f35d",
+  "branch": "audit/backend-correctness-2026-11-06",
+  "counts": {
+    "serviceObservations": 4666,
+    "nameGroups": 1450,
+    "resolvedPids": 1126,
+    "qualifyingPcMembers": 1114,
+    "dbFocusedPeople": 833,
+    "mainAuthors": 227,
+    "mainWorks": 533,
+    "mainAuthorships": 648
+  },
+  "snapshotSources": {
+    "schemaVersion": 1,
+    "checkedAt": "2026-10-19T06:15:42+00:00",
+    "sources": {
+      "dblp": {
+        "filename": "dblp-2026-10-03.xml.gz",
+        "url": "https://drops.dagstuhl.de/storage/artifacts/dblp/xml/2026/dblp-2026-10-03.xml.gz",
+        "md5": "cbd329100ea1bbb2873fa2f6d414ea00",
+        "sourcePage": "https://drops.dagstuhl.de/entities/artifact/10.4230/dblp.xml.2026-10-03",
+        "id": "dblp-2026-10-03"
+      },
+      "dtd": {
+        "filename": "dblp-2023-06-28.dtd",
+        "url": "https://drops.dagstuhl.de/storage/artifacts/dblp/xml/2023/dblp-2023-06-28.dtd",
+        "md5": "96e4283e71886dec2173718957293648",
+        "sourcePage": "https://drops.dagstuhl.de/entities/artifact/10.4230/dblp.xml.dtd.2023-06-28"
+      },
+      "ror": {
+        "release": "v2.14-2026-10-06",
+        "record": "23187250",
+        "filename": "v2.14-2026-10-06-ror-data.zip",
+        "md5": "e16a5ceb8ff06f1a274dbd9288fe0159",
+        "url": "https://zenodo.org/api/records/23187250/files/v2.14-2026-10-06-ror-data.zip/content",
+        "sourcePage": "https://zenodo.org/records/23187250"
+      }
+    }
+  },
+  "websiteInputFingerprint": "sha256:da07158e13aa0a7e259f573574ab17ef154c5edbce3643f7ea17869e1144d7db",
+  "files": {
+    "data/snapshot_sources.json": {
+      "bytes": 1096,
+      "sha256": "89585b497667b47fc287d842d431058b2a9a19522da2d3529b0b9a9a6fdf6019"
+    },
+    "data/entity_resolution.sqlite": {
+      "bytes": 11874304,
+      "sha256": "0ccf46b33a3f0dec00aaae09605e2354157aa4969cb8c9a07159b2dc367bddf1"
+    },
+    "data/dblp_publications_for_db_people.csv": {
+      "bytes": 58580253,
+      "sha256": "5e1948109d1ebb3dd70d51d8597781fc830562cf322ed83a66b51f01c752f55a"
+    },
+    "data/dblp_publication_entities_for_db_people.csv": {
+      "bytes": 133827390,
+      "sha256": "e44ff5e244340c3785250b47674b88fb1d86ad869f8c1706aa10e4ffd5ea123a"
+    },
+    "website/data/site_data.js": {
+      "bytes": 13621698,
+      "sha256": "0609bfcd6c540ce7e868885031d3d47c63b43f63417631dd59e6bb2f3f012705"
+    },
+    "website/data/coverage_summary.json": {
+      "bytes": 97127,
+      "sha256": "25d50780c5cdfee2c24b86c3f8aac54233dc6de3d1c6a29c595fb37f79a9ee6a"
+    },
+    "website/data/home_summary.json": {
+      "bytes": 13142,
+      "sha256": "ec51b48ac54963fd24cd1cef0a4d7485648717f083c4f9e8dd178f3d8b83837d"
+    }
+  },
+  "tests": {
+    "run": 328,
+    "failures": [],
+    "errors": [],
+    "skipped": []
+  }
+}

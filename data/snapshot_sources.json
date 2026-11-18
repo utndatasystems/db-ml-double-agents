@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-17T21:18:33+00:00",
+  "sources": {
+    "dblp": {
+      "filename": "dblp-2026-11-01.xml.gz",
+      "url": "https://drops.dagstuhl.de/storage/artifacts/dblp/xml/2026/dblp-2026-11-01.xml.gz",
+      "md5": "18ad5db59592406ec74289975c4b44cb",
+      "sourcePage": "https://drops.dagstuhl.de/entities/artifact/10.4230/dblp.xml.2026-11-01",
+      "id": "dblp-2026-11-01"
+    },
+    "dtd": {
+      "filename": "dblp-2023-06-28.dtd",
+      "url": "https://drops.dagstuhl.de/storage/artifacts/dblp/xml/2023/dblp-2023-06-28.dtd",
+      "md5": "96e4283e71886dec2173718957293648",
+      "sourcePage": "https://drops.dagstuhl.de/entities/artifact/10.4230/dblp.xml.dtd.2023-06-28"
+    },
+    "ror": {
+      "release": "v2.15-2026-10-20",
+      "record": "23500708",
+      "filename": "v2.15-2026-10-20-ror-data.zip",
+      "md5": "5522990688eb1b94811a8145e131b41e",
+      "url": "https://zenodo.org/api/records/23500708/files/v2.15-2026-10-20-ror-data.zip/content",
+      "sourcePage": "https://zenodo.org/records/23500708"
+    }
+  }
+}

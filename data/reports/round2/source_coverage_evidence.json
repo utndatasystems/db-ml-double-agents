@@ -1,0 +1,551 @@
+{
+  "official_pages": [
+    {
+      "path": "2022.sigmod.org_org_conference_officers.shtml.html",
+      "sha256": "3c9dbd52416d48e9febe08ee919cef6f979ef5735db824b255ed72c422a16c9d"
+    },
+    {
+      "path": "2022.sigmod.org_org_pods_pc.shtml.html",
+      "sha256": "5301a812891cd94ede9268c8a9725233530a376aceccbb6148a8e0ddc1c680f3"
+    },
+    {
+      "path": "2022.sigmod.org_org_sigmod_pc.shtml.html",
+      "sha256": "0c13007eed31d62aa06edbea1838c7c524f00a48d2531c5a63e679295171b014"
+    },
+    {
+      "path": "2024.sigmod.org_org_conference_officers.shtml.html",
+      "sha256": "57ee66da9bbc787f777b07544fa177c62b06d8e58dd2f430945564fd7c8db0e6"
+    },
+    {
+      "path": "2024.sigmod.org_org_pods_pc.shtml.html",
+      "sha256": "e6fb7537a8140bd4a9ba9b39a1955053fe6f3672cb45f0779e334473254a704b"
+    },
+    {
+      "path": "2024.sigmod.org_org_sigmod_pc.shtml.html",
+      "sha256": "79f3f6f9854cc77592829d5c9ffa4ec3e276413ddad31789bb194297f0952c9c"
+    },
+    {
+      "path": "2025.sigmod.org_org_sigmod_pc.shtml.html",
+      "sha256": "15f742425d69ba9482f4e94e92679abfeaaf18be4ad710c704a90505e23cedd8"
+    }
+  ],
+  "pods": {
+    "2022": {
+      "new_rows": [
+        {
+          "year": 2022,
+          "role": "pods_program_chair",
+          "review_round": "",
+          "name": "Pablo Barceló",
+          "affiliation": "Universidad Católica de Chile, Chile",
+          "rapid_response_reviewer": 0,
+          "name_key": "pablo barcelo",
+          "raw_text": "Pablo Barceló | Universidad Católica de Chile, Chile",
+          "source_url": "https://2022.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "missing_from_current_parse": [],
+      "stored_source_pages": [
+        {
+          "id": 2,
+          "year": 2022,
+          "url": "https://2022.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "2026-09-30T08:01:57+00:00",
+          "sha256": "3c9dbd52416d48e9febe08ee919cef6f979ef5735db824b255ed72c422a16c9d"
+        },
+        {
+          "id": 11,
+          "year": 2022,
+          "url": "https://2022.sigmod.org/org_pods_pc.shtml",
+          "fetched_at": "2026-09-30T10:24:57+00:00",
+          "sha256": "5301a812891cd94ede9268c8a9725233530a376aceccbb6148a8e0ddc1c680f3"
+        },
+        {
+          "id": 10,
+          "year": 2022,
+          "url": "https://2022.sigmod.org/org_sigmod_demo_pc.shtml",
+          "fetched_at": "2026-09-30T10:24:55+00:00",
+          "sha256": "1b6eea530f19bb542790fce59f1e77d45a7ee6a22ee2de3bd54cf01bb59e18ea"
+        },
+        {
+          "id": 9,
+          "year": 2022,
+          "url": "https://2022.sigmod.org/org_sigmod_industry_pc.shtml",
+          "fetched_at": "2026-09-30T10:24:54+00:00",
+          "sha256": "611cd9a08d5746488cce2867a99f288fd52de10d12e5c77a609f258d58e8ec86"
+        },
+        {
+          "id": 1,
+          "year": 2022,
+          "url": "https://2022.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "2026-09-30T08:01:56+00:00",
+          "sha256": "0c13007eed31d62aa06edbea1838c7c524f00a48d2531c5a63e679295171b014"
+        }
+      ]
+    },
+    "2024": {
+      "new_rows": [
+        {
+          "year": 2024,
+          "role": "pods_program_chair",
+          "review_round": "",
+          "name": "Wim Martens",
+          "affiliation": "University of Bayreuth, Germany",
+          "rapid_response_reviewer": 0,
+          "name_key": "wim martens",
+          "raw_text": "Wim Martens | University of Bayreuth, Germany",
+          "source_url": "https://2024.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "missing_from_current_parse": [
+        {
+          "id": 21140,
+          "year": 2024,
+          "venue": "SIGMOD",
+          "role": "pods_pc_member",
+          "review_round": "",
+          "name": "Wim Martens",
+          "affiliation": "University of Bayreuth",
+          "rapid_response_reviewer": 0,
+          "name_key": "wim martens",
+          "raw_text": "Wim Martens (University of Bayreuth)",
+          "source_url": "https://2024.sigmod.org/org_pods_pc.shtml",
+          "fetched_at": "2026-10-19T06:17:08+00:00",
+          "role_family": "research_reviewer",
+          "track": "pods",
+          "qualifies_db_seed": 1
+        }
+      ],
+      "stored_source_pages": [
+        {
+          "id": 6,
+          "year": 2024,
+          "url": "https://2024.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "2026-09-30T08:02:04+00:00",
+          "sha256": "57ee66da9bbc787f777b07544fa177c62b06d8e58dd2f430945564fd7c8db0e6"
+        },
+        {
+          "id": 16,
+          "year": 2024,
+          "url": "https://2024.sigmod.org/org_demo_pc.shtml",
+          "fetched_at": "2026-09-30T10:25:12+00:00",
+          "sha256": "b5ecd8d88588165ac9fcd3053a3b999e4e573f78d6e458fa820e29108427571f"
+        },
+        {
+          "id": 15,
+          "year": 2024,
+          "url": "https://2024.sigmod.org/org_industrial_pc.shtml",
+          "fetched_at": "2026-09-30T10:25:09+00:00",
+          "sha256": "2fe02b4291517a69c9d2286572acb9b401a15325ecf133cee903b5720842e447"
+        },
+        {
+          "id": 17,
+          "year": 2024,
+          "url": "https://2024.sigmod.org/org_pods_pc.shtml",
+          "fetched_at": "2026-09-30T10:25:13+00:00",
+          "sha256": "e6fb7537a8140bd4a9ba9b39a1955053fe6f3672cb45f0779e334473254a704b"
+        },
+        {
+          "id": 5,
+          "year": 2024,
+          "url": "https://2024.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "2026-09-30T08:02:03+00:00",
+          "sha256": "79f3f6f9854cc77592829d5c9ffa4ec3e276413ddad31789bb194297f0952c9c"
+        }
+      ]
+    }
+  },
+  "same_name_loss": {
+    "parsed_count": 314,
+    "merged_count": 312,
+    "lost": [
+      {
+        "year": 2025,
+        "role": "pc_member",
+        "review_round": "",
+        "name": "Chao Zhang",
+        "affiliation": "Tsinghua University",
+        "rapid_response_reviewer": 0,
+        "name_key": "chao zhang",
+        "raw_text": "Chao Zhang, Tsinghua University",
+        "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+        "fetched_at": "audit"
+      },
+      {
+        "year": 2025,
+        "role": "pc_member",
+        "review_round": "",
+        "name": "Jia Yu",
+        "affiliation": "Wherobots Inc.",
+        "rapid_response_reviewer": 0,
+        "name_key": "jia yu",
+        "raw_text": "Jia Yu, Wherobots Inc.",
+        "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+        "fetched_at": "audit"
+      }
+    ],
+    "stored_chao": [
+      {
+        "year": 2022,
+        "role": "pc_member",
+        "name": "Chao Zhang",
+        "affiliation": "Lyon 1 University",
+        "source_url": "https://2022.sigmod.org/org_sigmod_pc.shtml"
+      },
+      {
+        "year": 2024,
+        "role": "pc_member",
+        "name": "Chao Zhang",
+        "affiliation": "University of Waterloo",
+        "source_url": "https://2024.sigmod.org/org_sigmod_pc.shtml"
+      },
+      {
+        "year": 2025,
+        "role": "pc_member",
+        "name": "Chao Zhang",
+        "affiliation": "University of Waterloo",
+        "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml"
+      }
+    ],
+    "duplicate_role_names": {
+      "('pc_member', '', 'chao zhang')": [
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "University of Waterloo",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, University of Waterloo",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "('pc_member', '', 'jia yu')": [
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Jia Yu",
+          "affiliation": "Washington State University",
+          "rapid_response_reviewer": 0,
+          "name_key": "jia yu",
+          "raw_text": "Jia Yu, Washington State University",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Jia Yu",
+          "affiliation": "Wherobots Inc.",
+          "rapid_response_reviewer": 0,
+          "name_key": "jia yu",
+          "raw_text": "Jia Yu, Wherobots Inc.",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ]
+    }
+  },
+  "tables": [
+    "reviewer_observations",
+    "technical_duplicate_log",
+    "scraper_repair_log",
+    "name_groups",
+    "dblp_people",
+    "dblp_candidates",
+    "name_resolution",
+    "local_index_meta",
+    "dblp_nonperson_candidates"
+  ],
+  "chao_namegroup": [
+    {
+      "name_key": "chao zhang",
+      "representative_name": "Chao Zhang",
+      "observation_count": 7,
+      "min_year": 2022,
+      "max_year": 2025,
+      "venues_json": "[\"ICDE\", \"SIGMOD\", \"VLDB\"]",
+      "roles_json": "[\"pc_member\", \"program_committee_member\", \"review_board_member\"]",
+      "affiliations_json": "[\"Lyon 1 University\", \"Tsinghua University\", \"University of Waterloo\"]",
+      "updated_at": "2026-11-02T09:25:31+00:00"
+    }
+  ],
+  "chao_decision": [
+    {
+      "name_key": "chao zhang",
+      "representative_name": "Chao Zhang",
+      "status": "ambiguous_exact_name",
+      "resolved_dblp_pid": null,
+      "resolved_dblp_name": null,
+      "best_orcid": null,
+      "best_orcid_source": null,
+      "exact_candidate_count": 119,
+      "variant_candidate_count": 8,
+      "all_candidate_count": 127,
+      "notes": "119 DBLP person identities have an exact normalized alias match. Do not merge by name alone.",
+      "updated_at": "2026-11-02T09:46:37+00:00"
+    }
+  ],
+  "jia_decision": [
+    {
+      "name_key": "jia yu",
+      "representative_name": "Jia Yu",
+      "status": "resolved_affiliation_repeated_service",
+      "resolved_dblp_pid": "86/3457-20",
+      "resolved_dblp_name": "Jia Yu 0020",
+      "best_orcid": null,
+      "best_orcid_source": null,
+      "exact_candidate_count": 19,
+      "variant_candidate_count": 30,
+      "all_candidate_count": 49,
+      "notes": "Complete exact-name affiliation resolution: {\"affiliation_coverage\": {\"Washington State University\": [\"https://ror.org/05dk0ce17\"]}, \"best_orcid\": null, \"candidate_name\": \"Jia Yu 0020\", \"candidate_pid\": \"86/3457-20\", \"matching_source_urls\": [\"https://2023.sigmod.org/org_sigmod_pc.shtml\", \"https://2024.sigmod.org/org_sigmod_pc.shtml\", \"https://2025.sigmod.org/org_sigmod_pc.shtml\", \"https://dastlab.github.io/edbticdt2024/contents/call_for_demos.html\", \"https://www.cs.uoi.gr/~edbticdt2023/contents/EDBT_Committee.html\", \"https://www.vldb.org/pvldb/volumes/16/review-board\"], \"matching_venue_years\": [[\"EDBT\", 2023], [\"EDBT\", 2024], [\"SIGMOD\", 2023], [\"SIGMOD\", 2024], [\"SIGMOD\", 2025], [\"VLDB\", 2023]], \"name_key\": \"jia yu\", \"proposed_status\": \"resolved_affiliation_repeated_service\", \"reviewer_name\": \"Jia Yu\", \"ror_release\": \"v2.14-2026-10-06\", \"rule\": \"exact_name_full_affiliation_repeated_service\", \"status_before\": \"ambiguous_exact_name\", \"unknown_competitor_affiliations\": [\"86/3457-14\", \"86/3457-15\", \"86/3457-17\", \"06/9173\", \"135/1516\", \"144/8177\", \"165/7348\", \"183/5948\", \"196/5894\", \"226/6136\", \"242/0806\", \"249/7712\", \"250/1625\", \"27/7747\", \"282/7538\", \"327/7183\", \"355/2783\", \"359/5262\", \"385/2443\", \"396/9722\", \"399/1971\", \"403/2903\", \"409/9460\", \"411/8578\", \"412/6875\", \"413/5661\", \"421/7515\", \"428/4176\", \"48/2535\", \"66/2155\", \"84/11383\", \"87/8559\", \"98/1299\"]}",
+      "updated_at": "2026-11-02T09:49:58+00:00"
+    }
+  ],
+  "sigmod_research_comparisons": {
+    "2022": {
+      "parsed": 209,
+      "merged": 209,
+      "lost_by_merge": [],
+      "source_rows_missing_from_database": []
+    },
+    "2024": {
+      "parsed": 254,
+      "merged": 253,
+      "lost_by_merge": [
+        {
+          "year": 2024,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2024.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "source_rows_missing_from_database": [
+        {
+          "year": 2024,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2024.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ]
+    },
+    "2025": {
+      "parsed": 314,
+      "merged": 312,
+      "lost_by_merge": [
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Jia Yu",
+          "affiliation": "Wherobots Inc.",
+          "rapid_response_reviewer": 0,
+          "name_key": "jia yu",
+          "raw_text": "Jia Yu, Wherobots Inc.",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "source_rows_missing_from_database": [
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Jia Yu",
+          "affiliation": "Wherobots Inc.",
+          "rapid_response_reviewer": 0,
+          "name_key": "jia yu",
+          "raw_text": "Jia Yu, Wherobots Inc.",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ]
+    }
+  },
+  "boundary_fixture": {
+    "parsed": 3,
+    "merged": 2,
+    "expected_merge": 3
+  },
+  "vldb_2025_review_board": {
+    "parsed": 375,
+    "stored": 375,
+    "source_rows_missing": []
+  },
+  "planned_fixed_source_deltas": {
+    "2022": {
+      "before_count": 313,
+      "after_count": 314,
+      "source_urls_reparsed": [
+        "https://2022.sigmod.org/org_conference_officers.shtml",
+        "https://2022.sigmod.org/org_pods_pc.shtml",
+        "https://2022.sigmod.org/org_sigmod_pc.shtml"
+      ],
+      "added": [
+        {
+          "year": 2022,
+          "role": "pods_program_chair",
+          "review_round": "",
+          "name": "Pablo Barceló",
+          "affiliation": "Universidad Católica de Chile, Chile",
+          "rapid_response_reviewer": 0,
+          "name_key": "pablo barcelo",
+          "raw_text": "Pablo Barceló | Universidad Católica de Chile, Chile",
+          "source_url": "https://2022.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "removed": []
+    },
+    "2024": {
+      "before_count": 346,
+      "after_count": 347,
+      "source_urls_reparsed": [
+        "https://2024.sigmod.org/org_conference_officers.shtml",
+        "https://2024.sigmod.org/org_pods_pc.shtml",
+        "https://2024.sigmod.org/org_sigmod_pc.shtml"
+      ],
+      "added": [
+        {
+          "year": 2024,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2024.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2024,
+          "role": "pods_program_chair",
+          "review_round": "",
+          "name": "Wim Martens",
+          "affiliation": "University of Bayreuth, Germany",
+          "rapid_response_reviewer": 0,
+          "name_key": "wim martens",
+          "raw_text": "Wim Martens | University of Bayreuth, Germany",
+          "source_url": "https://2024.sigmod.org/org_conference_officers.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "removed": [
+        {
+          "year": 2024,
+          "role": "pods_pc_member",
+          "review_round": "",
+          "name": "Wim Martens",
+          "affiliation": "University of Bayreuth",
+          "rapid_response_reviewer": 0,
+          "name_key": "wim martens",
+          "raw_text": "Wim Martens (University of Bayreuth)",
+          "source_url": "https://2024.sigmod.org/org_pods_pc.shtml",
+          "fetched_at": "2026-10-19T06:17:08+00:00"
+        }
+      ]
+    },
+    "2025": {
+      "before_count": 423,
+      "after_count": 424,
+      "source_urls_reparsed": [
+        "https://2025.sigmod.org/org_sigmod_pc.shtml"
+      ],
+      "added": [
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Chao Zhang",
+          "affiliation": "Tsinghua University",
+          "rapid_response_reviewer": 0,
+          "name_key": "chao zhang",
+          "raw_text": "Chao Zhang, Tsinghua University",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        },
+        {
+          "year": 2025,
+          "role": "pc_member",
+          "review_round": "",
+          "name": "Jia Yu",
+          "affiliation": "Wherobots Inc.",
+          "rapid_response_reviewer": 0,
+          "name_key": "jia yu",
+          "raw_text": "Jia Yu, Wherobots Inc.",
+          "source_url": "https://2025.sigmod.org/org_sigmod_pc.shtml",
+          "fetched_at": "audit"
+        }
+      ],
+      "removed": [
+        {
+          "year": 2025,
+          "role": "pods_pc_member",
+          "review_round": "",
+          "name": "Benny Kimelfeld",
+          "affiliation": "Technion",
+          "rapid_response_reviewer": 0,
+          "name_key": "benny kimelfeld",
+          "raw_text": "Benny Kimelfeld, Technion",
+          "source_url": "https://2025.sigmod.org/org_pods_pc.shtml",
+          "fetched_at": "2026-10-19T06:17:17+00:00"
+        }
+      ]
+    }
+  }
+}

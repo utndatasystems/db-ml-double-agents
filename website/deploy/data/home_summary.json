@@ -1,0 +1,593 @@
+{
+  "startYear": 2022,
+  "endYear": 2025,
+  "total": 907,
+  "withMainMlPaper": 256,
+  "mlPublicationYears": {
+    "startYear": 2001,
+    "endYear": 2026
+  },
+  "publicationTrend": {
+    "startYear": 2001,
+    "endYear": 2025,
+    "series": [
+      {
+        "venue": "NeurIPS",
+        "points": [
+          {
+            "year": 2001,
+            "papers": 0,
+            "total": 197,
+            "share": 0.0
+          },
+          {
+            "year": 2002,
+            "papers": 0,
+            "total": 207,
+            "share": 0.0
+          },
+          {
+            "year": 2003,
+            "papers": 0,
+            "total": 198,
+            "share": 0.0
+          },
+          {
+            "year": 2004,
+            "papers": 0,
+            "total": 207,
+            "share": 0.0
+          },
+          {
+            "year": 2005,
+            "papers": 0,
+            "total": 207,
+            "share": 0.0
+          },
+          {
+            "year": 2006,
+            "papers": 0,
+            "total": 204,
+            "share": 0.0
+          },
+          {
+            "year": 2007,
+            "papers": 0,
+            "total": 217,
+            "share": 0.0
+          },
+          {
+            "year": 2008,
+            "papers": 0,
+            "total": 250,
+            "share": 0.0
+          },
+          {
+            "year": 2009,
+            "papers": 0,
+            "total": 262,
+            "share": 0.0
+          },
+          {
+            "year": 2010,
+            "papers": 2,
+            "total": 292,
+            "share": 0.684931506849315
+          },
+          {
+            "year": 2011,
+            "papers": 1,
+            "total": 306,
+            "share": 0.32679738562091504
+          },
+          {
+            "year": 2012,
+            "papers": 1,
+            "total": 370,
+            "share": 0.2702702702702703
+          },
+          {
+            "year": 2013,
+            "papers": 1,
+            "total": 360,
+            "share": 0.2777777777777778
+          },
+          {
+            "year": 2014,
+            "papers": 2,
+            "total": 411,
+            "share": 0.48661800486618007
+          },
+          {
+            "year": 2015,
+            "papers": 1,
+            "total": 403,
+            "share": 0.24813895781637718
+          },
+          {
+            "year": 2016,
+            "papers": 1,
+            "total": 569,
+            "share": 0.1757469244288225
+          },
+          {
+            "year": 2017,
+            "papers": 3,
+            "total": 679,
+            "share": 0.4418262150220913
+          },
+          {
+            "year": 2018,
+            "papers": 6,
+            "total": 1010,
+            "share": 0.594059405940594
+          },
+          {
+            "year": 2019,
+            "papers": 9,
+            "total": 1427,
+            "share": 0.6306937631394534
+          },
+          {
+            "year": 2020,
+            "papers": 10,
+            "total": 1898,
+            "share": 0.5268703898840885
+          },
+          {
+            "year": 2021,
+            "papers": 17,
+            "total": 2334,
+            "share": 0.7283633247643531
+          },
+          {
+            "year": 2022,
+            "papers": 30,
+            "total": 2834,
+            "share": 1.058574453069866
+          },
+          {
+            "year": 2023,
+            "papers": 28,
+            "total": 3540,
+            "share": 0.7909604519774012
+          },
+          {
+            "year": 2024,
+            "papers": 61,
+            "total": 4494,
+            "share": 1.3573653760569648
+          },
+          {
+            "year": 2025,
+            "papers": 88,
+            "total": 5823,
+            "share": 1.511248497338142
+          }
+        ]
+      },
+      {
+        "venue": "ICML",
+        "points": [
+          {
+            "year": 2001,
+            "papers": 1,
+            "total": 80,
+            "share": 1.25
+          },
+          {
+            "year": 2002,
+            "papers": 1,
+            "total": 87,
+            "share": 1.1494252873563218
+          },
+          {
+            "year": 2003,
+            "papers": 1,
+            "total": 117,
+            "share": 0.8547008547008547
+          },
+          {
+            "year": 2004,
+            "papers": 0,
+            "total": 117,
+            "share": 0.0
+          },
+          {
+            "year": 2005,
+            "papers": 0,
+            "total": 134,
+            "share": 0.0
+          },
+          {
+            "year": 2006,
+            "papers": 1,
+            "total": 140,
+            "share": 0.7142857142857143
+          },
+          {
+            "year": 2007,
+            "papers": 0,
+            "total": 150,
+            "share": 0.0
+          },
+          {
+            "year": 2008,
+            "papers": 2,
+            "total": 157,
+            "share": 1.2738853503184713
+          },
+          {
+            "year": 2009,
+            "papers": 0,
+            "total": 180,
+            "share": 0.0
+          },
+          {
+            "year": 2010,
+            "papers": 0,
+            "total": 159,
+            "share": 0.0
+          },
+          {
+            "year": 2011,
+            "papers": 0,
+            "total": 152,
+            "share": 0.0
+          },
+          {
+            "year": 2012,
+            "papers": 0,
+            "total": 243,
+            "share": 0.0
+          },
+          {
+            "year": 2013,
+            "papers": 0,
+            "total": 283,
+            "share": 0.0
+          },
+          {
+            "year": 2014,
+            "papers": 2,
+            "total": 310,
+            "share": 0.6451612903225806
+          },
+          {
+            "year": 2015,
+            "papers": 2,
+            "total": 270,
+            "share": 0.7407407407407407
+          },
+          {
+            "year": 2016,
+            "papers": 1,
+            "total": 322,
+            "share": 0.3105590062111801
+          },
+          {
+            "year": 2017,
+            "papers": 3,
+            "total": 434,
+            "share": 0.6912442396313364
+          },
+          {
+            "year": 2018,
+            "papers": 1,
+            "total": 621,
+            "share": 0.1610305958132045
+          },
+          {
+            "year": 2019,
+            "papers": 7,
+            "total": 774,
+            "share": 0.9043927648578811
+          },
+          {
+            "year": 2020,
+            "papers": 6,
+            "total": 1085,
+            "share": 0.5529953917050692
+          },
+          {
+            "year": 2021,
+            "papers": 10,
+            "total": 1183,
+            "share": 0.8453085376162299
+          },
+          {
+            "year": 2022,
+            "papers": 6,
+            "total": 1234,
+            "share": 0.4862236628849271
+          },
+          {
+            "year": 2023,
+            "papers": 19,
+            "total": 1828,
+            "share": 1.039387308533917
+          },
+          {
+            "year": 2024,
+            "papers": 28,
+            "total": 2610,
+            "share": 1.0727969348659003
+          },
+          {
+            "year": 2025,
+            "papers": 47,
+            "total": 3268,
+            "share": 1.438188494492044
+          }
+        ]
+      },
+      {
+        "venue": "ICLR",
+        "points": [
+          {
+            "year": 2001,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2002,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2003,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2004,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2005,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2006,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2007,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2008,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2009,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2010,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2011,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2012,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2013,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2014,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2015,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2016,
+            "papers": 0,
+            "total": null,
+            "share": null
+          },
+          {
+            "year": 2017,
+            "papers": 0,
+            "total": 198,
+            "share": 0.0
+          },
+          {
+            "year": 2018,
+            "papers": 3,
+            "total": 336,
+            "share": 0.8928571428571429
+          },
+          {
+            "year": 2019,
+            "papers": 1,
+            "total": 502,
+            "share": 0.199203187250996
+          },
+          {
+            "year": 2020,
+            "papers": 6,
+            "total": 687,
+            "share": 0.8733624454148472
+          },
+          {
+            "year": 2021,
+            "papers": 5,
+            "total": 860,
+            "share": 0.5813953488372093
+          },
+          {
+            "year": 2022,
+            "papers": 7,
+            "total": 1094,
+            "share": 0.6398537477148081
+          },
+          {
+            "year": 2023,
+            "papers": 10,
+            "total": 1573,
+            "share": 0.6357279084551812
+          },
+          {
+            "year": 2024,
+            "papers": 29,
+            "total": 2260,
+            "share": 1.2831858407079646
+          },
+          {
+            "year": 2025,
+            "papers": 51,
+            "total": 3704,
+            "share": 1.376889848812095
+          }
+        ]
+      }
+    ],
+    "growthComparison": {
+      "endYear": 2025,
+      "ratios": [
+        {
+          "venue": "NeurIPS",
+          "startYear": 2010,
+          "ratio": 2.2064228061136872
+        },
+        {
+          "venue": "ICML",
+          "startYear": 2001,
+          "ratio": 1.1505507955936352
+        },
+        {
+          "venue": "ICLR",
+          "startYear": 2018,
+          "ratio": 1.5421166306695464
+        }
+      ]
+    }
+  },
+  "firstTimePublishers": {
+    "startYear": 2016,
+    "endYear": 2025,
+    "latestCount": 57,
+    "annualizedGrowth": 0.5671017882207892,
+    "points": [
+      {
+        "year": 2016,
+        "firstTime": 1
+      },
+      {
+        "year": 2017,
+        "firstTime": 2
+      },
+      {
+        "year": 2018,
+        "firstTime": 6
+      },
+      {
+        "year": 2019,
+        "firstTime": 17
+      },
+      {
+        "year": 2020,
+        "firstTime": 14
+      },
+      {
+        "year": 2021,
+        "firstTime": 20
+      },
+      {
+        "year": 2022,
+        "firstTime": 25
+      },
+      {
+        "year": 2023,
+        "firstTime": 28
+      },
+      {
+        "year": 2024,
+        "firstTime": 51
+      },
+      {
+        "year": 2025,
+        "firstTime": 57
+      }
+    ]
+  },
+  "mlVenues": [
+    {
+      "venue": "NeurIPS",
+      "label": "NeurIPS",
+      "count": 171
+    },
+    {
+      "venue": "ICML",
+      "label": "ICML",
+      "count": 110
+    },
+    {
+      "venue": "ICLR",
+      "label": "ICLR",
+      "count": 142
+    }
+  ],
+  "venues": [
+    {
+      "venue": "SIGMOD",
+      "label": "SIGMOD/PODS",
+      "count": 518
+    },
+    {
+      "venue": "VLDB",
+      "label": "VLDB",
+      "count": 571
+    },
+    {
+      "venue": "ICDE",
+      "label": "ICDE",
+      "count": 544
+    },
+    {
+      "venue": "CIDR",
+      "label": "CIDR",
+      "count": 72
+    },
+    {
+      "venue": "EDBT",
+      "label": "EDBT",
+      "count": 281
+    }
+  ]
+}

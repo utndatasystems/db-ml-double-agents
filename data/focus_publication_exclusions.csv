@@ -1,0 +1,142 @@
+field,match_type,value,reason,evidence_url,verified_on
+title,prefix,front matter,Proceedings front matter,,
+title,prefix,editorial,Editorial,,
+title,prefix,preface,Proceedings preface,,
+title,prefix,foreword,Proceedings foreword,,
+title,prefix,keynote,Keynote abstract,,
+title,prefix,invited talk,Invited talk abstract,,
+title,prefix,panel:,Panel abstract,,
+title,prefix,tutorial:,Tutorial,,
+title,contains,tutorial on,Tutorial,,
+title,contains,a tutorial,Tutorial,,
+title,prefix,reproducibility report,Reproducibility report rather than a new research paper,,
+title,prefix,erratum,Correction,,
+title,prefix,correction to,Correction,,
+title,prefix,retraction,Retraction,,
+title,contains,a demonstration,Demonstration,,
+title,prefix,demonstrating,Demonstration,,
+dblp_key,exact,conf/sigmod/TangWL19,Tutorial (official SIGMOD 2019 track),https://sigmod2019.org/sigmod_tutorials,2026-11-03
+dblp_key,exact,conf/sigmod/MaiyyaZAAA19,Tutorial (official SIGMOD 2019 track),https://sigmod2019.org/sigmod_tutorials,2026-11-03
+dblp_key,exact,conf/sigmod/Omidvar-Tehrani19,Tutorial (official SIGMOD 2019 track),https://sigmod2019.org/sigmod_tutorials,2026-11-03
+dblp_key,exact,conf/sigmod/IdreosK19,Tutorial (official SIGMOD 2019 track),https://sigmod2019.org/sigmod_tutorials,2026-11-03
+dblp_key,exact,journals/pacmmod/AgrawalAC23,Editorial (PACMMOD V1 N1),https://doi.org/10.1145/3588046,2026-11-03
+dblp_key,exact,conf/cidr/JinBCJL19,Demonstration (CIDR 2019 paper),https://www.cidrdb.org/cidr2019/papers/p9-jin-cidr19.pdf,2026-11-03
+dblp_key,exact,journals/pvldb/Gatterbauer26,Tutorial (official VLDB 2026 track),https://www.vldb.org/2026/program.html,2026-11-03
+dblp_key,exact,conf/sigmod/BhowmickC22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/BharadwajC22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/PradhanLGS22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/NargesianAJ22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/NarasayyaC22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/LiT0CJ22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/0001Z22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/SarkarA22,Tutorial (official SIGMOD 2022 track),https://2022.sigmod.org/sigmod_tutorials.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/PeiHTL08,Tutorial (SIGMOD 2008 proceedings track),https://sigmod.org/publications/dblp/db/conf/sigmod/sigmod2008.html,2026-11-07
+dblp_key,exact,conf/sigmod/Kumar0017,Tutorial (SIGMOD 2017 proceedings track and author publication record),https://research.ibm.com/publications/data-management-in-machine-learning-challenges-techniques-and-systems,2026-11-07
+dblp_key,exact,conf/sigmod/LiZFWC17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/Polyzotis0WZ17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/Machanavajjhala17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/BhowmickCL17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/MottinM17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/RenJSH17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/AbedjanGN17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/ArulrajP17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/OukidL17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/LiR17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/OzcanTT17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/MahmoodA17,Tutorial (SIGMOD 2017 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2017.html,2026-11-07
+dblp_key,exact,conf/sigmod/ChuIKW16,Tutorial (official SIGMOD 2016 tutorial page),https://sigmod2016.sigmodconf.hosting.acm.org/sigmod_tutorial1.shtml,2026-11-07
+dblp_key,exact,conf/sigmod/OzcanQSLE20,Tutorial (author institution publication record),https://research.ibm.com/publications/state-of-the-art-and-open-challenges-in-natural-language-interfaces-to-data,2026-11-07
+dblp_key,exact,conf/sigmod/MiloS20,Tutorial (author-hosted tutorial paper),https://u.cs.biu.ac.il/~somecha/pdf/eda_tutorial.pdf,2026-11-07
+dblp_key,exact,conf/cidr/SinhaTMW07,Demonstration (official CIDR paper),https://www.cidrdb.org/cidr2007/papers/cidr07p24.pdf,2026-11-07
+dblp_key,exact,conf/sigmod/HaasH01,Tutorial (DBLP SIGMOD 2001 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2001.html,2026-11-07
+dblp_key,exact,conf/sigmod/GunopulosD01,Tutorial (DBLP SIGMOD 2001 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2001.html,2026-11-07
+dblp_key,exact,conf/sigmod/Bussler01,Tutorial (DBLP SIGMOD 2001 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2001.html,2026-11-07
+dblp_key,exact,conf/sigmod/CasatiS01,Tutorial (DBLP SIGMOD 2001 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2001.html,2026-11-07
+dblp_key,exact,conf/sigmod/Smith01,Tutorial (DBLP SIGMOD 2001 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2001.html,2026-11-07
+dblp_key,exact,conf/sigmod/DavidsonF08,Tutorial (DBLP SIGMOD 2008 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2008.html,2026-11-07
+dblp_key,exact,conf/sigmod/ONeil08,Tutorial (DBLP SIGMOD 2008 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2008.html,2026-11-07
+dblp_key,exact,conf/sigmod/NakamuraL08,Tutorial (DBLP SIGMOD 2008 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2008.html,2026-11-07
+dblp_key,exact,conf/sigmod/Konstan08,Tutorial (DBLP SIGMOD 2008 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2008.html,2026-11-07
+dblp_key,exact,conf/sigmod/BabuGM09,Tutorial (DBLP SIGMOD 2009 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2009.html,2026-11-07
+dblp_key,exact,conf/sigmod/MuellerT09,Tutorial (DBLP SIGMOD 2009 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2009.html,2026-11-07
+dblp_key,exact,conf/sigmod/ChenWLL09,Tutorial (DBLP SIGMOD 2009 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2009.html,2026-11-07
+dblp_key,exact,conf/sigmod/DemersGKSW09,Tutorial (DBLP SIGMOD 2009 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2009.html,2026-11-07
+dblp_key,exact,conf/sigmod/CormodeS09,Tutorial (DBLP SIGMOD 2009 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2009.html,2026-11-07
+dblp_key,exact,conf/sigmod/GetoorM11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/CafarellaH11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/HayLMPT11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/DongS11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/KoltsidasV11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/HuangGL11,Tutorial (DBLP SIGMOD 2011 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2011.html,2026-11-07
+dblp_key,exact,conf/sigmod/DeutchM12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/FaloutsosK12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/ShaoWX12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/FreireBS12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/HarthHS12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/YangZMWX12,Tutorial (DBLP SIGMOD 2012 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2012.html,2026-11-07
+dblp_key,exact,conf/sigmod/BernsteinD13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/AboulnagaB13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/SuchanekW13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/CondieMPW13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/HullSV13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/GolabJ13,Tutorial (DBLP SIGMOD 2013 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2013.html,2026-11-07
+dblp_key,exact,conf/sigmod/ArmbrustBXZ16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/AthanassoulisI16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/CongJ16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/HerschelH16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/Mokbel016,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/NawabAA16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/Papakonstantinou16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/RenEJH16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/YanBTDC16,Tutorial (DBLP SIGMOD 2016 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2016.html,2026-11-07
+dblp_key,exact,conf/sigmod/JiangR018,Tutorial (DBLP SIGMOD 2018 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2018.html,2026-11-07
+dblp_key,exact,conf/sigmod/DongR18,Tutorial (DBLP SIGMOD 2018 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2018.html,2026-11-07
+dblp_key,exact,conf/sigmod/Koutrika18,Tutorial (DBLP SIGMOD 2018 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2018.html,2026-11-07
+dblp_key,exact,conf/sigmod/CormodeJKLSW18,Tutorial (DBLP SIGMOD 2018 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2018.html,2026-11-07
+dblp_key,exact,conf/sigmod/KoutrisSS18,Tutorial (DBLP SIGMOD 2018 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2018.html,2026-11-07
+dblp_key,exact,conf/sigmod/MottinLVP19,Tutorial (DBLP SIGMOD 2019 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2019.html,2026-11-07
+dblp_key,exact,conf/sigmod/FaloutsosGJW19,Tutorial (DBLP SIGMOD 2019 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2019.html,2026-11-07
+dblp_key,exact,conf/sigmod/BaaziziCGS19,Tutorial (DBLP SIGMOD 2019 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2019.html,2026-11-07
+dblp_key,exact,conf/sigmod/DrutsaFUMZB20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/sigmod/ShahL20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/sigmod/KhandelwalKR20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/sigmod/CarboneFKK20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/sigmod/TziavelisGR20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/sigmod/IdreosC20,Tutorial (DBLP SIGMOD 2020 proceedings track),https://dblp.org/db/conf/sigmod/sigmod2020.html,2026-11-07
+dblp_key,exact,conf/icde/BoniolPP24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/icde/0003HF24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/icde/KamaliKZ24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/icde/Fahrenkrog-Petersen24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/sigmod/FangW0021,Tutorial (official SIGMOD 2021 track),https://2021.sigmod.org/sigmod_tutorial.shtml,2026-11-07
+dblp_key,exact,conf/icde/WangW0Z24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/icde/Trummer24,Tutorial (official ICDE 2024 track),https://icde2024.github.io/tutorials.html,2026-11-07
+dblp_key,exact,conf/pods/BusscheGV07,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Baeza13,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Saha21,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Kimelfeld14,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/ArenasP11,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Fan08,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Martens22,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Cormode15,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Cohen16,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Chaudhuri98,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Fekete19,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Geerts23,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Green15,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Libkin09,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Schweikardt07,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/WeikumT10,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/KhamisNS26,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/pods/Mengel25,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08
+dblp_key,exact,conf/sigmod/MurthyLKCTSFKAAK05,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2005.html,2026-11-08
+dblp_key,exact,conf/sigmod/CormodeG07a,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2007.html,2026-11-08
+dblp_key,exact,conf/sigmod/ChangC06,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2006.html,2026-11-08
+dblp_key,exact,conf/sigmod/ChaudhuriW05,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2005.html,2026-11-08
+dblp_key,exact,conf/sigmod/DeshpandeHR06,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2006.html,2026-11-08
+dblp_key,exact,conf/sigmod/DoanRV06,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2006.html,2026-11-08
+dblp_key,exact,conf/sigmod/JohnsonD03,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2003.html,2026-11-08
+dblp_key,exact,conf/sigmod/KoudasSS06,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2006.html,2026-11-08
+dblp_key,exact,conf/sigmod/LernerSWZZ04,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2004.html,2026-11-08
+dblp_key,exact,conf/sigmod/SuciuD05,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2005.html,2026-11-08
+dblp_key,exact,conf/sigmod/BunemanT07,Tutorial (DBLP SIGMOD proceedings track),https://dblp.org/db/conf/sigmod/sigmod2007.html,2026-11-08
+dblp_key,exact,conf/pods/Woodruff24,Tutorial (official PODS tutorial index),https://sigmod.org/pods-home/pods-tutorials/,2026-11-08

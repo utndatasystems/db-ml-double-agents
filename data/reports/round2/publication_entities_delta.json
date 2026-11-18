@@ -1,0 +1,19 @@
+{
+  "beforePersonWorks": 117357,
+  "afterPersonWorks": 117442,
+  "personCountsChanged": {
+    "58/8815": {
+      "before": 22,
+      "after": 0
+    },
+    "62/1373": {
+      "before": 0,
+      "after": 109
+    },
+    "86/3457-20": {
+      "before": 2,
+      "after": 0
+    }
+  },
+  "recordDiffOutsideChangedIdentities": []
+}

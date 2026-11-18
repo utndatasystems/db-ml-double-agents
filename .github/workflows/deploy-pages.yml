@@ -1,0 +1,65 @@
+name: Deploy website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/deploy/**'
+      - 'scripts/**'
+      - 'requirements.txt'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+  # Bot pushes using GITHUB_TOKEN do not trigger push workflows.
+  workflow_run:
+    workflows: ['Refresh datasets']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.repository == 'utndatasystems/db-ml-double-agents' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name != 'workflow_run' ||
+       github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # workflow_run.head_sha predates the refresh's generated commit.
+          # Always deploy the latest main, including that commit.
+          ref: main
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate and prepare current website data for Pages
+        run: python scripts/prepare_github_pages.py --output "$RUNNER_TEMP/pages-site"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/pages-site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

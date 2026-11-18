@@ -1,0 +1,6 @@
+﻿source_db,source_rowid,venue,year,action,reason,raw_name,repaired_name,raw_affiliation,repaired_affiliation,source_url,raw_text
+icde_reviewers.sqlite,1400,ICDE,2022,repair,source_name_typo,H. V. Jadadish,H. V. Jagadish,University of Michigan,University of Michigan,https://icde2022.ieeecomputer.my/research-program-committee/,"H. V. Jadadish , University of Michigan"
+icde_reviewers.sqlite,2195,ICDE,2024,repair,source_name_annotation,Amine Mhedhbi to Polytechnique Montreal,Amine Mhedhbi,,,https://icde2024.github.io/CFP_industry.html,Amine Mhedhbi to Polytechnique Montreal
+icde_reviewers.sqlite,2377,ICDE,2025,repair,source_name_typo,Tien Tuan Anh Ding,Tien Tuan Anh Dinh,Deakin University,Deakin University,https://ieee-icde.org/2025/program-committees/,"Tien Tuan Anh Ding, Deakin University"
+sigmod_reviewers.sqlite,1580,SIGMOD,2022,repair,reversed_person_name,Papotti Paolo,Paolo Papotti,EURECOM,EURECOM,https://2022.sigmod.org/org_sigmod_pc.shtml,"Papotti Paolo, EURECOM"
+vldb_reviewers.sqlite,2421,VLDB,2024,repair,reversed_person_name,Papotti Paolo,Paolo Papotti,EURECOM,EURECOM,https://www.vldb.org/pvldb/volumes/17/review-board,Papotti Paolo (EURECOM)

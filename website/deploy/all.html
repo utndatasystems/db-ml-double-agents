@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="application-name" content="DB × ML Double Agents" />
+  <meta name="description" content="Explore main-conference papers at NeurIPS, ICML and ICLR by senior DB researchers, with broader DBLP publication context." />
+  <title>All Insights · DB × ML Double Agents · UTN Data Systems</title>
+  <link rel="stylesheet" href="assets/styles.css?v=153" />
+  <link rel="stylesheet" href="assets/db-venue-overlap.css?v=9" />
+    <link rel="stylesheet" href="assets/data-coverage.css?v=9" />
+  <!-- Initialize previews before the body can paint empty chart regions. -->
+  <script src="assets/loading-preview.js?v=5"></script>
+</head>
+<body class="insights-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand">
+        <a class="lab-logo-link" href="https://utndatasystems.github.io/" aria-label="UTN Data Systems Lab home"><img class="lab-logo" src="assets/utn-data-systems-logo.svg" alt="UTN Data Systems Lab" width="108" height="40" /></a>
+        <span class="brand-copy">
+          <a class="brand-title-link" href="index.html"><strong>DB × ML Double Agents</strong></a>
+          <small><a class="brand-sub-link" href="https://utndatasystems.github.io/" target="_blank" rel="noreferrer">Data Systems Lab</a> · <a class="brand-sub-link" href="https://www.utn.de/" target="_blank" rel="noreferrer">UTN</a></small>
+        </span>
+      </div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="people.html">People Explorer</a>
+        <a href="all.html" aria-current="page"><strong>All Insights</strong></a>
+        <button class="top-nav-button" type="button" data-open-methodology>Methodology</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <h1 id="top" class="sr-only">All Insights</h1>
+
+    <section id="overview" class="summary-band section-ruled" aria-labelledby="summary-title">
+      <div class="shell">
+        <p class="eyebrow overview-eyebrow">Community overview</p>
+        <h2 id="summary-title">How many senior DB researchers have published at NeurIPS, ICML or ICLR?</h2>
+        <div id="summary-cards" aria-busy="true" class="viz-overview">
+          <div class="viz-overview-panel">
+            <div class="viz-overview-heading"><h3>Senior DB researchers by DB venue</h3><p class="insights-data-label">PC service &middot; &mdash;</p></div>
+            <div class="viz-cohort-body">
+              <div class="viz-cohort-total"><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span>unique PC members</span></div>
+              <div class="viz-cohort-bars" data-loading-kind="bars" data-loading-shell data-loading-labels='["SIGMOD/PODS","VLDB","ICDE","EDBT","CIDR"]' aria-busy="true"></div>
+              <p class="viz-overview-note">People may appear at more than one venue.</p>
+            </div>
+          </div>
+          <div class="viz-overview-panel viz-overview-crossover">
+            <div class="viz-overview-heading"><h3>Ratio of senior DB researchers with a main-conference paper at NeurIPS, ICML or ICLR</h3><p class="insights-data-label">Main-conference papers &middot; &mdash;</p></div>
+            <div class="viz-donut-layout">
+              <div class="viz-donut" style="--viz-donut-share:35%" data-loading-kind="donut" aria-busy="true"></div>
+              <div class="viz-donut-legend">
+                <span class="viz-donut-choice"><i class="viz-swatch viz-swatch-active" aria-hidden="true"></i><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span>with at least one paper</span></span>
+                <span class="viz-donut-choice"><i class="viz-swatch viz-swatch-inactive" aria-hidden="true"></i><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span>without any paper</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="data-status" class="data-status" role="status"></p>
+      </div>
+    </section>
+
+    <section id="db-membership" class="section section-ruled db-overlap" aria-labelledby="overlap-distribution-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">Service across DB venues</p><h2 id="overlap-distribution-title">How many DB venues does each person serve at?</h2></div></div>
+        <div class="overlap-controls" aria-label="Number of venues settings">
+          <label>Service year<select id="membership-year"><option value="all">All years</option></select></label>
+          <label>Membership<select id="membership-roles"><option value="research">Research PCs</option><option value="reviewers">Research, industry and demo PCs</option><option value="service" selected>All recorded service roles</option></select></label>
+          <label>Compare membership<select id="membership-match"><option value="period">Across selected years</option><option value="same-year">In the same year</option></select></label>
+          <div class="viz-view-switch" role="group" aria-label="Number of venues measurement"><button type="button" data-overlap-view="share" class="is-active" aria-pressed="true">Percentage</button><button type="button" data-overlap-view="count" aria-pressed="false">Absolute</button></div>
+        </div>
+        <p id="membership-scope" class="overlap-meta"><span class="loading-years" aria-hidden="true">&mdash;</span> &middot; All recorded organizing and reviewing roles. Shadow PCs excluded.</p>
+        <p class="overlap-instruction">Select a bar to inspect the people.</p>
+        <div id="overlap-distribution" data-loading-kind="bars" data-loading-shell data-loading-labels='["1 venue","2 venues","3 venues","4 venues","5 venues"]' aria-busy="true" class="overlap-distribution" aria-labelledby="overlap-distribution-title"></div>
+        <p id="membership-note" class="overlap-footnote" hidden></p>
+        <p id="membership-error" class="empty-state" role="alert" hidden></p>
+      </div>
+    </section>
+
+    <section id="db-overlap" class="section section-ruled db-overlap" aria-labelledby="overlap-matrix-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">Across DB communities</p><h2 id="overlap-matrix-title"><span id="overlap-matrix-question">Where else do DB conference organizers and reviewers serve?</span></h2></div></div>
+        <div class="overlap-controls" aria-label="Venue overlap settings">
+          <label>Service year<select id="overlap-year"><option value="all">All years</option></select></label>
+          <label>Membership<select id="overlap-roles"><option value="research">Research PCs</option><option value="reviewers">Research, industry and demo PCs</option><option value="service" selected>All recorded service roles</option></select></label>
+          <label>Compare membership<select id="overlap-match"><option value="period">Across selected years</option><option value="same-year">In the same year</option></select></label>
+          <div class="viz-view-switch" role="group" aria-label="Overlap measurement"><button type="button" data-overlap-view="share" class="is-active" aria-pressed="true">Percentage</button><button type="button" data-overlap-view="count" aria-pressed="false">Absolute</button></div>
+        </div>
+        <p id="overlap-scope" class="overlap-meta"><span class="loading-years" aria-hidden="true">&mdash;</span> &middot; All recorded organizing and reviewing roles. Shadow PCs excluded.</p>
+        <p id="overlap-matrix-reading" class="overlap-instruction" hidden></p>
+        <div id="overlap-matrix" data-loading-kind="matrix" aria-busy="true"></div>
+        <div class="overlap-color-key" aria-label="Cell color scale"><span>0%</span><span class="overlap-color-ramp" aria-hidden="true"></span><span id="overlap-color-maximum">100%</span></div>
+        <p id="overlap-error" class="empty-state" role="alert" hidden></p>
+      </div>
+    </section>
+
+    <section id="population-focus" class="section section-ruled db-overlap" aria-labelledby="focus-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">Defining the DB population</p><h2 id="focus-title">Which committee members are DB-focused?</h2><p class="insights-data-label" data-insights-scope>PC service &middot; <span class="loading-years" aria-hidden="true">&mdash;</span> &middot; All recorded publication years</p></div></div>
+        <p class="focus-rule"><strong>Classification criteria:</strong> At least twice as many DB as ML conference papers. Plus either five papers across three publication years, or two DB papers in two publication years and PC service in two years.</p>
+        <p class="overlap-instruction">Select a group to inspect the counts and decisions. Only senior DB researchers are included in the study.</p>
+        <div id="focus-groups" data-loading-kind="bars" data-loading-shell data-loading-labels='["DB-focused","ML-focused","Mixed","Limited evidence"]' aria-busy="true" aria-labelledby="focus-title"></div>
+        <details class="focus-policy"><summary>Which papers count?</summary><p>Full main-conference papers at SIGMOD/PODS, VLDB, ICDE, CIDR and EDBT are compared with main-conference papers at NeurIPS, ICML and ICLR. The comparison uses all publication years in the snapshot.</p><p>Workshops, companion proceedings and ordinary journal articles are excluded. PVLDB and PACMMOD are included as conference publication channels. Paginated DB papers need at least six pages; unpaginated CIDR papers also qualify. Known tutorials, demonstrations, editorials and reports are excluded. Missing length evidence is excluded rather than assumed.</p><p>The service fallback requires DB papers in two distinct publication years and qualifying PC service in two distinct years within 2022–2025. Multiple venues or roles in the same year still count as one service year.</p><p>ML-focused uses the reverse two-to-one rule. Mixed meets neither ratio. Both need five qualifying papers across three publication years. Limited evidence means neither the publication minimum nor the DB-focused service fallback is met.</p></details>
+      </div>
+    </section>
+
+    <section id="matrix" class="section section-ruled matrix-section">
+      <div class="shell matrix-shell">
+        <div class="section-heading matrix-heading">
+          <div>
+            <p class="eyebrow">Across DB PC venues</p>
+            <h2>Senior DB researchers publishing at NeurIPS, ICML or ICLR</h2>
+            <p class="insights-data-label" data-insights-scope>PC service &middot; <span class="loading-years" aria-hidden="true">&mdash;</span> &middot; Main-conference papers &middot; <span class="loading-years" aria-hidden="true">&mdash;</span></p>
+          </div>
+        </div>
+        <div class="viz-db-rates-toolbar">
+          <div class="viz-view-switch" role="group" aria-label="DB venue ML participation view">
+            <button type="button" data-db-rates-view="percentage" class="is-active" aria-pressed="true">Percentage</button>
+            <button type="button" data-db-rates-view="absolute" aria-pressed="false">Absolute</button>
+          </div>
+        </div>
+        <div id="db-venue-rates" data-loading-kind="bars" data-loading-shell data-loading-labels='["SIGMOD/PODS","VLDB","ICDE","EDBT","CIDR"]' aria-busy="true" class="viz-db-rates" aria-live="polite"><div data-loading-slot></div><p class="viz-chart-note">A researcher may have served on PCs at multiple venues.</p></div>
+      </div>
+    </section>
+
+    <section id="publication-timeline" class="section section-ruled timeline-section">
+      <div class="shell">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">Publication activity</p>
+            <h2>Main-conference papers at NeurIPS, ICML and ICLR by senior DB researchers over time</h2>
+            <p class="insights-data-label" data-insights-scope>Annual main-conference papers &middot; <span class="loading-years" aria-hidden="true">&mdash;</span></p>
+          </div>
+        </div>
+        <div id="timeline-legend" class="timeline-legend" inert data-loading-controls aria-label="Publication venues, measurement, and time view"><div class="timeline-venue-controls"><button class="legend-item legend-toggle" type="button" aria-pressed="true"><i class="legend-swatch venue-neurips" aria-hidden="true"></i>NeurIPS</button><button class="legend-item legend-toggle" type="button" aria-pressed="true"><i class="legend-swatch venue-icml" aria-hidden="true"></i>ICML</button><button class="legend-item legend-toggle" type="button" aria-pressed="true"><i class="legend-swatch venue-iclr" aria-hidden="true"></i>ICLR</button></div><div class="publication-display-controls"><div class="publication-scale-controls"><span class="viz-view-switch"><button type="button" data-loading-scale="absolute" class="is-active" aria-pressed="true">Absolute</button><span class="publication-relative-control"><button type="button" data-loading-scale="relative" aria-pressed="false">Relative</button></span></span></div><span class="viz-view-switch"><button type="button" class="is-active" aria-pressed="true">Annual</button><button type="button" aria-pressed="false">Cumulative</button></span></div></div>
+        <div class="timeline-instructions">
+          <p>Toggle visibility of ML venue.</p>
+          <p id="timeline-action-note" class="timeline-action-note" aria-live="polite">Select a point to inspect that venue’s papers for the year.</p>
+        </div>
+        <div id="global-timeline" data-loading-kind="line" data-loading-shell aria-busy="true" class="global-timeline publication-timelines" aria-live="polite"><div class="publication-chart-panel publication-line-panel"><p class="chart-axis-label chart-axis-y">Number of papers</p><div data-loading-slot></div><p class="chart-axis-label chart-axis-x">Year</p></div></div>
+      </div>
+    </section>
+
+    <section id="ml-participants" class="section section-ruled viz-analysis-section viz-analysis-alt">
+      <div class="shell">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">Researcher participation</p>
+            <h2>Senior DB researchers publishing at NeurIPS, ICML or ICLR each year</h2>
+            <p class="insights-data-label" data-insights-scope>Annual researchers &middot; <span class="loading-years" aria-hidden="true">&mdash;</span></p>
+          </div>
+        </div>
+        <div id="ml-participants-legend" class="timeline-legend" inert data-loading-controls aria-label="Researcher participation groups"><div class="timeline-venue-controls"><button type="button" class="legend-item legend-toggle" data-loading-group="returning" aria-pressed="true"><i class="legend-swatch participant-column-fill participant-returning-fill" aria-hidden="true"></i>Published before</button><button type="button" class="legend-item legend-toggle" aria-pressed="true"><i class="legend-swatch participant-column-fill" aria-hidden="true"></i>First-time authors</button></div><div class="viz-view-switch"><button type="button"><span class="loading-years" aria-hidden="true">&mdash;</span></button><button type="button" class="is-active">All years</button></div></div>
+        <div class="timeline-instructions">
+          <p>Toggle visibility of author groups.</p>
+        </div>
+        <div id="ml-participants-chart" data-loading-kind="columns" data-loading-shell aria-busy="true" class="viz-line-panel" aria-live="polite"><p class="chart-axis-label chart-axis-y">Number of researchers</p><div data-loading-slot></div><p class="chart-axis-label chart-axis-x">Year</p></div>
+      </div>
+    </section>
+
+    <section id="ml-portfolio" class="section section-ruled viz-analysis-section">
+      <div class="shell">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">Publication share</p>
+            <h2>Senior DB researchers by share of publications at NeurIPS, ICML or ICLR</h2>
+            <p class="insights-data-label" data-insights-scope>DBLP publication records &middot; <span class="loading-years" aria-hidden="true">&mdash;</span></p>
+          </div>
+        </div>
+        <div class="timeline-instructions">
+          <p>Select a bar to inspect its researchers in People Explorer.</p>
+        </div>
+        <div id="ml-portfolio-chart" data-loading-kind="columns" data-loading-shell aria-busy="true" class="viz-histogram-panel" aria-live="polite"><p class="chart-axis-label chart-axis-y">Number of researchers</p><div data-loading-slot></div><p class="chart-axis-label chart-axis-x">Researchers&rsquo; publication share at NeurIPS, ICML or ICLR<button class="info-icon-button chart-axis-info" type="button" inert data-provenance-metric="ml_portfolio" aria-expanded="false" aria-label="How publication share is calculated"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="6" cy="3.1" r="0.7" fill="currentColor"/><path d="M6 5.4v3.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></button></p></div>
+      </div>
+    </section>
+
+    <section id="ml-authorship" class="section section-ruled viz-analysis-section viz-analysis-alt">
+      <div class="shell">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">Author positions</p>
+            <h2>Author positions of senior DB researchers publishing at NeurIPS, ICML or ICLR</h2>
+            <p class="insights-data-label" data-insights-scope>Main-conference authorships &middot; <span class="loading-years" aria-hidden="true">&mdash;</span></p>
+          </div>
+        </div>
+        <div class="timeline-instructions">
+          <p>Hierarchically ordered left to right by author position. Select a segment to open People Explorer.</p>
+        </div>
+        <div id="ml-authorship-chart" data-loading-kind="stack" data-loading-shell aria-busy="true" class="viz-authorship-panel" aria-live="polite"><div data-loading-slot></div><div class="viz-authorship-axis" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div><div class="viz-authorship-legend" role="list"><div class="viz-authorship-legend-item" role="listitem"><div class="viz-authorship-legend-action"><span class="viz-authorship-legend-name"><i class="viz-authorship-swatch viz-authorship-sole" aria-hidden="true"></i><span>Sole author</span></span><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span class="viz-authorship-legend-count">authorships</span></div></div><div class="viz-authorship-legend-item" role="listitem"><div class="viz-authorship-legend-action"><span class="viz-authorship-legend-name"><i class="viz-authorship-swatch viz-authorship-first" aria-hidden="true"></i><span>First author</span></span><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span class="viz-authorship-legend-count">authorships</span></div></div><div class="viz-authorship-legend-item" role="listitem"><div class="viz-authorship-legend-action"><span class="viz-authorship-legend-name"><i class="viz-authorship-swatch viz-authorship-other" aria-hidden="true"></i><span>Middle author</span></span><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span class="viz-authorship-legend-count">authorships</span></div></div><div class="viz-authorship-legend-item" role="listitem"><div class="viz-authorship-legend-action"><span class="viz-authorship-legend-name"><i class="viz-authorship-swatch viz-authorship-last" aria-hidden="true"></i><span>Last author</span></span><strong data-loading-kind="value" aria-busy="true">&mdash;</strong><span class="viz-authorship-legend-count">authorships</span></div></div></div></div>
+      </div>
+    </section>
+
+    <section id="data-coverage" class="section section-ruled coverage-section" aria-labelledby="coverage-title" aria-busy="false">
+      <div class="shell">
+        <p class="eyebrow">Coverage and review</p>
+        <details id="coverage-details" class="coverage-details" open>
+          <summary><h2 id="coverage-title"><span>What data reaches the analysis?</span><span class="coverage-toggle-hint">Technical details <svg viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2></summary>
+          <div class="coverage-details-content">
+            <p class="coverage-intro">Follow the people and papers through the pipeline. Select a group to inspect what continues, needs review or falls outside the study.</p>
+            <p id="coverage-status" class="coverage-note" role="status">Loading coverage…</p>
+            <div id="coverage-flows" class="coverage-flows"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span id="footer-data-refresh" class="footer-data-refresh"></span>
+      <small class="footer-credit">This site was built with help from Codex!</small>
+      <div class="footer-links">
+        <a href="https://utndatasystems.github.io/" rel="noreferrer">Data Systems Lab</a>
+        <a href="https://www.utn.de/en/departments/department-computer-science-artificial-intelligence/data-systems/" rel="noreferrer">UTN Data Systems</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="coverage-dialog" class="overlap-dialog coverage-dialog" aria-labelledby="coverage-selection-title">
+    <div class="dialog-shell">
+      <button id="coverage-close" class="dialog-close" type="button" aria-label="Close coverage records">×</button>
+      <h2 id="coverage-selection-title"></h2>
+      <p id="coverage-selection-context" class="coverage-selection-context" hidden></p>
+      <p id="coverage-selection-note" class="coverage-note"></p>
+      <div id="coverage-related-groups" class="coverage-related-groups" hidden></div>
+      <div id="coverage-identity-overview" class="coverage-identity-overview" hidden></div>
+      <div class="overlap-people-toolbar"><label>Search these records<input id="coverage-search" type="search" placeholder="Name, title or record ID" autocomplete="off"></label><button id="coverage-download" class="overlap-download" type="button">Download CSV</button></div>
+      <p id="coverage-result-count" class="coverage-note" role="status"></p>
+      <div id="coverage-records"></div>
+      <div id="coverage-pages" class="overlap-pagination"></div>
+    </div>
+  </dialog>
+  <dialog id="overlap-dialog" class="overlap-dialog" aria-labelledby="overlap-selection-title">
+    <div class="dialog-shell">
+      <button id="overlap-dialog-close" class="dialog-close" type="button" aria-label="Close shared members">×</button>
+      <h2 id="overlap-selection-title"></h2>
+      <p id="overlap-selection-note" class="overlap-meta"></p>
+      <div class="overlap-people-toolbar"><label>Search these people<input type="search" id="overlap-search" placeholder="Name or affiliation" autocomplete="off"></label><button id="overlap-download" class="overlap-download" type="button">Download CSV</button></div>
+      <p id="overlap-result-count" class="overlap-meta" role="status"></p>
+      <div id="overlap-people" class="overlap-people"></div>
+      <div id="overlap-pagination" class="overlap-pagination"></div>
+    </div>
+  </dialog>
+  <dialog id="person-dialog" class="person-dialog">
+    <div class="dialog-shell">
+      <button id="dialog-close" class="dialog-close" type="button" aria-label="Close researcher detail">×</button>
+      <div id="dialog-content"></div>
+    </div>
+  </dialog>
+
+  <dialog id="timeline-dialog" class="timeline-dialog">
+    <div class="dialog-shell">
+      <button id="timeline-dialog-close" class="dialog-close" type="button" aria-label="Close publication list">×</button>
+      <div id="timeline-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <dialog id="methodology-dialog" class="methodology-dialog">
+    <div class="dialog-shell methodology-dialog-shell">
+      <button id="methodology-dialog-close" class="dialog-close" type="button" aria-label="Close methodology">×</button>
+      <div id="methodology-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <script src="data/site_data.js?v=54"></script>
+  <script src="data/matrix_stats.js?v=37"></script>
+  <script src="assets/app.js?v=168"></script>
+  <script src="assets/db-venue-overlap-model.js?v=5"></script>
+  <script src="assets/db-venue-overlap.js?v=17"></script>
+  <script src="assets/population-focus.js?v=4"></script>
+  <script src="assets/coverage-sankey.js?v=7"></script>
+  <script src="assets/data-coverage.js?v=11"></script>
+</body>
+</html>

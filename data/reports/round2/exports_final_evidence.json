@@ -1,0 +1,72 @@
+{
+  "failures": [],
+  "coverageDescriptors": 125,
+  "flowComponents": {
+    "people": {
+      "nodes": 23,
+      "links": 25,
+      "counts": {
+        "source-cidr_reviewers": 140,
+        "source-edbt_reviewers": 560,
+        "source-icde_reviewers": 1383,
+        "source-sigmod_reviewers": 1442,
+        "source-vldb_reviewers": 1144,
+        "intake": 4669,
+        "name-groups": 1450,
+        "repeat-service": 3219,
+        "lookup-one": 965,
+        "lookup-several": 448,
+        "lookup-none": 37,
+        "matched": 1168,
+        "ambiguous": 224,
+        "candidate": 31,
+        "unmatched": 27,
+        "identities": 1125,
+        "aliases": 43,
+        "pc": 1114,
+        "outside-pc": 11,
+        "focus-0": 833,
+        "focus-1": 224,
+        "focus-2": 27,
+        "focus-3": 30
+      }
+    },
+    "papers": {
+      "nodes": 13,
+      "links": 12,
+      "counts": {
+        "candidates": 129362,
+        "accepted": 129362,
+        "records": 96906,
+        "coauthors": 32456,
+        "works": 88166,
+        "versions": 8740,
+        "website": 88166,
+        "cohort": 68313,
+        "outside": 19853,
+        "main": 533,
+        "db": 10290,
+        "uncertain": 441,
+        "context": 57049
+      }
+    }
+  },
+  "browser": {
+    "cohortPeople": 833,
+    "additionalPeople": 281,
+    "eagerPapersAllPc": 1449,
+    "deferredPapersAllPc": 114003,
+    "mainWorks": 533,
+    "sideWorks": 67780,
+    "mainAuthorships": 648
+  },
+  "sourceComparison": {
+    "observations": 4669,
+    "nameGroups": 1450,
+    "resolvedPids": 1125
+  },
+  "rawComparison": {
+    "links": 129362,
+    "records": 96906
+  }
+}

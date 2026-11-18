@@ -1,0 +1,11 @@
+{
+  "runner": "installed Chrome headless via local Python harnesses; no Node available",
+  "presentationChecks": 182,
+  "homeLinkChecks": 90,
+  "homeTrendModelChecks": 68,
+  "sankeyChecks": 782,
+  "result": "PASS",
+  "incompleteAttempt": "First parallel final Sankey run returned WAIT without a completed result; standalone rerun completed all 782 checks.",
+  "historicalResizeFailure": "Not reproduced on unchanged frontend in baseline and final runs; no product or test timing patch.",
+  "frontendDesignFilesChanged": false
+}

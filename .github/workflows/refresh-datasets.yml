@@ -1,0 +1,73 @@
+name: Refresh datasets
+
+on:
+  schedule:
+    # Monday at 03:17 UTC; avoid the busy start of the hour.
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-datasets
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    # Defense in depth; enforce runner access outside PR-editable YAML too.
+    if: >-
+      github.repository == 'utndatasystems/db-ml-double-agents' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 180
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          # Preserve ignored multi-GB snapshots and SQLite caches between runs.
+          clean: false
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Install Python dependencies in an isolated environment
+        run: |
+          python -m venv --clear "$RUNNER_TEMP/dataset-refresh-venv"
+          echo "$RUNNER_TEMP/dataset-refresh-venv/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/dataset-refresh-venv/bin/python" -m pip install --upgrade pip
+          "$RUNNER_TEMP/dataset-refresh-venv/bin/python" -m pip install -r requirements.txt
+          "$RUNNER_TEMP/dataset-refresh-venv/bin/python" -m pip check
+
+      - name: Refresh datasets, rebuild website and run pipeline checks
+        run: python run_pipeline.py --full-refresh
+
+      - name: Commit and push generated files
+        run: |
+          set -euo pipefail
+          # Include new files and deletions, while respecting .gitignore.
+          git add -A -- data/ website/deploy/
+          if git diff --cached --quiet; then
+            echo "No dataset changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "chore(data): weekly full refresh"
+          # Incorporate commits made during the long refresh; never force-push.
+          git pull --rebase origin main
+          git push origin HEAD:main

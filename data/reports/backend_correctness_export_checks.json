@@ -1,0 +1,93 @@
+{
+  "errors": [],
+  "focus": 833,
+  "candidate_count": 1114,
+  "additional_people": 281,
+  "main_authors": 227,
+  "main_works": {
+    "ICML": 135,
+    "ICLR": 151,
+    "NeurIPS": 247
+  },
+  "main_links": 648,
+  "author_roles": {
+    "middle": 383,
+    "last": 238,
+    "sole": 1,
+    "first": 26
+  },
+  "first_time_counts": {
+    "2001": 1,
+    "2002": 1,
+    "2003": 1,
+    "2006": 1,
+    "2008": 2,
+    "2010": 3,
+    "2012": 1,
+    "2013": 1,
+    "2014": 4,
+    "2015": 3,
+    "2016": 1,
+    "2017": 2,
+    "2018": 6,
+    "2019": 15,
+    "2020": 12,
+    "2021": 18,
+    "2022": 23,
+    "2023": 28,
+    "2024": 44,
+    "2025": 52,
+    "2026": 8
+  },
+  "referenced_json_assets": 1191,
+  "missing_assets": [],
+  "home_counts": {
+    "total": 833,
+    "withMainMlPaper": 227,
+    "venues": [
+      {
+        "venue": "SIGMOD",
+        "label": "SIGMOD/PODS",
+        "count": 494
+      },
+      {
+        "venue": "VLDB",
+        "label": "VLDB",
+        "count": 463
+      },
+      {
+        "venue": "ICDE",
+        "label": "ICDE",
+        "count": 515
+      },
+      {
+        "venue": "CIDR",
+        "label": "CIDR",
+        "count": 66
+      },
+      {
+        "venue": "EDBT",
+        "label": "EDBT",
+        "count": 267
+      }
+    ],
+    "mlVenues": [
+      {
+        "venue": "NeurIPS",
+        "label": "NeurIPS",
+        "count": 157
+      },
+      {
+        "venue": "ICML",
+        "label": "ICML",
+        "count": 104
+      },
+      {
+        "venue": "ICLR",
+        "label": "ICLR",
+        "count": 108
+      }
+    ]
+  },
+  "author_position_unit": "zero-based frontend; CSV input is one-based"
+}

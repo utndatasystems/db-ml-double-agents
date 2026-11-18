@@ -1,0 +1,31 @@
+{
+  "path": "raw author rows -> resolver -> canonical CSV -> loader -> focus -> eager/additional browser split -> lazy JSON roundtrip",
+  "profiles": {
+    "p1": {
+      "label": "Limited evidence",
+      "dbPapers": 0,
+      "mlPapers": 0,
+      "publicationYears": 0,
+      "dbPublicationYears": 0,
+      "serviceYears": 2,
+      "basis": "insufficient_evidence",
+      "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+      "included": false
+    },
+    "p2": {
+      "label": "DB-focused",
+      "dbPapers": 2,
+      "mlPapers": 0,
+      "publicationYears": 2,
+      "dbPublicationYears": 2,
+      "serviceYears": 2,
+      "basis": "publication_and_service",
+      "reason": "At least twice as many DB as ML conference papers; two DB papers in two publication years plus PC service in two years.",
+      "included": true
+    }
+  },
+  "detailFiles": 2,
+  "additionalPeople": 1,
+  "passed": true,
+  "positionsAndYearsPreserved": true
+}

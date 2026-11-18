@@ -1,0 +1,6 @@
+{
+  "data\\snapshot_sources.json": true,
+  "website\\data\\site_data.js": true,
+  "website\\data\\coverage_summary.json": true,
+  "website\\data\\home_summary.json": true
+}

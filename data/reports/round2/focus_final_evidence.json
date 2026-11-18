@@ -1,0 +1,717 @@
+{
+  "inputs": {
+    "data\\reports\\round2\\previous_manifests\\site_data.js": {
+      "sha256": "0609bfcd6c540ce7e868885031d3d47c63b43f63417631dd59e6bb2f3f012705",
+      "bytes": 13621698
+    },
+    "website\\data\\site_data.js": {
+      "sha256": "4c2c548e91e744cfc964ab59ba283579d925b4dfef55a3b53eeaec33aa47b962",
+      "bytes": 13732798
+    }
+  },
+  "checks": {
+    "candidate_count_1114_each": true,
+    "added_exact": true,
+    "removed_exact": true,
+    "common_changed_exact_18_tutorial_people": true,
+    "groups_final": true,
+    "core_pids_identical_833": true,
+    "common_labels_identical": true,
+    "prior_expected_after_profiles_exact": true,
+    "adam_profile": true,
+    "pablo_profile": true,
+    "all18_db_delta_minus_one": true,
+    "all18_ml_counts_identical": true,
+    "all18_service_years_identical": true
+  },
+  "all_passed": true,
+  "before_groups": {
+    "DB-focused": 833,
+    "Limited evidence": 225,
+    "ML-focused": 27,
+    "Mixed": 29
+  },
+  "after_groups": {
+    "DB-focused": 833,
+    "Limited evidence": 224,
+    "ML-focused": 27,
+    "Mixed": 30
+  },
+  "candidate_added": [
+    "29/5169",
+    "62/1373"
+  ],
+  "candidate_removed": [
+    "58/8815",
+    "86/3457-20"
+  ],
+  "tutorial_changes": [
+    {
+      "pid": "04/7892",
+      "name": "Abolfazl Asudeh",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 30,
+        "mlPapers": 1,
+        "publicationYears": 11,
+        "dbPublicationYears": 11,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 29,
+        "mlPapers": 1,
+        "publicationYears": 11,
+        "dbPublicationYears": 11,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "07/1560",
+      "name": "Byron Choi",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 44,
+        "mlPapers": 0,
+        "publicationYears": 21,
+        "dbPublicationYears": 21,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 43,
+        "mlPapers": 0,
+        "publicationYears": 21,
+        "dbPublicationYears": 21,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "11/6446",
+      "name": "Babak Salimi",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 17,
+        "mlPapers": 3,
+        "publicationYears": 9,
+        "dbPublicationYears": 8,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 16,
+        "mlPapers": 3,
+        "publicationYears": 9,
+        "dbPublicationYears": 8,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "136/7969",
+      "name": "Sainyam Galhotra",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 22,
+        "mlPapers": 3,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 21,
+        "mlPapers": 3,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "158/4862",
+      "name": "Subhadeep Sarkar 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 8,
+        "mlPapers": 0,
+        "publicationYears": 6,
+        "dbPublicationYears": 6,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 7,
+        "mlPapers": 0,
+        "publicationYears": 6,
+        "dbPublicationYears": 6,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "199/6324",
+      "name": "Romila Pradhan",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 7,
+        "mlPapers": 0,
+        "publicationYears": 5,
+        "dbPublicationYears": 5,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 6,
+        "mlPapers": 0,
+        "publicationYears": 5,
+        "dbPublicationYears": 5,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "23/7274",
+      "name": "Fatemeh Nargesian",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 15,
+        "mlPapers": 0,
+        "publicationYears": 9,
+        "dbPublicationYears": 9,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 14,
+        "mlPapers": 0,
+        "publicationYears": 9,
+        "dbPublicationYears": 9,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "43/2474-16",
+      "name": "Bo Tang 0016",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 40,
+        "mlPapers": 0,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 2,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 39,
+        "mlPapers": 0,
+        "publicationYears": 10,
+        "dbPublicationYears": 10,
+        "serviceYears": 2,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "55/5690",
+      "name": "Muhammad Aamir Cheema",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 23,
+        "mlPapers": 1,
+        "publicationYears": 13,
+        "dbPublicationYears": 12,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 22,
+        "mlPapers": 1,
+        "publicationYears": 12,
+        "dbPublicationYears": 11,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers",
+        "dbPublicationYears",
+        "publicationYears"
+      ]
+    },
+    {
+      "pid": "82/7402",
+      "name": "Manos Athanassoulis",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 33,
+        "mlPapers": 0,
+        "publicationYears": 14,
+        "dbPublicationYears": 14,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 32,
+        "mlPapers": 0,
+        "publicationYears": 14,
+        "dbPublicationYears": 14,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "b/SSBhowmick",
+      "name": "Sourav S. Bhowmick",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 41,
+        "mlPapers": 0,
+        "publicationYears": 20,
+        "dbPublicationYears": 20,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 40,
+        "mlPapers": 0,
+        "publicationYears": 20,
+        "dbPublicationYears": 20,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "c/SurajitChaudhuri",
+      "name": "Surajit Chaudhuri",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 147,
+        "mlPapers": 1,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 146,
+        "mlPapers": 1,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "j/ChristianSJensen",
+      "name": "Christian S. Jensen",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 162,
+        "mlPapers": 1,
+        "publicationYears": 32,
+        "dbPublicationYears": 32,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 161,
+        "mlPapers": 1,
+        "publicationYears": 32,
+        "dbPublicationYears": 32,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "j/HVJagadish",
+      "name": "H. V. Jagadish",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 152,
+        "mlPapers": 2,
+        "publicationYears": 39,
+        "dbPublicationYears": 39,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 151,
+        "mlPapers": 2,
+        "publicationYears": 38,
+        "dbPublicationYears": 38,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers",
+        "dbPublicationYears",
+        "publicationYears"
+      ]
+    },
+    {
+      "pid": "l/HuaLu",
+      "name": "Hua Lu 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 32,
+        "mlPapers": 2,
+        "publicationYears": 14,
+        "dbPublicationYears": 13,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 31,
+        "mlPapers": 2,
+        "publicationYears": 14,
+        "dbPublicationYears": 13,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "l/LinXuemin",
+      "name": "Xuemin Lin 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 239,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 238,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "n/VivekRNarasayya",
+      "name": "Vivek R. Narasayya",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 74,
+        "mlPapers": 0,
+        "publicationYears": 30,
+        "dbPublicationYears": 30,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 73,
+        "mlPapers": 0,
+        "publicationYears": 30,
+        "dbPublicationYears": 30,
+        "serviceYears": 3,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    },
+    {
+      "pid": "t/YufeiTao",
+      "name": "Yufei Tao 0001",
+      "before": {
+        "label": "DB-focused",
+        "dbPapers": 87,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "after": {
+        "label": "DB-focused",
+        "dbPapers": 86,
+        "mlPapers": 2,
+        "publicationYears": 24,
+        "dbPublicationYears": 24,
+        "serviceYears": 4,
+        "basis": "publication_record",
+        "reason": "At least twice as many DB as ML conference papers.",
+        "included": true
+      },
+      "db_delta": -1,
+      "changed_fields": [
+        "dbPapers"
+      ]
+    }
+  ],
+  "added_profiles": [
+    {
+      "id": "",
+      "dblpPid": "29/5169",
+      "name": "Pablo Barceló",
+      "primaryAffiliation": "Institute for Mathematical and Computational Engineering, Pontifical Catholic University of Chile &#38; IMFD &#38; CENIA, Santiago, Chile",
+      "focus": {
+        "label": "Mixed",
+        "dbPapers": 17,
+        "mlPapers": 12,
+        "publicationYears": 18,
+        "dbPublicationYears": 14,
+        "serviceYears": 1,
+        "basis": "publication_balance",
+        "reason": "Neither DB nor ML papers outnumber the other two to one.",
+        "included": false
+      },
+      "db": {
+        "events": [
+          {
+            "venue": "SIGMOD",
+            "year": 2022,
+            "role": "pods_program_chair",
+            "rounds": [],
+            "cycles": [],
+            "affiliation": "Universidad Católica de Chile, Chile",
+            "rawAffiliations": [
+              "Universidad Católica de Chile, Chile"
+            ],
+            "displayAffiliations": [
+              "Universidad Católica de Chile, Chile"
+            ],
+            "displayAffiliation": "Universidad Católica de Chile, Chile",
+            "sourceUrl": "https://2022.sigmod.org/org_conference_officers.shtml",
+            "observationCount": 1,
+            "provenance": {
+              "sourceIds": [
+                "service_page:7cf163c223f2"
+              ],
+              "extractionMethodIds": [
+                "scrape_sigmod_reviewers"
+              ],
+              "identityMethodIds": [
+                "person_entity_resolution"
+              ],
+              "transformationMethodIds": [
+                "affiliation_display_cleaning"
+              ],
+              "affiliations": [
+                {
+                  "raw": "Universidad Católica de Chile, Chile",
+                  "display": "Universidad Católica de Chile, Chile",
+                  "changed": false,
+                  "reason": "unchanged"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "",
+      "dblpPid": "62/1373",
+      "name": "Adam J. Lee",
+      "primaryAffiliation": "University of Pittsburgh",
+      "focus": {
+        "label": "Limited evidence",
+        "dbPapers": 2,
+        "mlPapers": 0,
+        "publicationYears": 2,
+        "dbPublicationYears": 2,
+        "serviceYears": 1,
+        "basis": "insufficient_evidence",
+        "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+        "included": false
+      },
+      "db": {
+        "events": [
+          {
+            "venue": "SIGMOD",
+            "year": 2022,
+            "role": "pc_member",
+            "rounds": [],
+            "cycles": [],
+            "affiliation": "University of Pittsburgh",
+            "rawAffiliations": [
+              "University of Pittsburgh"
+            ],
+            "displayAffiliations": [
+              "University of Pittsburgh"
+            ],
+            "displayAffiliation": "University of Pittsburgh",
+            "sourceUrl": "https://2022.sigmod.org/org_sigmod_pc.shtml",
+            "observationCount": 1,
+            "provenance": {
+              "sourceIds": [
+                "service_page:6b940e32f5e3"
+              ],
+              "extractionMethodIds": [
+                "scrape_sigmod_reviewers"
+              ],
+              "identityMethodIds": [
+                "person_entity_resolution"
+              ],
+              "transformationMethodIds": [
+                "affiliation_display_cleaning"
+              ],
+              "affiliations": [
+                {
+                  "raw": "University of Pittsburgh",
+                  "display": "University of Pittsburgh",
+                  "changed": false,
+                  "reason": "unchanged"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Independent export comparison only; does not revalidate source identity evidence or publication ownership."
+}

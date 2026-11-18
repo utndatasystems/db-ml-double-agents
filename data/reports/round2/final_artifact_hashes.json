@@ -1,0 +1,30 @@
+{
+  "data/snapshot_sources.json": {
+    "bytes": 1096,
+    "sha256": "89585b497667b47fc287d842d431058b2a9a19522da2d3529b0b9a9a6fdf6019"
+  },
+  "data/entity_resolution.sqlite": {
+    "bytes": 11874304,
+    "sha256": "0866f4780fec64264ddbc5a4f9a43f661c025c3051a2f8839d3ca0bb4659f6fa"
+  },
+  "data/dblp_publications_for_db_people.csv": {
+    "bytes": 58613270,
+    "sha256": "fe18611e9c935989466e245710e85a89b7bcae3fde6c4f22730e0cad19bb3d37"
+  },
+  "data/dblp_publication_entities_for_db_people.csv": {
+    "bytes": 133911793,
+    "sha256": "06258c1a6f3e01190ae3d3fa93df24d18c986880de35a54d8dd830c5e9a8aa99"
+  },
+  "website/data/site_data.js": {
+    "bytes": 13732798,
+    "sha256": "4c2c548e91e744cfc964ab59ba283579d925b4dfef55a3b53eeaec33aa47b962"
+  },
+  "website/data/coverage_summary.json": {
+    "bytes": 97127,
+    "sha256": "553a386da76a3156a0dac8576f962253a94e7cca8ecd3128e62e102f1c988f0f"
+  },
+  "website/data/home_summary.json": {
+    "bytes": 13142,
+    "sha256": "ec51b48ac54963fd24cd1cef0a4d7485648717f083c4f9e8dd178f3d8b83837d"
+  }
+}

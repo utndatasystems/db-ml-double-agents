@@ -1,0 +1,13 @@
+{
+  "assetsPublishedBeforeManifests": true,
+  "assetCount": 1191,
+  "manifestOrder": [
+    "site_data.json",
+    "home_summary.json",
+    "matrix_stats.json",
+    "matrix_stats.js",
+    "coverage_summary.json",
+    "site_data.js"
+  ],
+  "previousAssetsRetained": true
+}

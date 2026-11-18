@@ -1,0 +1,2550 @@
+{
+  "schemaVersion": 6,
+  "people": [
+    {
+      "id": "name-matching",
+      "title": "Can we match the collected service names?",
+      "unit": "name groups",
+      "total": 1534,
+      "note": "Matched names are merged by DBLP identity before study selection. A match is a pipeline decision, not a guarantee of correctness.",
+      "groups": [
+        {
+          "id": "names-matched",
+          "label": "Matched to DBLP",
+          "count": 1289,
+          "color": "accent",
+          "description": "Names with an assigned DBLP identity.",
+          "unit": "name groups",
+          "scope": "Collected service names",
+          "detailUrl": "data/coverage/names-matched.699176d7316d.json"
+        },
+        {
+          "id": "names-ambiguous",
+          "label": "Ambiguous match",
+          "count": 183,
+          "color": "attention",
+          "description": "The available evidence does not identify one person confidently.",
+          "unit": "name groups",
+          "scope": "Collected service names",
+          "detailUrl": "data/coverage/names-ambiguous.d91648b787f2.json"
+        },
+        {
+          "id": "names-candidate",
+          "label": "Candidate needs verification",
+          "count": 32,
+          "color": "sage",
+          "description": "A possible name variant exists but has not met the matching rules.",
+          "unit": "name groups",
+          "scope": "Collected service names",
+          "detailUrl": "data/coverage/names-candidate.969b441dcc97.json"
+        },
+        {
+          "id": "names-unmatched",
+          "label": "No candidate found",
+          "count": 30,
+          "color": "muted",
+          "description": "No local DBLP candidate was found for the recorded name.",
+          "unit": "name groups",
+          "scope": "Collected service names",
+          "detailUrl": "data/coverage/names-unmatched.6978cd0fe35e.json"
+        }
+      ]
+    },
+    {
+      "id": "study-selection",
+      "title": "Which matched researchers enter the study?",
+      "unit": "DBLP identities",
+      "total": 1236,
+      "note": "Focus and PC-role exclusions are study rules. Limited evidence may reflect sparse records, incomplete matching or a different publication history.",
+      "groups": [
+        {
+          "id": "people-0",
+          "label": "DB-focused",
+          "count": 907,
+          "color": "accent",
+          "description": "Included through the publication rule or repeated-PC-service fallback.",
+          "unit": "DBLP identities",
+          "scope": "Qualifying PC members",
+          "detailUrl": "data/coverage/people-0.51d458d5cfcc.json"
+        },
+        {
+          "id": "people-1",
+          "label": "Limited evidence",
+          "count": 253,
+          "color": "sage",
+          "description": "Neither evidence route is met by the current records.",
+          "unit": "DBLP identities",
+          "scope": "Qualifying PC members",
+          "detailUrl": "data/coverage/people-1.76ce8a6618f9.json"
+        },
+        {
+          "id": "people-2",
+          "label": "ML-focused",
+          "count": 29,
+          "color": "green",
+          "description": "The publication balance is ML-focused under the selected-venue rule.",
+          "unit": "DBLP identities",
+          "scope": "Qualifying PC members",
+          "detailUrl": "data/coverage/people-2.f9418010aed1.json"
+        },
+        {
+          "id": "people-3",
+          "label": "Mixed",
+          "count": 38,
+          "color": "dark-green",
+          "description": "Neither field outnumbers the other two to one.",
+          "unit": "DBLP identities",
+          "scope": "Qualifying PC members",
+          "detailUrl": "data/coverage/people-3.708e6617b4eb.json"
+        },
+        {
+          "id": "people-4",
+          "label": "Outside PC scope",
+          "count": 9,
+          "color": "muted",
+          "description": "Service exists, but no qualifying PC role falls within the selected coverage.",
+          "unit": "DBLP identities",
+          "scope": "All matched researchers",
+          "detailUrl": "data/coverage/people-4.f7722b54281c.json"
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "id": "version-linking",
+      "title": "How are publication versions handled?",
+      "unit": "DBLP records",
+      "total": 102836,
+      "note": "Linked versions are retained as evidence but do not count as extra works. Coauthorship links are not extra publications.",
+      "groups": [
+        {
+          "id": "papers-canonical",
+          "label": "Work representatives",
+          "count": 93445,
+          "color": "accent",
+          "description": "The canonical records representing distinct works.",
+          "detailUrl": "data/coverage/papers-canonical.a1856338fda2.json"
+        },
+        {
+          "id": "papers-linked",
+          "label": "Linked versions",
+          "count": 9391,
+          "color": "sage",
+          "description": "Preprints or other versions linked to a canonical work.",
+          "detailUrl": "data/coverage/papers-linked.655a371f5672.json"
+        },
+        {
+          "id": "papers-unresolved",
+          "label": "No version decision",
+          "count": 0,
+          "color": "attention",
+          "description": "Source records absent from the version-resolution export. They may be incomplete or require investigation.",
+          "detailUrl": "data/coverage/papers-unresolved.d019f9c5cf72.json"
+        }
+      ]
+    },
+    {
+      "id": "publication-use",
+      "title": "Which works reach the publication charts?",
+      "unit": "distinct works",
+      "total": 93445,
+      "note": "Context publications stay available in researcher profiles. Works outside the cohort remain in the pipeline; they are not missing records.",
+      "groups": [
+        {
+          "id": "works-main",
+          "label": "Main ML: plotted",
+          "count": 598,
+          "color": "accent",
+          "description": "Main NeurIPS, ICML and ICLR works involving the included cohort.",
+          "detailUrl": "data/coverage/works-main.ae7cab3d452d.json"
+        },
+        {
+          "id": "works-context",
+          "label": "Cohort: context only",
+          "count": 71350,
+          "color": "sage",
+          "description": "Other works visible in profiles; they do not enter main ML publication charts.",
+          "detailUrl": "data/coverage/works-context.1aa5115485eb.json"
+        },
+        {
+          "id": "works-outside",
+          "label": "Outside study cohort",
+          "count": 21497,
+          "color": "muted",
+          "description": "Works with no author in the included study cohort.",
+          "detailUrl": "data/coverage/works-outside.5cc0ac841c1b.json"
+        }
+      ]
+    }
+  ],
+  "flows": {
+    "people": {
+      "id": "people",
+      "stages": [
+        "Service sources",
+        "Intake",
+        "Name grouping",
+        "Candidate lookup",
+        "DBLP matching",
+        "Identity merging",
+        "PC eligibility",
+        "Publication focus"
+      ],
+      "nodes": [
+        {
+          "id": "source-cidr_reviewers",
+          "label": "CIDR",
+          "count": 140,
+          "stage": 0,
+          "unit": "parsed service entries",
+          "description": "4 source documents across 4 years. One person may have several entries.",
+          "color": "sage",
+          "groupId": "flow-people-node-source-cidr_reviewers"
+        },
+        {
+          "id": "source-edbt_reviewers",
+          "label": "EDBT",
+          "count": 572,
+          "stage": 0,
+          "unit": "parsed service entries",
+          "description": "13 source documents across 4 years. One person may have several entries.",
+          "color": "sage",
+          "groupId": "flow-people-node-source-edbt_reviewers"
+        },
+        {
+          "id": "source-icde_reviewers",
+          "label": "ICDE",
+          "count": 1390,
+          "stage": 0,
+          "unit": "parsed service entries",
+          "description": "14 source documents across 4 years. One person may have several entries.",
+          "color": "sage",
+          "groupId": "flow-people-node-source-icde_reviewers"
+        },
+        {
+          "id": "source-sigmod_reviewers",
+          "label": "SIGMOD/PODS",
+          "count": 1449,
+          "stage": 0,
+          "unit": "parsed service entries",
+          "description": "20 source documents across 4 years. One person may have several entries.",
+          "color": "sage",
+          "groupId": "flow-people-node-source-sigmod_reviewers"
+        },
+        {
+          "id": "source-vldb_reviewers",
+          "label": "VLDB",
+          "count": 1563,
+          "stage": 0,
+          "unit": "parsed service entries",
+          "description": "12 source documents across 4 years. One person may have several entries.",
+          "color": "sage",
+          "groupId": "flow-people-node-source-vldb_reviewers"
+        },
+        {
+          "id": "intake",
+          "label": "Stored observations",
+          "count": 5114,
+          "stage": 1,
+          "unit": "service entries",
+          "description": "Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+          "color": "sage",
+          "groupId": "flow-people-node-intake"
+        },
+        {
+          "id": "name-groups",
+          "label": "Distinct name groups",
+          "count": 1534,
+          "stage": 2,
+          "unit": "normalized name groups",
+          "description": "Repeated service entries share one normalized name. Different names can still refer to the same person.",
+          "color": "sage",
+          "groupId": "flow-people-node-name-groups"
+        },
+        {
+          "id": "repeat-service",
+          "label": "Repeat service entries",
+          "count": 3580,
+          "stage": 2,
+          "unit": "additional service entries",
+          "description": "Collapsed when counting names. Service history is preserved; these are not rejected people.",
+          "color": "muted",
+          "groupId": "flow-people-node-repeat-service"
+        },
+        {
+          "id": "lookup-one",
+          "label": "One candidate",
+          "count": 1020,
+          "stage": 3,
+          "unit": "name groups",
+          "description": "One person profile was found. Its name and identity evidence still need to pass matching.",
+          "color": "sage",
+          "groupId": "flow-lookup-one"
+        },
+        {
+          "id": "lookup-several",
+          "label": "Several candidates",
+          "count": 473,
+          "stage": 3,
+          "unit": "name groups",
+          "description": "More than one profile was found. Name and affiliation evidence determine which can be used.",
+          "color": "sage",
+          "groupId": "flow-lookup-several",
+          "details": [
+            "12,332 distinct DBLP profiles appear across all candidate lists. These are possible matches, not study members."
+          ]
+        },
+        {
+          "id": "lookup-none",
+          "label": "No person candidate",
+          "count": 41,
+          "stage": 3,
+          "unit": "name groups",
+          "description": "No usable DBLP person profile was found. Some names match only a disambiguation page.",
+          "color": "attention",
+          "groupId": "flow-lookup-none"
+        },
+        {
+          "id": "matched",
+          "label": "Matched names",
+          "count": 1289,
+          "stage": 4,
+          "unit": "name groups",
+          "description": "Name groups assigned to a DBLP profile; matches can still need review.",
+          "color": "sage",
+          "groupId": "names-matched",
+          "details": [
+            "1 identity assignments have alternative affiliation evidence to review.",
+            "35 accepted name groups have sparse identity evidence and other candidates. These are review flags, not confirmed errors."
+          ],
+          "relatedGroupIds": [
+            "review-identities",
+            "review-sparse-identities"
+          ]
+        },
+        {
+          "id": "ambiguous",
+          "label": "Ambiguous names",
+          "count": 183,
+          "stage": 4,
+          "unit": "name groups",
+          "description": "The available evidence cannot identify one person confidently. This includes names with only a DBLP disambiguation page.",
+          "color": "attention",
+          "groupId": "names-ambiguous"
+        },
+        {
+          "id": "candidate",
+          "label": "Needs verification",
+          "count": 32,
+          "stage": 4,
+          "unit": "name groups",
+          "description": "A candidate exists but has not passed the identity rules.",
+          "color": "attention",
+          "groupId": "names-candidate"
+        },
+        {
+          "id": "unmatched",
+          "label": "No candidate",
+          "count": 30,
+          "stage": 4,
+          "unit": "name groups",
+          "description": "No local DBLP identity candidate was found.",
+          "color": "attention",
+          "groupId": "names-unmatched"
+        },
+        {
+          "id": "identities",
+          "label": "Unique researchers",
+          "count": 1236,
+          "stage": 5,
+          "unit": "DBLP identities",
+          "description": "All names assigned to the same DBLP PID count as one researcher.",
+          "color": "sage",
+          "groupId": "flow-people-node-identities"
+        },
+        {
+          "id": "aliases",
+          "label": "Additional name aliases",
+          "count": 53,
+          "stage": 5,
+          "unit": "name groups",
+          "description": "Merged into an existing DBLP identity, not rejected researchers.",
+          "color": "muted",
+          "groupId": "flow-people-node-aliases"
+        },
+        {
+          "id": "pc",
+          "label": "Qualifying PC members",
+          "count": 1227,
+          "stage": 6,
+          "unit": "researchers",
+          "description": "Selected DB venues, 2022–2025. Includes research, industry and demo PCs and program leadership; excludes Shadow PCs.",
+          "color": "sage",
+          "groupId": "flow-people-node-pc"
+        },
+        {
+          "id": "outside-pc",
+          "label": "Outside PC scope",
+          "count": 9,
+          "stage": 6,
+          "unit": "researchers",
+          "description": "Matched service records, but no qualifying PC role in the selected venues and years.",
+          "color": "muted",
+          "groupId": "people-4"
+        },
+        {
+          "id": "focus-0",
+          "label": "DB-focused",
+          "count": 907,
+          "stage": 7,
+          "unit": "researchers",
+          "description": "Included in the study. 66 qualify through repeated PC service.",
+          "color": "accent",
+          "groupId": "people-0"
+        },
+        {
+          "id": "focus-1",
+          "label": "Limited evidence",
+          "count": 253,
+          "stage": 7,
+          "unit": "researchers",
+          "description": "Outside the study cohort. Neither publication minimum nor repeated-service fallback is met.",
+          "color": "attention",
+          "groupId": "people-1",
+          "details": [
+            "58: No qualifying papers",
+            "23: DB:ML ratio below 2:1",
+            "66: Too little DB publication evidence",
+            "106: Only one PC service year",
+            "5 PC members could qualify if unverified DB papers prove to be full papers."
+          ],
+          "relatedGroupIds": [
+            "flow-limited-no-papers",
+            "flow-limited-ratio",
+            "flow-limited-db-evidence",
+            "flow-limited-pc-service",
+            "review-potential",
+            "review-length"
+          ]
+        },
+        {
+          "id": "focus-2",
+          "label": "ML-focused",
+          "count": 29,
+          "stage": 7,
+          "unit": "researchers",
+          "description": "Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+          "color": "green",
+          "groupId": "people-2"
+        },
+        {
+          "id": "focus-3",
+          "label": "Mixed",
+          "count": 38,
+          "stage": 7,
+          "unit": "researchers",
+          "description": "Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+          "color": "dark-green",
+          "groupId": "people-3"
+        }
+      ],
+      "links": [
+        {
+          "source": "source-cidr_reviewers",
+          "target": "intake",
+          "value": 140,
+          "kind": "retained",
+          "groupId": "flow-people-edge-source-cidr_reviewers--intake"
+        },
+        {
+          "source": "source-edbt_reviewers",
+          "target": "intake",
+          "value": 572,
+          "kind": "retained",
+          "groupId": "flow-people-edge-source-edbt_reviewers--intake"
+        },
+        {
+          "source": "source-icde_reviewers",
+          "target": "intake",
+          "value": 1390,
+          "kind": "retained",
+          "groupId": "flow-people-edge-source-icde_reviewers--intake"
+        },
+        {
+          "source": "source-sigmod_reviewers",
+          "target": "intake",
+          "value": 1449,
+          "kind": "retained",
+          "groupId": "flow-people-edge-source-sigmod_reviewers--intake"
+        },
+        {
+          "source": "source-vldb_reviewers",
+          "target": "intake",
+          "value": 1563,
+          "kind": "retained",
+          "groupId": "flow-people-edge-source-vldb_reviewers--intake"
+        },
+        {
+          "source": "intake",
+          "target": "name-groups",
+          "value": 1534,
+          "kind": "retained",
+          "groupId": "flow-people-edge-intake--name-groups"
+        },
+        {
+          "source": "intake",
+          "target": "repeat-service",
+          "value": 3580,
+          "kind": "merged",
+          "groupId": "flow-people-edge-intake--repeat-service"
+        },
+        {
+          "source": "name-groups",
+          "target": "lookup-one",
+          "value": 1020,
+          "kind": "retained",
+          "groupId": "flow-people-edge-name-groups--lookup-one"
+        },
+        {
+          "source": "lookup-one",
+          "target": "matched",
+          "value": 981,
+          "kind": "retained",
+          "groupId": "flow-people-edge-lookup-one--matched"
+        },
+        {
+          "source": "lookup-one",
+          "target": "candidate",
+          "value": 32,
+          "kind": "review",
+          "groupId": "flow-people-edge-lookup-one--candidate"
+        },
+        {
+          "source": "lookup-one",
+          "target": "ambiguous",
+          "value": 7,
+          "kind": "review",
+          "groupId": "flow-people-edge-lookup-one--ambiguous"
+        },
+        {
+          "source": "name-groups",
+          "target": "lookup-several",
+          "value": 473,
+          "kind": "retained",
+          "groupId": "flow-people-edge-name-groups--lookup-several"
+        },
+        {
+          "source": "lookup-several",
+          "target": "matched",
+          "value": 308,
+          "kind": "retained",
+          "groupId": "flow-people-edge-lookup-several--matched"
+        },
+        {
+          "source": "lookup-several",
+          "target": "ambiguous",
+          "value": 165,
+          "kind": "review",
+          "groupId": "flow-people-edge-lookup-several--ambiguous"
+        },
+        {
+          "source": "name-groups",
+          "target": "lookup-none",
+          "value": 41,
+          "kind": "review",
+          "groupId": "flow-people-edge-name-groups--lookup-none"
+        },
+        {
+          "source": "lookup-none",
+          "target": "unmatched",
+          "value": 30,
+          "kind": "review",
+          "groupId": "flow-people-edge-lookup-none--unmatched"
+        },
+        {
+          "source": "lookup-none",
+          "target": "ambiguous",
+          "value": 11,
+          "kind": "review",
+          "groupId": "flow-people-edge-lookup-none--ambiguous"
+        },
+        {
+          "source": "matched",
+          "target": "identities",
+          "value": 1236,
+          "kind": "retained",
+          "groupId": "flow-people-edge-matched--identities"
+        },
+        {
+          "source": "matched",
+          "target": "aliases",
+          "value": 53,
+          "kind": "merged",
+          "groupId": "flow-people-edge-matched--aliases"
+        },
+        {
+          "source": "identities",
+          "target": "pc",
+          "value": 1227,
+          "kind": "retained",
+          "groupId": "flow-people-edge-identities--pc"
+        },
+        {
+          "source": "identities",
+          "target": "outside-pc",
+          "value": 9,
+          "kind": "excluded",
+          "groupId": "flow-people-edge-identities--outside-pc"
+        },
+        {
+          "source": "pc",
+          "target": "focus-0",
+          "value": 907,
+          "kind": "retained",
+          "groupId": "flow-people-edge-pc--focus-0"
+        },
+        {
+          "source": "pc",
+          "target": "focus-1",
+          "value": 253,
+          "kind": "excluded",
+          "groupId": "flow-people-edge-pc--focus-1"
+        },
+        {
+          "source": "pc",
+          "target": "focus-2",
+          "value": 29,
+          "kind": "excluded",
+          "groupId": "flow-people-edge-pc--focus-2"
+        },
+        {
+          "source": "pc",
+          "target": "focus-3",
+          "value": 38,
+          "kind": "excluded",
+          "groupId": "flow-people-edge-pc--focus-3"
+        }
+      ],
+      "notes": [
+        "Repeat entries and aliases are merged. Unmatched names need review; PC scope and publication focus are study rules.",
+        "Counts start at saved source entries. Names missed by the scrapers are not measured."
+      ],
+      "sources": [
+        {
+          "venue": "CIDR",
+          "year": 2022,
+          "pages": 1,
+          "entries": 39,
+          "urls": [
+            "https://www.cidrdb.org/cidr2022/officers.html"
+          ]
+        },
+        {
+          "venue": "CIDR",
+          "year": 2023,
+          "pages": 1,
+          "entries": 33,
+          "urls": [
+            "https://www.cidrdb.org/cidr2023/officers.html"
+          ]
+        },
+        {
+          "venue": "CIDR",
+          "year": 2024,
+          "pages": 1,
+          "entries": 37,
+          "urls": [
+            "https://www.cidrdb.org/cidr2024/officers.html"
+          ]
+        },
+        {
+          "venue": "CIDR",
+          "year": 2025,
+          "pages": 1,
+          "entries": 31,
+          "urls": [
+            "https://www.cidrdb.org/cidr2025/officers.html"
+          ]
+        },
+        {
+          "venue": "EDBT",
+          "year": 2022,
+          "pages": 2,
+          "entries": 77,
+          "urls": [
+            "https://conferences.inf.ed.ac.uk/edbticdt2022/contents/EDBT_Committee.html",
+            "https://conferences.inf.ed.ac.uk/edbticdt2022/contents/conference_officers.html"
+          ]
+        },
+        {
+          "venue": "EDBT",
+          "year": 2023,
+          "pages": 3,
+          "entries": 155,
+          "urls": [
+            "http://edbticdt2023.cs.uoi.gr/contents/EDBT_Committee.html",
+            "http://edbticdt2023.cs.uoi.gr/contents/call_for_demos.html",
+            "http://edbticdt2023.cs.uoi.gr/contents/conference_officers.html"
+          ]
+        },
+        {
+          "venue": "EDBT",
+          "year": 2024,
+          "pages": 4,
+          "entries": 162,
+          "urls": [
+            "https://dastlab.github.io/edbticdt2024/contents/EDBT_Committee.html",
+            "https://dastlab.github.io/edbticdt2024/contents/call_for_IAP.html",
+            "https://dastlab.github.io/edbticdt2024/contents/call_for_demos.html",
+            "https://dastlab.github.io/edbticdt2024/contents/conference_officers.html"
+          ]
+        },
+        {
+          "venue": "EDBT",
+          "year": 2025,
+          "pages": 4,
+          "entries": 178,
+          "urls": [
+            "https://edbticdt2025.upc.edu/contents/EDBT_Committee.html",
+            "https://edbticdt2025.upc.edu/contents/call_for_IAP.html",
+            "https://edbticdt2025.upc.edu/contents/call_for_demos.html",
+            "https://edbticdt2025.upc.edu/contents/conference_officers.html"
+          ]
+        },
+        {
+          "venue": "ICDE",
+          "year": 2022,
+          "pages": 4,
+          "entries": 333,
+          "urls": [
+            "https://icde2022.ieeecomputer.my/demonstration-track-committee/",
+            "https://icde2022.ieeecomputer.my/industry-track-committee/",
+            "https://icde2022.ieeecomputer.my/organizing-committee/",
+            "https://icde2022.ieeecomputer.my/research-program-committee/"
+          ]
+        },
+        {
+          "venue": "ICDE",
+          "year": 2023,
+          "pages": 2,
+          "entries": 209,
+          "urls": [
+            "https://icde2023.ics.uci.edu/organizing-committee/",
+            "https://icde2023.ics.uci.edu/research-program-committee/"
+          ]
+        },
+        {
+          "venue": "ICDE",
+          "year": 2024,
+          "pages": 4,
+          "entries": 326,
+          "urls": [
+            "https://icde2024.github.io/CFP_demos.html",
+            "https://icde2024.github.io/CFP_industry.html",
+            "https://icde2024.github.io/CFP_research.html",
+            "https://icde2024.github.io/conference_officers.html"
+          ]
+        },
+        {
+          "venue": "ICDE",
+          "year": 2025,
+          "pages": 4,
+          "entries": 522,
+          "urls": [
+            "https://ieee-icde.org/2025/call-for-demonstrations/",
+            "https://ieee-icde.org/2025/call-for-industry-and-application/",
+            "https://ieee-icde.org/2025/committees/",
+            "https://ieee-icde.org/2025/program-committees/"
+          ]
+        },
+        {
+          "venue": "SIGMOD",
+          "year": 2022,
+          "pages": 5,
+          "entries": 315,
+          "urls": [
+            "https://2022.sigmod.org/org_conference_officers.shtml",
+            "https://2022.sigmod.org/org_pods_pc.shtml",
+            "https://2022.sigmod.org/org_sigmod_demo_pc.shtml",
+            "https://2022.sigmod.org/org_sigmod_industry_pc.shtml",
+            "https://2022.sigmod.org/org_sigmod_pc.shtml"
+          ]
+        },
+        {
+          "venue": "SIGMOD",
+          "year": 2023,
+          "pages": 5,
+          "entries": 360,
+          "urls": [
+            "https://2023.sigmod.org/org_conference_officers.shtml",
+            "https://2023.sigmod.org/org_pods_pc.shtml",
+            "https://2023.sigmod.org/org_sigmod_demo_pc.shtml",
+            "https://2023.sigmod.org/org_sigmod_industry_pc.shtml",
+            "https://2023.sigmod.org/org_sigmod_pc.shtml"
+          ]
+        },
+        {
+          "venue": "SIGMOD",
+          "year": 2024,
+          "pages": 5,
+          "entries": 349,
+          "urls": [
+            "https://2024.sigmod.org/org_conference_officers.shtml",
+            "https://2024.sigmod.org/org_demo_pc.shtml",
+            "https://2024.sigmod.org/org_industrial_pc.shtml",
+            "https://2024.sigmod.org/org_pods_pc.shtml",
+            "https://2024.sigmod.org/org_sigmod_pc.shtml"
+          ]
+        },
+        {
+          "venue": "SIGMOD",
+          "year": 2025,
+          "pages": 5,
+          "entries": 425,
+          "urls": [
+            "https://2025.sigmod.org/org_conference_officers.shtml",
+            "https://2025.sigmod.org/org_demo_pc.shtml",
+            "https://2025.sigmod.org/org_industrial_pc.shtml",
+            "https://2025.sigmod.org/org_pods_pc.shtml",
+            "https://2025.sigmod.org/org_sigmod_pc.shtml"
+          ]
+        },
+        {
+          "venue": "VLDB",
+          "year": 2022,
+          "pages": 3,
+          "entries": 346,
+          "urls": [
+            "https://www.vldb.org/2022/?officers=",
+            "https://www.vldb.org/pvldb/vol15/FrontMatterVol15No12.pdf",
+            "https://www.vldb.org/pvldb/volumes/15/review-board"
+          ]
+        },
+        {
+          "venue": "VLDB",
+          "year": 2023,
+          "pages": 3,
+          "entries": 361,
+          "urls": [
+            "https://www.vldb.org/2023/?officers=",
+            "https://www.vldb.org/pvldb/vol16/FrontMatterVol16No12.pdf",
+            "https://www.vldb.org/pvldb/volumes/16/review-board"
+          ]
+        },
+        {
+          "venue": "VLDB",
+          "year": 2024,
+          "pages": 3,
+          "entries": 355,
+          "urls": [
+            "https://www.vldb.org/2024/?officers=",
+            "https://www.vldb.org/pvldb/vol17/FrontMatterVol17No12.pdf",
+            "https://www.vldb.org/pvldb/volumes/17/review-board"
+          ]
+        },
+        {
+          "venue": "VLDB",
+          "year": 2025,
+          "pages": 3,
+          "entries": 501,
+          "urls": [
+            "https://www.vldb.org/2025/?officers=",
+            "https://www.vldb.org/pvldb/vol18/FrontMatterVol18No12.pdf",
+            "https://www.vldb.org/pvldb/volumes/18/review-board"
+          ]
+        }
+      ],
+      "candidateLookup": {
+        "nameGroups": 1534,
+        "distinctProfiles": 12332,
+        "nameProfilePairs": 12475
+      },
+      "checks": {
+        "nameRepairs": 5,
+        "technicalDuplicates": 0,
+        "invalidNames": 0,
+        "outsideSeedRoles": 0
+      }
+    },
+    "papers": {
+      "id": "papers",
+      "stages": [
+        "Author matching",
+        "Accepted links",
+        "Record grouping",
+        "Version linking",
+        "Website input",
+        "Study authors",
+        "Analysis use"
+      ],
+      "nodes": [
+        {
+          "id": "candidates",
+          "label": "Candidate author links",
+          "count": 141056,
+          "stage": 0,
+          "unit": "researcher–record links",
+          "description": "Candidate links staged while scanning DBLP. One record may involve several target researchers.",
+          "color": "sage",
+          "groupId": "flow-papers-node-candidates"
+        },
+        {
+          "id": "accepted",
+          "label": "Accepted author links",
+          "count": 141056,
+          "stage": 1,
+          "unit": "researcher–record links",
+          "description": "Author PID, verified ORCID, globally unique author signature or a reviewed paper-specific assignment passes the matching rules.",
+          "color": "sage",
+          "groupId": "flow-papers-node-accepted"
+        },
+        {
+          "id": "records",
+          "label": "Unique DBLP records",
+          "count": 102836,
+          "stage": 2,
+          "unit": "DBLP records",
+          "description": "The same publication record is counted once across its researcher links.",
+          "color": "sage",
+          "groupId": "flow-papers-node-records"
+        },
+        {
+          "id": "coauthors",
+          "label": "Additional author links",
+          "count": 38220,
+          "stage": 2,
+          "unit": "researcher–record links",
+          "description": "Retained coauthor links to records already counted once. This is a change of counting unit, not lost authorship evidence.",
+          "color": "muted",
+          "groupId": "flow-papers-node-coauthors"
+        },
+        {
+          "id": "works",
+          "label": "Distinct works",
+          "count": 93445,
+          "stage": 3,
+          "unit": "deduplicated works",
+          "description": "A preprint and its linked published version count as one work.",
+          "color": "sage",
+          "groupId": "flow-papers-node-works"
+        },
+        {
+          "id": "versions",
+          "label": "Linked versions",
+          "count": 9391,
+          "stage": 3,
+          "unit": "additional DBLP records",
+          "description": "Kept as version evidence, not counted as additional works.",
+          "color": "muted",
+          "groupId": "papers-linked"
+        },
+        {
+          "id": "website",
+          "label": "Website works",
+          "count": 93445,
+          "stage": 4,
+          "unit": "distinct works",
+          "description": "Works retained after required title, year and key validation for matched researchers.",
+          "color": "sage",
+          "groupId": "flow-papers-node-website"
+        },
+        {
+          "id": "cohort",
+          "label": "Study-cohort works",
+          "count": 71948,
+          "stage": 5,
+          "unit": "distinct works",
+          "description": "At least one author is a DB-focused qualifying PC member.",
+          "color": "sage",
+          "groupId": "flow-papers-node-cohort"
+        },
+        {
+          "id": "outside",
+          "label": "Outside study cohort",
+          "count": 21497,
+          "stage": 5,
+          "unit": "distinct works",
+          "description": "No included author. These publications are retained for population classification and excluded-profile context.",
+          "color": "muted",
+          "groupId": "works-outside",
+          "relatedGroupIds": [
+            "flow-pending-categories-outside"
+          ],
+          "details": [
+            "1 retained works have an open display-category review; this does not affect DB-focus eligibility."
+          ]
+        },
+        {
+          "id": "main",
+          "label": "ML Publications",
+          "count": 598,
+          "stage": 6,
+          "unit": "distinct works",
+          "description": "Main-conference works at NeurIPS, ICML or ICLR involving the study cohort.",
+          "color": "accent",
+          "groupId": "works-main"
+        },
+        {
+          "id": "db",
+          "label": "DB-focus evidence",
+          "count": 10729,
+          "stage": 6,
+          "unit": "distinct works",
+          "description": "Full selected DB conference works used by the DB-focused classifier. Also available in profile context.",
+          "color": "database",
+          "groupId": "flow-works-db"
+        },
+        {
+          "id": "uncertain",
+          "label": "Unverified DB evidence",
+          "count": 462,
+          "stage": 6,
+          "unit": "distinct works",
+          "description": "Retained in profiles, excluded from DB-focus evidence: full-paper length or snapshot metadata is unverified.",
+          "color": "attention",
+          "groupId": "flow-works-uncertain",
+          "relatedGroupIds": [
+            "flow-unverified-db-cohort",
+            "review-potential"
+          ],
+          "details": [
+            "462 retained study-cohort works need DB evidence verification.",
+            "5 other PC members could qualify in the broader all-unverified-papers scenario; they are outside this branch."
+          ]
+        },
+        {
+          "id": "context",
+          "label": "Other profile works",
+          "count": 60159,
+          "stage": 6,
+          "unit": "distinct works",
+          "description": "Other retained publications. Workshops, journals and other context are not missing papers.",
+          "color": "sage",
+          "groupId": "flow-works-context",
+          "relatedGroupIds": [
+            "flow-context-database",
+            "flow-context-other_conference",
+            "flow-context-journal",
+            "flow-context-workshop",
+            "flow-context-preprint",
+            "flow-context-other",
+            "flow-context-conflict",
+            "flow-pending-categories-context"
+          ],
+          "details": [
+            "25,202: Other conference",
+            "15,735: Journal",
+            "6,109: Workshop",
+            "3 retained works have an open display-category review; this does not affect DB-focus eligibility."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "source": "candidates",
+          "target": "accepted",
+          "value": 141056,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-candidates--accepted"
+        },
+        {
+          "source": "accepted",
+          "target": "records",
+          "value": 102836,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-accepted--records"
+        },
+        {
+          "source": "accepted",
+          "target": "coauthors",
+          "value": 38220,
+          "kind": "merged",
+          "groupId": "flow-papers-edge-accepted--coauthors"
+        },
+        {
+          "source": "records",
+          "target": "works",
+          "value": 93445,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-records--works"
+        },
+        {
+          "source": "records",
+          "target": "versions",
+          "value": 9391,
+          "kind": "merged",
+          "groupId": "flow-papers-edge-records--versions"
+        },
+        {
+          "source": "works",
+          "target": "website",
+          "value": 93445,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-works--website"
+        },
+        {
+          "source": "website",
+          "target": "cohort",
+          "value": 71948,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-website--cohort"
+        },
+        {
+          "source": "website",
+          "target": "outside",
+          "value": 21497,
+          "kind": "excluded",
+          "groupId": "flow-papers-edge-website--outside"
+        },
+        {
+          "source": "cohort",
+          "target": "main",
+          "value": 598,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-cohort--main"
+        },
+        {
+          "source": "cohort",
+          "target": "db",
+          "value": 10729,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-cohort--db"
+        },
+        {
+          "source": "cohort",
+          "target": "uncertain",
+          "value": 462,
+          "kind": "review",
+          "groupId": "flow-papers-edge-cohort--uncertain"
+        },
+        {
+          "source": "cohort",
+          "target": "context",
+          "value": 60159,
+          "kind": "retained",
+          "groupId": "flow-papers-edge-cohort--context"
+        }
+      ],
+      "notes": [
+        "Counting units change from author links to DBLP records to distinct works. Coauthor links and linked versions remain available; they are not lost papers.",
+        "Outside-cohort works and profile context are retained. Unverified DB evidence and open display-category reviews are separate checks."
+      ],
+      "snapshot": {
+        "id": "dblp-2026-11-01",
+        "xmlRecordsScanned": 13073341,
+        "verified": true
+      },
+      "searchPopulation": {
+        "searched": 1236,
+        "withPublications": 1236,
+        "withoutPublications": 0
+      },
+      "checks": {
+        "authorAmbiguity": 0,
+        "invalidWebsiteWorks": 0,
+        "unresolvedRecords": 0
+      }
+    },
+    "groups": [
+      {
+        "id": "flow-lookup-one",
+        "label": "One candidate",
+        "count": 1020,
+        "color": "sage",
+        "description": "One person profile was found. Its name and identity evidence still need to pass matching.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "detailUrl": "data/coverage/flow-lookup-one.e173efb0d7f7.json"
+      },
+      {
+        "id": "flow-lookup-several",
+        "label": "Several candidates",
+        "count": 473,
+        "color": "sage",
+        "description": "More than one profile was found. Name and affiliation evidence determine which can be used.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "detailUrl": "data/coverage/flow-lookup-several.5e0f51193f78.json"
+      },
+      {
+        "id": "flow-lookup-none",
+        "label": "No person candidate",
+        "count": 41,
+        "color": "attention",
+        "description": "No usable DBLP person profile was found. Some names match only a disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "detailUrl": "data/coverage/flow-lookup-none.3d9d01dd33d7.json"
+      },
+      {
+        "id": "flow-works-db",
+        "label": "DB-focus evidence",
+        "count": 10729,
+        "color": "database",
+        "description": "Full selected DB conference works used by the DB-focused classifier. Also available in profile context.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-works-db.db689224da74.json"
+      },
+      {
+        "id": "flow-works-uncertain",
+        "label": "Unverified DB evidence",
+        "count": 462,
+        "color": "attention",
+        "description": "Retained in profiles, excluded from DB-focus evidence: full-paper length or snapshot metadata is unverified.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-works-uncertain.83ea32a30434.json"
+      },
+      {
+        "id": "flow-works-context",
+        "label": "Other profile works",
+        "count": 60159,
+        "color": "sage",
+        "description": "Other retained publications. Workshops, journals and other context are not missing papers.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-works-context.0ebe86c16df9.json"
+      },
+      {
+        "id": "flow-limited-no-papers",
+        "label": "No qualifying papers",
+        "count": 58,
+        "color": "attention",
+        "description": "No qualifying papers. These PC members remain outside the study.",
+        "unit": "people",
+        "scope": "Qualifying PC members",
+        "detailUrl": "data/coverage/flow-limited-no-papers.41b0cc0821eb.json"
+      },
+      {
+        "id": "flow-limited-ratio",
+        "label": "DB:ML ratio below 2:1",
+        "count": 23,
+        "color": "attention",
+        "description": "DB:ML ratio below 2:1. These PC members remain outside the study.",
+        "unit": "people",
+        "scope": "Qualifying PC members",
+        "detailUrl": "data/coverage/flow-limited-ratio.96bbb11e2107.json"
+      },
+      {
+        "id": "flow-limited-db-evidence",
+        "label": "Too little DB publication evidence",
+        "count": 66,
+        "color": "attention",
+        "description": "Too little DB publication evidence. These PC members remain outside the study.",
+        "unit": "people",
+        "scope": "Qualifying PC members",
+        "detailUrl": "data/coverage/flow-limited-db-evidence.a767e665f34c.json"
+      },
+      {
+        "id": "flow-limited-pc-service",
+        "label": "Only one PC service year",
+        "count": 106,
+        "color": "attention",
+        "description": "Only one PC service year. These PC members remain outside the study.",
+        "unit": "people",
+        "scope": "Qualifying PC members",
+        "detailUrl": "data/coverage/flow-limited-pc-service.c2c0c1959019.json"
+      },
+      {
+        "id": "flow-context-database",
+        "label": "Database",
+        "count": 5670,
+        "color": "sage",
+        "description": "Retained profile context: Database.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-context-database.a6c4a14f05cf.json"
+      },
+      {
+        "id": "flow-context-other_conference",
+        "label": "Other conference",
+        "count": 25202,
+        "color": "sage",
+        "description": "Retained profile context: Other conference.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/classes-cohort-other_conference.31121a694b9d.json"
+      },
+      {
+        "id": "flow-context-journal",
+        "label": "Journal",
+        "count": 15735,
+        "color": "sage",
+        "description": "Retained profile context: Journal.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-context-journal.5c809e2283f7.json"
+      },
+      {
+        "id": "flow-context-workshop",
+        "label": "Workshop",
+        "count": 6109,
+        "color": "sage",
+        "description": "Retained profile context: Workshop.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/classes-cohort-workshop.d36e9e0c79fc.json"
+      },
+      {
+        "id": "flow-context-preprint",
+        "label": "Preprint",
+        "count": 5862,
+        "color": "sage",
+        "description": "Retained profile context: Preprint.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/classes-cohort-preprint.a4dfecbcd873.json"
+      },
+      {
+        "id": "flow-context-other",
+        "label": "Other records",
+        "count": 1580,
+        "color": "sage",
+        "description": "Retained profile context: Other records.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/classes-cohort-other.5130a0467e8a.json"
+      },
+      {
+        "id": "flow-context-conflict",
+        "label": "Conflicting categories",
+        "count": 1,
+        "color": "sage",
+        "description": "Retained profile context: Conflicting categories.",
+        "unit": "works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/classes-cohort-conflict.812e21445606.json"
+      },
+      {
+        "id": "flow-unverified-db-cohort",
+        "label": "Study cohort: unverified DB works",
+        "count": 462,
+        "color": "attention",
+        "description": "Exact work-level list for this node. These publications remain in profiles; length or snapshot evidence is insufficient for DB-focus classification.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-unverified-db-cohort.b06e98f40264.json"
+      },
+      {
+        "id": "flow-pending-categories-context",
+        "label": "Study cohort: pending display categories",
+        "count": 3,
+        "color": "attention",
+        "description": "Open manual-review questions about publication categories. Publications are retained; these are not unverified DB-focus evidence.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "detailUrl": "data/coverage/flow-pending-categories-context.e197135ad608.json"
+      },
+      {
+        "id": "flow-pending-categories-outside",
+        "label": "Outside study cohort: pending display categories",
+        "count": 1,
+        "color": "attention",
+        "description": "Open manual-review questions about publication categories. Publications are retained; these are not unverified DB-focus evidence.",
+        "unit": "distinct works",
+        "scope": "Outside study cohort",
+        "detailUrl": "data/coverage/flow-pending-categories-outside.6b80d1c762f6.json"
+      },
+      {
+        "id": "flow-people-node-source-cidr_reviewers",
+        "label": "CIDR",
+        "count": 140,
+        "color": "sage",
+        "description": "4 source documents across 4 years. One person may have several entries.",
+        "unit": "parsed service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources",
+        "detailUrl": "data/coverage/flow-people-node-source-cidr_reviewers.2ab9809a5036.json"
+      },
+      {
+        "id": "flow-people-node-source-edbt_reviewers",
+        "label": "EDBT",
+        "count": 572,
+        "color": "sage",
+        "description": "13 source documents across 4 years. One person may have several entries.",
+        "unit": "parsed service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources",
+        "detailUrl": "data/coverage/flow-people-node-source-edbt_reviewers.183585040b73.json"
+      },
+      {
+        "id": "flow-people-node-source-icde_reviewers",
+        "label": "ICDE",
+        "count": 1390,
+        "color": "sage",
+        "description": "14 source documents across 4 years. One person may have several entries.",
+        "unit": "parsed service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources",
+        "detailUrl": "data/coverage/flow-people-node-source-icde_reviewers.b3df2279dd34.json"
+      },
+      {
+        "id": "flow-people-node-source-sigmod_reviewers",
+        "label": "SIGMOD/PODS",
+        "count": 1449,
+        "color": "sage",
+        "description": "20 source documents across 4 years. One person may have several entries.",
+        "unit": "parsed service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources",
+        "detailUrl": "data/coverage/flow-people-node-source-sigmod_reviewers.d3361e5e8496.json"
+      },
+      {
+        "id": "flow-people-node-source-vldb_reviewers",
+        "label": "VLDB",
+        "count": 1563,
+        "color": "sage",
+        "description": "12 source documents across 4 years. One person may have several entries.",
+        "unit": "parsed service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources",
+        "detailUrl": "data/coverage/flow-people-node-source-vldb_reviewers.db942c61c2a0.json"
+      },
+      {
+        "id": "flow-people-node-intake",
+        "label": "Stored observations",
+        "count": 5114,
+        "color": "sage",
+        "description": "Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Intake",
+        "detailUrl": "data/coverage/flow-people-node-intake.4fc20039f904.json"
+      },
+      {
+        "id": "flow-people-node-name-groups",
+        "label": "Distinct name groups",
+        "count": 1534,
+        "color": "sage",
+        "description": "Repeated service entries share one normalized name. Different names can still refer to the same person.",
+        "unit": "normalized name groups",
+        "scope": "Collected service records",
+        "stage": "Name grouping",
+        "detailUrl": "data/coverage/flow-people-node-name-groups.80e965428e36.json"
+      },
+      {
+        "id": "flow-people-node-repeat-service",
+        "label": "Repeat service entries",
+        "count": 3580,
+        "color": "muted",
+        "description": "Collapsed when counting names. Service history is preserved; these are not rejected people.",
+        "unit": "additional service entries",
+        "scope": "Collected service records",
+        "stage": "Name grouping",
+        "detailUrl": "data/coverage/flow-people-node-repeat-service.a0fa087a4067.json"
+      },
+      {
+        "id": "flow-lookup-one",
+        "label": "One candidate",
+        "count": 1020,
+        "color": "sage",
+        "description": "One person profile was found. Its name and identity evidence still need to pass matching.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-one.e173efb0d7f7.json"
+      },
+      {
+        "id": "flow-lookup-several",
+        "label": "Several candidates",
+        "count": 473,
+        "color": "sage",
+        "description": "More than one profile was found. Name and affiliation evidence determine which can be used.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-several.5e0f51193f78.json"
+      },
+      {
+        "id": "flow-lookup-none",
+        "label": "No person candidate",
+        "count": 41,
+        "color": "attention",
+        "description": "No usable DBLP person profile was found. Some names match only a disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-none.3d9d01dd33d7.json"
+      },
+      {
+        "id": "names-matched",
+        "label": "Matched to DBLP",
+        "count": 1289,
+        "color": "sage",
+        "description": "Name groups assigned to a DBLP profile; matches can still need review.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "DBLP matching",
+        "detailUrl": "data/coverage/names-matched.699176d7316d.json"
+      },
+      {
+        "id": "names-ambiguous",
+        "label": "Ambiguous match",
+        "count": 183,
+        "color": "attention",
+        "description": "The available evidence cannot identify one person confidently. This includes names with only a DBLP disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "DBLP matching",
+        "detailUrl": "data/coverage/names-ambiguous.d91648b787f2.json"
+      },
+      {
+        "id": "names-candidate",
+        "label": "Candidate needs verification",
+        "count": 32,
+        "color": "attention",
+        "description": "A candidate exists but has not passed the identity rules.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "DBLP matching",
+        "detailUrl": "data/coverage/names-candidate.969b441dcc97.json"
+      },
+      {
+        "id": "names-unmatched",
+        "label": "No candidate found",
+        "count": 30,
+        "color": "attention",
+        "description": "No local DBLP identity candidate was found.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "DBLP matching",
+        "detailUrl": "data/coverage/names-unmatched.6978cd0fe35e.json"
+      },
+      {
+        "id": "flow-people-node-identities",
+        "label": "Unique researchers",
+        "count": 1236,
+        "color": "sage",
+        "description": "All names assigned to the same DBLP PID count as one researcher.",
+        "unit": "DBLP identities",
+        "scope": "All matched researchers",
+        "stage": "Identity merging",
+        "detailUrl": "data/coverage/flow-people-node-identities.c59306cec084.json"
+      },
+      {
+        "id": "flow-people-node-aliases",
+        "label": "Additional name aliases",
+        "count": 53,
+        "color": "muted",
+        "description": "Merged into an existing DBLP identity, not rejected researchers.",
+        "unit": "name groups",
+        "scope": "All matched researchers",
+        "stage": "Identity merging",
+        "detailUrl": "data/coverage/flow-people-node-aliases.c52eae206f34.json"
+      },
+      {
+        "id": "flow-people-node-pc",
+        "label": "Qualifying PC members",
+        "count": 1227,
+        "color": "sage",
+        "description": "Selected DB venues, 2022–2025. Includes research, industry and demo PCs and program leadership; excludes Shadow PCs.",
+        "unit": "researchers",
+        "scope": "All matched researchers",
+        "stage": "PC eligibility",
+        "detailUrl": "data/coverage/flow-people-node-pc.b214b463c9f3.json"
+      },
+      {
+        "id": "people-4",
+        "label": "Outside PC scope",
+        "count": 9,
+        "color": "muted",
+        "description": "Matched service records, but no qualifying PC role in the selected venues and years.",
+        "unit": "researchers",
+        "scope": "All matched researchers",
+        "stage": "PC eligibility",
+        "detailUrl": "data/coverage/people-4.f7722b54281c.json"
+      },
+      {
+        "id": "people-0",
+        "label": "DB-focused",
+        "count": 907,
+        "color": "accent",
+        "description": "Included in the study. 66 qualify through repeated PC service.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "Publication focus",
+        "detailUrl": "data/coverage/people-0.51d458d5cfcc.json"
+      },
+      {
+        "id": "people-1",
+        "label": "Limited evidence",
+        "count": 253,
+        "color": "attention",
+        "description": "Outside the study cohort. Neither publication minimum nor repeated-service fallback is met.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "Publication focus",
+        "detailUrl": "data/coverage/people-1.76ce8a6618f9.json"
+      },
+      {
+        "id": "people-2",
+        "label": "ML-focused",
+        "count": 29,
+        "color": "green",
+        "description": "Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "Publication focus",
+        "detailUrl": "data/coverage/people-2.f9418010aed1.json"
+      },
+      {
+        "id": "people-3",
+        "label": "Mixed",
+        "count": 38,
+        "color": "dark-green",
+        "description": "Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "Publication focus",
+        "detailUrl": "data/coverage/people-3.708e6617b4eb.json"
+      },
+      {
+        "id": "flow-people-edge-source-cidr_reviewers--intake",
+        "label": "CIDR → Stored observations",
+        "count": 140,
+        "color": "sage",
+        "description": "Records flowing from CIDR to Stored observations. Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources → Intake",
+        "detailUrl": "data/coverage/flow-people-node-source-cidr_reviewers.2ab9809a5036.json"
+      },
+      {
+        "id": "flow-people-edge-source-edbt_reviewers--intake",
+        "label": "EDBT → Stored observations",
+        "count": 572,
+        "color": "sage",
+        "description": "Records flowing from EDBT to Stored observations. Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources → Intake",
+        "detailUrl": "data/coverage/flow-people-node-source-edbt_reviewers.183585040b73.json"
+      },
+      {
+        "id": "flow-people-edge-source-icde_reviewers--intake",
+        "label": "ICDE → Stored observations",
+        "count": 1390,
+        "color": "sage",
+        "description": "Records flowing from ICDE to Stored observations. Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources → Intake",
+        "detailUrl": "data/coverage/flow-people-node-source-icde_reviewers.b3df2279dd34.json"
+      },
+      {
+        "id": "flow-people-edge-source-sigmod_reviewers--intake",
+        "label": "SIGMOD/PODS → Stored observations",
+        "count": 1449,
+        "color": "sage",
+        "description": "Records flowing from SIGMOD/PODS to Stored observations. Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources → Intake",
+        "detailUrl": "data/coverage/flow-people-node-source-sigmod_reviewers.d3361e5e8496.json"
+      },
+      {
+        "id": "flow-people-edge-source-vldb_reviewers--intake",
+        "label": "VLDB → Stored observations",
+        "count": 1563,
+        "color": "sage",
+        "description": "Records flowing from VLDB to Stored observations. Seed-role records after name repairs and exact technical duplicate removal. 5 name repairs retained.",
+        "unit": "service entries",
+        "scope": "Collected service records",
+        "stage": "Service sources → Intake",
+        "detailUrl": "data/coverage/flow-people-node-source-vldb_reviewers.db942c61c2a0.json"
+      },
+      {
+        "id": "flow-people-edge-intake--name-groups",
+        "label": "Stored observations → Distinct name groups",
+        "count": 1534,
+        "color": "sage",
+        "description": "Records flowing from Stored observations to Distinct name groups. Repeated service entries share one normalized name. Different names can still refer to the same person.",
+        "unit": "normalized name groups",
+        "scope": "Collected service records",
+        "stage": "Intake → Name grouping",
+        "detailUrl": "data/coverage/flow-people-node-name-groups.80e965428e36.json"
+      },
+      {
+        "id": "flow-people-edge-intake--repeat-service",
+        "label": "Stored observations → Repeat service entries",
+        "count": 3580,
+        "color": "muted",
+        "description": "Records flowing from Stored observations to Repeat service entries. Collapsed when counting names. Service history is preserved; these are not rejected people.",
+        "unit": "additional service entries",
+        "scope": "Collected service records",
+        "stage": "Intake → Name grouping",
+        "detailUrl": "data/coverage/flow-people-node-repeat-service.a0fa087a4067.json"
+      },
+      {
+        "id": "flow-people-edge-name-groups--lookup-one",
+        "label": "Distinct name groups → One candidate",
+        "count": 1020,
+        "color": "sage",
+        "description": "Records flowing from Distinct name groups to One candidate. One person profile was found. Its name and identity evidence still need to pass matching.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Name grouping → Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-one.e173efb0d7f7.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-one--matched",
+        "label": "One candidate → Matched names",
+        "count": 981,
+        "color": "sage",
+        "description": "Records flowing from One candidate to Matched names. Name groups assigned to a DBLP profile; matches can still need review.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/flow-people-edge-lookup-one--matched.03291e816588.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-one--candidate",
+        "label": "One candidate → Needs verification",
+        "count": 32,
+        "color": "attention",
+        "description": "Records flowing from One candidate to Needs verification. A candidate exists but has not passed the identity rules.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/names-candidate.969b441dcc97.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-one--ambiguous",
+        "label": "One candidate → Ambiguous names",
+        "count": 7,
+        "color": "attention",
+        "description": "Records flowing from One candidate to Ambiguous names. The available evidence cannot identify one person confidently. This includes names with only a DBLP disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/flow-people-edge-lookup-one--ambiguous.58ab4360fca8.json"
+      },
+      {
+        "id": "flow-people-edge-name-groups--lookup-several",
+        "label": "Distinct name groups → Several candidates",
+        "count": 473,
+        "color": "sage",
+        "description": "Records flowing from Distinct name groups to Several candidates. More than one profile was found. Name and affiliation evidence determine which can be used.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Name grouping → Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-several.5e0f51193f78.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-several--matched",
+        "label": "Several candidates → Matched names",
+        "count": 308,
+        "color": "sage",
+        "description": "Records flowing from Several candidates to Matched names. Name groups assigned to a DBLP profile; matches can still need review.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/flow-people-edge-lookup-several--matched.8aec5bccb25d.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-several--ambiguous",
+        "label": "Several candidates → Ambiguous names",
+        "count": 165,
+        "color": "attention",
+        "description": "Records flowing from Several candidates to Ambiguous names. The available evidence cannot identify one person confidently. This includes names with only a DBLP disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/flow-people-edge-lookup-several--ambiguous.d9193b609424.json"
+      },
+      {
+        "id": "flow-people-edge-name-groups--lookup-none",
+        "label": "Distinct name groups → No person candidate",
+        "count": 41,
+        "color": "attention",
+        "description": "Records flowing from Distinct name groups to No person candidate. No usable DBLP person profile was found. Some names match only a disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Name grouping → Candidate lookup",
+        "detailUrl": "data/coverage/flow-lookup-none.3d9d01dd33d7.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-none--unmatched",
+        "label": "No person candidate → No candidate",
+        "count": 30,
+        "color": "attention",
+        "description": "Records flowing from No person candidate to No candidate. No local DBLP identity candidate was found.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/names-unmatched.6978cd0fe35e.json"
+      },
+      {
+        "id": "flow-people-edge-lookup-none--ambiguous",
+        "label": "No person candidate → Ambiguous names",
+        "count": 11,
+        "color": "attention",
+        "description": "Records flowing from No person candidate to Ambiguous names. The available evidence cannot identify one person confidently. This includes names with only a DBLP disambiguation page.",
+        "unit": "name groups",
+        "scope": "Collected service names",
+        "stage": "Candidate lookup → DBLP matching",
+        "detailUrl": "data/coverage/flow-people-edge-lookup-none--ambiguous.04175e4c75c8.json"
+      },
+      {
+        "id": "flow-people-edge-matched--identities",
+        "label": "Matched names → Unique researchers",
+        "count": 1236,
+        "color": "sage",
+        "description": "Records flowing from Matched names to Unique researchers. All names assigned to the same DBLP PID count as one researcher.",
+        "unit": "DBLP identities",
+        "scope": "All matched researchers",
+        "stage": "DBLP matching → Identity merging",
+        "detailUrl": "data/coverage/flow-people-node-identities.c59306cec084.json"
+      },
+      {
+        "id": "flow-people-edge-matched--aliases",
+        "label": "Matched names → Additional name aliases",
+        "count": 53,
+        "color": "muted",
+        "description": "Records flowing from Matched names to Additional name aliases. Merged into an existing DBLP identity, not rejected researchers.",
+        "unit": "name groups",
+        "scope": "All matched researchers",
+        "stage": "DBLP matching → Identity merging",
+        "detailUrl": "data/coverage/flow-people-node-aliases.c52eae206f34.json"
+      },
+      {
+        "id": "flow-people-edge-identities--pc",
+        "label": "Unique researchers → Qualifying PC members",
+        "count": 1227,
+        "color": "sage",
+        "description": "Records flowing from Unique researchers to Qualifying PC members. Selected DB venues, 2022–2025. Includes research, industry and demo PCs and program leadership; excludes Shadow PCs.",
+        "unit": "researchers",
+        "scope": "All matched researchers",
+        "stage": "Identity merging → PC eligibility",
+        "detailUrl": "data/coverage/flow-people-node-pc.b214b463c9f3.json"
+      },
+      {
+        "id": "flow-people-edge-identities--outside-pc",
+        "label": "Unique researchers → Outside PC scope",
+        "count": 9,
+        "color": "muted",
+        "description": "Records flowing from Unique researchers to Outside PC scope. Matched service records, but no qualifying PC role in the selected venues and years.",
+        "unit": "researchers",
+        "scope": "All matched researchers",
+        "stage": "Identity merging → PC eligibility",
+        "detailUrl": "data/coverage/people-4.f7722b54281c.json"
+      },
+      {
+        "id": "flow-people-edge-pc--focus-0",
+        "label": "Qualifying PC members → DB-focused",
+        "count": 907,
+        "color": "accent",
+        "description": "Records flowing from Qualifying PC members to DB-focused. Included in the study. 66 qualify through repeated PC service.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "PC eligibility → Publication focus",
+        "detailUrl": "data/coverage/people-0.51d458d5cfcc.json"
+      },
+      {
+        "id": "flow-people-edge-pc--focus-1",
+        "label": "Qualifying PC members → Limited evidence",
+        "count": 253,
+        "color": "attention",
+        "description": "Records flowing from Qualifying PC members to Limited evidence. Outside the study cohort. Neither publication minimum nor repeated-service fallback is met.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "PC eligibility → Publication focus",
+        "detailUrl": "data/coverage/people-1.76ce8a6618f9.json"
+      },
+      {
+        "id": "flow-people-edge-pc--focus-2",
+        "label": "Qualifying PC members → ML-focused",
+        "count": 29,
+        "color": "green",
+        "description": "Records flowing from Qualifying PC members to ML-focused. Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "PC eligibility → Publication focus",
+        "detailUrl": "data/coverage/people-2.f9418010aed1.json"
+      },
+      {
+        "id": "flow-people-edge-pc--focus-3",
+        "label": "Qualifying PC members → Mixed",
+        "count": 38,
+        "color": "dark-green",
+        "description": "Records flowing from Qualifying PC members to Mixed. Outside the study cohort. Publication balance does not meet the DB-focused rule.",
+        "unit": "researchers",
+        "scope": "Qualifying PC members",
+        "stage": "PC eligibility → Publication focus",
+        "detailUrl": "data/coverage/people-3.708e6617b4eb.json"
+      },
+      {
+        "id": "flow-papers-node-candidates",
+        "label": "Candidate author links",
+        "count": 141056,
+        "color": "sage",
+        "description": "Candidate links staged while scanning DBLP. One record may involve several target researchers.",
+        "unit": "researcher–record links",
+        "scope": "All matched researchers",
+        "stage": "Author matching",
+        "detailUrl": "data/coverage/flow-papers-node-candidates.200dff0a889f.json"
+      },
+      {
+        "id": "flow-papers-node-accepted",
+        "label": "Accepted author links",
+        "count": 141056,
+        "color": "sage",
+        "description": "Author PID, verified ORCID, globally unique author signature or a reviewed paper-specific assignment passes the matching rules.",
+        "unit": "researcher–record links",
+        "scope": "All matched researchers",
+        "stage": "Accepted links",
+        "detailUrl": "data/coverage/flow-papers-node-candidates.200dff0a889f.json"
+      },
+      {
+        "id": "flow-papers-node-records",
+        "label": "Unique DBLP records",
+        "count": 102836,
+        "color": "sage",
+        "description": "The same publication record is counted once across its researcher links.",
+        "unit": "DBLP records",
+        "scope": "All matched researchers",
+        "stage": "Record grouping",
+        "detailUrl": "data/coverage/flow-papers-node-records.3185aeee2dcb.json"
+      },
+      {
+        "id": "flow-papers-node-coauthors",
+        "label": "Additional author links",
+        "count": 38220,
+        "color": "muted",
+        "description": "Retained coauthor links to records already counted once. This is a change of counting unit, not lost authorship evidence.",
+        "unit": "researcher–record links",
+        "scope": "All matched researchers",
+        "stage": "Record grouping",
+        "detailUrl": "data/coverage/flow-papers-node-coauthors.1ec7d73bc086.json"
+      },
+      {
+        "id": "flow-papers-node-works",
+        "label": "Distinct works",
+        "count": 93445,
+        "color": "sage",
+        "description": "A preprint and its linked published version count as one work.",
+        "unit": "deduplicated works",
+        "scope": "All matched researchers",
+        "stage": "Version linking",
+        "detailUrl": "data/coverage/flow-papers-node-works.9ea3f714d9e4.json"
+      },
+      {
+        "id": "papers-linked",
+        "label": "Linked versions",
+        "count": 9391,
+        "color": "muted",
+        "description": "Kept as version evidence, not counted as additional works.",
+        "unit": "additional DBLP records",
+        "scope": "All matched researchers",
+        "stage": "Version linking",
+        "detailUrl": "data/coverage/papers-linked.655a371f5672.json"
+      },
+      {
+        "id": "flow-papers-node-website",
+        "label": "Website works",
+        "count": 93445,
+        "color": "sage",
+        "description": "Works retained after required title, year and key validation for matched researchers.",
+        "unit": "distinct works",
+        "scope": "All matched researchers",
+        "stage": "Website input",
+        "detailUrl": "data/coverage/flow-papers-node-website.f77dec531b52.json"
+      },
+      {
+        "id": "flow-papers-node-cohort",
+        "label": "Study-cohort works",
+        "count": 71948,
+        "color": "sage",
+        "description": "At least one author is a DB-focused qualifying PC member.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Study authors",
+        "detailUrl": "data/coverage/flow-papers-node-cohort.b6bc248722de.json"
+      },
+      {
+        "id": "works-outside",
+        "label": "Outside study cohort",
+        "count": 21497,
+        "color": "muted",
+        "description": "No included author. These publications are retained for population classification and excluded-profile context.",
+        "unit": "distinct works",
+        "scope": "All matched researchers",
+        "stage": "Study authors",
+        "detailUrl": "data/coverage/works-outside.5cc0ac841c1b.json"
+      },
+      {
+        "id": "works-main",
+        "label": "Main ML: plotted",
+        "count": 598,
+        "color": "accent",
+        "description": "Main-conference works at NeurIPS, ICML or ICLR involving the study cohort.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Analysis use",
+        "detailUrl": "data/coverage/works-main.ae7cab3d452d.json"
+      },
+      {
+        "id": "flow-works-db",
+        "label": "DB-focus evidence",
+        "count": 10729,
+        "color": "database",
+        "description": "Full selected DB conference works used by the DB-focused classifier. Also available in profile context.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Analysis use",
+        "detailUrl": "data/coverage/flow-works-db.db689224da74.json"
+      },
+      {
+        "id": "flow-works-uncertain",
+        "label": "Unverified DB evidence",
+        "count": 462,
+        "color": "attention",
+        "description": "Retained in profiles, excluded from DB-focus evidence: full-paper length or snapshot metadata is unverified.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Analysis use",
+        "detailUrl": "data/coverage/flow-works-uncertain.83ea32a30434.json"
+      },
+      {
+        "id": "flow-works-context",
+        "label": "Other profile works",
+        "count": 60159,
+        "color": "sage",
+        "description": "Other retained publications. Workshops, journals and other context are not missing papers.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Analysis use",
+        "detailUrl": "data/coverage/flow-works-context.0ebe86c16df9.json"
+      },
+      {
+        "id": "flow-papers-edge-candidates--accepted",
+        "label": "Candidate author links → Accepted author links",
+        "count": 141056,
+        "color": "sage",
+        "description": "Records flowing from Candidate author links to Accepted author links. Author PID, verified ORCID, globally unique author signature or a reviewed paper-specific assignment passes the matching rules.",
+        "unit": "researcher–record links",
+        "scope": "All matched researchers",
+        "stage": "Author matching → Accepted links",
+        "detailUrl": "data/coverage/flow-papers-node-candidates.200dff0a889f.json"
+      },
+      {
+        "id": "flow-papers-edge-accepted--records",
+        "label": "Accepted author links → Unique DBLP records",
+        "count": 102836,
+        "color": "sage",
+        "description": "Records flowing from Accepted author links to Unique DBLP records. The same publication record is counted once across its researcher links.",
+        "unit": "DBLP records",
+        "scope": "All matched researchers",
+        "stage": "Accepted links → Record grouping",
+        "detailUrl": "data/coverage/flow-papers-node-records.3185aeee2dcb.json"
+      },
+      {
+        "id": "flow-papers-edge-accepted--coauthors",
+        "label": "Accepted author links → Additional author links",
+        "count": 38220,
+        "color": "muted",
+        "description": "Records flowing from Accepted author links to Additional author links. Retained coauthor links to records already counted once. This is a change of counting unit, not lost authorship evidence.",
+        "unit": "researcher–record links",
+        "scope": "All matched researchers",
+        "stage": "Accepted links → Record grouping",
+        "detailUrl": "data/coverage/flow-papers-node-coauthors.1ec7d73bc086.json"
+      },
+      {
+        "id": "flow-papers-edge-records--works",
+        "label": "Unique DBLP records → Distinct works",
+        "count": 93445,
+        "color": "sage",
+        "description": "Records flowing from Unique DBLP records to Distinct works. A preprint and its linked published version count as one work.",
+        "unit": "deduplicated works",
+        "scope": "All matched researchers",
+        "stage": "Record grouping → Version linking",
+        "detailUrl": "data/coverage/flow-papers-node-works.9ea3f714d9e4.json"
+      },
+      {
+        "id": "flow-papers-edge-records--versions",
+        "label": "Unique DBLP records → Linked versions",
+        "count": 9391,
+        "color": "muted",
+        "description": "Records flowing from Unique DBLP records to Linked versions. Kept as version evidence, not counted as additional works.",
+        "unit": "additional DBLP records",
+        "scope": "All matched researchers",
+        "stage": "Record grouping → Version linking",
+        "detailUrl": "data/coverage/papers-linked.655a371f5672.json"
+      },
+      {
+        "id": "flow-papers-edge-works--website",
+        "label": "Distinct works → Website works",
+        "count": 93445,
+        "color": "sage",
+        "description": "Records flowing from Distinct works to Website works. Works retained after required title, year and key validation for matched researchers.",
+        "unit": "distinct works",
+        "scope": "All matched researchers",
+        "stage": "Version linking → Website input",
+        "detailUrl": "data/coverage/flow-papers-node-website.f77dec531b52.json"
+      },
+      {
+        "id": "flow-papers-edge-website--cohort",
+        "label": "Website works → Study-cohort works",
+        "count": 71948,
+        "color": "sage",
+        "description": "Records flowing from Website works to Study-cohort works. At least one author is a DB-focused qualifying PC member.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Website input → Study authors",
+        "detailUrl": "data/coverage/flow-papers-node-cohort.b6bc248722de.json"
+      },
+      {
+        "id": "flow-papers-edge-website--outside",
+        "label": "Website works → Outside study cohort",
+        "count": 21497,
+        "color": "muted",
+        "description": "Records flowing from Website works to Outside study cohort. No included author. These publications are retained for population classification and excluded-profile context.",
+        "unit": "distinct works",
+        "scope": "All matched researchers",
+        "stage": "Website input → Study authors",
+        "detailUrl": "data/coverage/works-outside.5cc0ac841c1b.json"
+      },
+      {
+        "id": "flow-papers-edge-cohort--main",
+        "label": "Study-cohort works → ML Publications",
+        "count": 598,
+        "color": "accent",
+        "description": "Records flowing from Study-cohort works to ML Publications. Main-conference works at NeurIPS, ICML or ICLR involving the study cohort.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Study authors → Analysis use",
+        "detailUrl": "data/coverage/works-main.ae7cab3d452d.json"
+      },
+      {
+        "id": "flow-papers-edge-cohort--db",
+        "label": "Study-cohort works → DB-focus evidence",
+        "count": 10729,
+        "color": "database",
+        "description": "Records flowing from Study-cohort works to DB-focus evidence. Full selected DB conference works used by the DB-focused classifier. Also available in profile context.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Study authors → Analysis use",
+        "detailUrl": "data/coverage/flow-works-db.db689224da74.json"
+      },
+      {
+        "id": "flow-papers-edge-cohort--uncertain",
+        "label": "Study-cohort works → Unverified DB evidence",
+        "count": 462,
+        "color": "attention",
+        "description": "Records flowing from Study-cohort works to Unverified DB evidence. Retained in profiles, excluded from DB-focus evidence: full-paper length or snapshot metadata is unverified.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Study authors → Analysis use",
+        "detailUrl": "data/coverage/flow-works-uncertain.83ea32a30434.json"
+      },
+      {
+        "id": "flow-papers-edge-cohort--context",
+        "label": "Study-cohort works → Other profile works",
+        "count": 60159,
+        "color": "sage",
+        "description": "Records flowing from Study-cohort works to Other profile works. Other retained publications. Workshops, journals and other context are not missing papers.",
+        "unit": "distinct works",
+        "scope": "Study cohort",
+        "stage": "Study authors → Analysis use",
+        "detailUrl": "data/coverage/flow-works-context.0ebe86c16df9.json"
+      }
+    ]
+  },
+  "classifications": {
+    "cohort": {
+      "total": 71948,
+      "groups": [
+        {
+          "id": "classes-cohort-main_ml",
+          "label": "Main ML conference",
+          "count": 598,
+          "color": "accent",
+          "description": "Display category: Main ML conference.",
+          "detailUrl": "data/coverage/classes-cohort-main_ml.63528d345003.json"
+        },
+        {
+          "id": "classes-cohort-database",
+          "label": "Database",
+          "count": 16001,
+          "color": "database",
+          "description": "Display category: Database.",
+          "detailUrl": "data/coverage/classes-cohort-database.59da04ce106b.json"
+        },
+        {
+          "id": "classes-cohort-other_conference",
+          "label": "Other conference",
+          "count": 25202,
+          "color": "conference",
+          "description": "Display category: Other conference.",
+          "detailUrl": "data/coverage/classes-cohort-other_conference.31121a694b9d.json"
+        },
+        {
+          "id": "classes-cohort-journal",
+          "label": "Journal",
+          "count": 16595,
+          "color": "journal",
+          "description": "Display category: Journal.",
+          "detailUrl": "data/coverage/classes-cohort-journal.8987272658ca.json"
+        },
+        {
+          "id": "classes-cohort-workshop",
+          "label": "Workshop",
+          "count": 6109,
+          "color": "workshop",
+          "description": "Display category: Workshop.",
+          "detailUrl": "data/coverage/classes-cohort-workshop.d36e9e0c79fc.json"
+        },
+        {
+          "id": "classes-cohort-preprint",
+          "label": "Preprint",
+          "count": 5862,
+          "color": "muted",
+          "description": "Display category: Preprint.",
+          "detailUrl": "data/coverage/classes-cohort-preprint.a4dfecbcd873.json"
+        },
+        {
+          "id": "classes-cohort-other",
+          "label": "Other records",
+          "count": 1580,
+          "color": "quiet",
+          "description": "Display category: Other records.",
+          "detailUrl": "data/coverage/classes-cohort-other.5130a0467e8a.json"
+        },
+        {
+          "id": "classes-cohort-conflict",
+          "label": "Conflicting categories",
+          "count": 1,
+          "color": "conflict",
+          "description": "Different researcher records assign different categories to this work.",
+          "detailUrl": "data/coverage/classes-cohort-conflict.812e21445606.json"
+        }
+      ]
+    },
+    "all": {
+      "total": 93445,
+      "groups": [
+        {
+          "id": "classes-all-main_ml",
+          "label": "Main ML conference",
+          "count": 1453,
+          "color": "accent",
+          "description": "Display category: Main ML conference.",
+          "detailUrl": "data/coverage/classes-all-main_ml.8093141120c1.json"
+        },
+        {
+          "id": "classes-all-database",
+          "label": "Database",
+          "count": 16843,
+          "color": "database",
+          "description": "Display category: Database.",
+          "detailUrl": "data/coverage/classes-all-database.71280b459ff2.json"
+        },
+        {
+          "id": "classes-all-other_conference",
+          "label": "Other conference",
+          "count": 35404,
+          "color": "conference",
+          "description": "Display category: Other conference.",
+          "detailUrl": "data/coverage/classes-all-other_conference.5a6930ef5fbe.json"
+        },
+        {
+          "id": "classes-all-journal",
+          "label": "Journal",
+          "count": 21331,
+          "color": "journal",
+          "description": "Display category: Journal.",
+          "detailUrl": "data/coverage/classes-all-journal.ba94a8027163.json"
+        },
+        {
+          "id": "classes-all-workshop",
+          "label": "Workshop",
+          "count": 7862,
+          "color": "workshop",
+          "description": "Display category: Workshop.",
+          "detailUrl": "data/coverage/classes-all-workshop.f9334667c314.json"
+        },
+        {
+          "id": "classes-all-preprint",
+          "label": "Preprint",
+          "count": 8618,
+          "color": "muted",
+          "description": "Display category: Preprint.",
+          "detailUrl": "data/coverage/classes-all-preprint.6080172df503.json"
+        },
+        {
+          "id": "classes-all-other",
+          "label": "Other records",
+          "count": 1932,
+          "color": "quiet",
+          "description": "Display category: Other records.",
+          "detailUrl": "data/coverage/classes-all-other.a69fd1289429.json"
+        },
+        {
+          "id": "classes-all-conflict",
+          "label": "Conflicting categories",
+          "count": 2,
+          "color": "conflict",
+          "description": "Different researcher records assign different categories to this work.",
+          "detailUrl": "data/coverage/classes-all-conflict.90b9a98628bb.json"
+        }
+      ]
+    }
+  },
+  "assignmentEvidence": {
+    "cohort": {
+      "total": 71948,
+      "groups": [
+        {
+          "id": "evidence-cohort-main",
+          "label": "Exact main ML match",
+          "count": 598,
+          "color": "accent",
+          "description": "Exact main-conference membership from the publication scan.",
+          "detailUrl": "data/coverage/classes-cohort-main_ml.63528d345003.json"
+        },
+        {
+          "id": "evidence-cohort-mapping",
+          "label": "Explicit venue mapping",
+          "count": 20424,
+          "color": "database",
+          "description": "A fixed venue-to-category rule assigns the display category.",
+          "detailUrl": "data/coverage/evidence-cohort-mapping.c853cabe86a3.json"
+        },
+        {
+          "id": "evidence-cohort-workshop",
+          "label": "Workshop wording",
+          "count": 1770,
+          "color": "workshop",
+          "description": "Workshop wording in the venue metadata assigns the category.",
+          "detailUrl": "data/coverage/evidence-cohort-workshop.edbbc42f04e7.json"
+        },
+        {
+          "id": "evidence-cohort-preprint",
+          "label": "CoRR metadata",
+          "count": 5862,
+          "color": "sage",
+          "description": "DBLP CoRR metadata identifies a preprint.",
+          "detailUrl": "data/coverage/classes-cohort-preprint.a4dfecbcd873.json"
+        },
+        {
+          "id": "evidence-cohort-structural",
+          "label": "DBLP type fallback",
+          "count": 41715,
+          "color": "muted",
+          "description": "The DBLP record type or journal field supplies a broad category.",
+          "detailUrl": "data/coverage/evidence-cohort-structural.aad7312856cf.json"
+        },
+        {
+          "id": "evidence-cohort-other",
+          "label": "No specific assignment",
+          "count": 1578,
+          "color": "quiet",
+          "description": "No more specific display-category rule applies.",
+          "detailUrl": "data/coverage/evidence-cohort-other.fa85c1f161b6.json"
+        },
+        {
+          "id": "evidence-cohort-multiple",
+          "label": "Multiple assignment routes",
+          "count": 1,
+          "color": "conflict",
+          "description": "Researcher records for this work use different assignment routes.",
+          "detailUrl": "data/coverage/evidence-cohort-multiple.1759e9869c6f.json"
+        }
+      ]
+    },
+    "all": {
+      "total": 93445,
+      "groups": [
+        {
+          "id": "evidence-all-main",
+          "label": "Exact main ML match",
+          "count": 1453,
+          "color": "accent",
+          "description": "Exact main-conference membership from the publication scan.",
+          "detailUrl": "data/coverage/classes-all-main_ml.8093141120c1.json"
+        },
+        {
+          "id": "evidence-all-mapping",
+          "label": "Explicit venue mapping",
+          "count": 22518,
+          "color": "database",
+          "description": "A fixed venue-to-category rule assigns the display category.",
+          "detailUrl": "data/coverage/evidence-all-mapping.b73b6ff47d71.json"
+        },
+        {
+          "id": "evidence-all-workshop",
+          "label": "Workshop wording",
+          "count": 2317,
+          "color": "workshop",
+          "description": "Workshop wording in the venue metadata assigns the category.",
+          "detailUrl": "data/coverage/evidence-all-workshop.8581507e57f4.json"
+        },
+        {
+          "id": "evidence-all-preprint",
+          "label": "CoRR metadata",
+          "count": 8618,
+          "color": "sage",
+          "description": "DBLP CoRR metadata identifies a preprint.",
+          "detailUrl": "data/coverage/classes-all-preprint.6080172df503.json"
+        },
+        {
+          "id": "evidence-all-structural",
+          "label": "DBLP type fallback",
+          "count": 56608,
+          "color": "muted",
+          "description": "The DBLP record type or journal field supplies a broad category.",
+          "detailUrl": "data/coverage/evidence-all-structural.72fcbd793980.json"
+        },
+        {
+          "id": "evidence-all-other",
+          "label": "No specific assignment",
+          "count": 1929,
+          "color": "quiet",
+          "description": "No more specific display-category rule applies.",
+          "detailUrl": "data/coverage/evidence-all-other.1cf73c895b2e.json"
+        },
+        {
+          "id": "evidence-all-multiple",
+          "label": "Multiple assignment routes",
+          "count": 2,
+          "color": "conflict",
+          "description": "Researcher records for this work use different assignment routes.",
+          "detailUrl": "data/coverage/evidence-all-multiple.2cac6897b491.json"
+        }
+      ]
+    }
+  },
+  "quality": [
+    {
+      "id": "review-length",
+      "label": "Verify DB-paper lengths",
+      "count": 496,
+      "color": "attention",
+      "description": "Article-number pagination may hide full papers. These records currently supply no DB-focus evidence.",
+      "unit": "DBLP records",
+      "measured": true,
+      "potentialAdditions": 5,
+      "affectedPeople": 327,
+      "includedPeople": 302,
+      "excludedPeople": 25,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/review-length.c82083a66351.json"
+    },
+    {
+      "id": "review-sparse-identities",
+      "label": "Review sparse exact matches",
+      "count": 35,
+      "color": "attention",
+      "description": "Accepted exact-name matches with no recorded affiliation or ORCID and other name candidates. These need evidence review; they are not confirmed errors.",
+      "unit": "name groups",
+      "reviewOnly": true,
+      "affectedPeople": 35,
+      "includedPeople": 16,
+      "excludedPeople": 19,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/review-sparse-identities.9127726dd75b.json"
+    },
+    {
+      "id": "review-potential",
+      "label": "All PC members: possible additions (what-if)",
+      "count": 5,
+      "color": "sage",
+      "description": "Broader scenario across all qualifying PC members: every unverified DB work proves to be a full paper. These excluded people are not authors in the study-cohort branch and are not added automatically.",
+      "unit": "people",
+      "scenario": true,
+      "measured": true,
+      "affectedPeople": 5,
+      "includedPeople": 0,
+      "excludedPeople": 5,
+      "scope": "Qualifying PC members",
+      "detailUrl": "data/coverage/review-potential.b44cf1f65e3a.json"
+    },
+    {
+      "id": "review-display-categories",
+      "label": "Check publication display categories",
+      "count": 4,
+      "color": "attention",
+      "description": "Retained works with open conference-versus-workshop track questions in the manual review ledger. This is separate from unverified DB-focus evidence and does not remove publications.",
+      "unit": "distinct works",
+      "reviewOnly": true,
+      "affectedPeople": 4,
+      "includedPeople": 3,
+      "excludedPeople": 1,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/review-display-categories.b413a53513f3.json"
+    },
+    {
+      "id": "review-identities",
+      "label": "Check identity matches",
+      "count": 1,
+      "color": "attention",
+      "description": "An alternative name candidate has stronger affiliation evidence. This check does not find every incorrect match.",
+      "unit": "matched identities",
+      "affectedPeople": 1,
+      "includedPeople": 1,
+      "excludedPeople": 0,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/review-identities.67ac0ac04355.json"
+    },
+    {
+      "id": "review-input",
+      "label": "Records skipped before display",
+      "count": 0,
+      "color": "attention",
+      "description": "Missing or invalid year, title or DBLP key in the deduplicated input. Checked before the website loader skips records.",
+      "unit": "input records",
+      "measured": true,
+      "affectedPeople": 0,
+      "includedPeople": 0,
+      "excludedPeople": 0,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/papers-unresolved.d019f9c5cf72.json"
+    },
+    {
+      "id": "review-source",
+      "label": "Incomplete source records",
+      "count": 0,
+      "color": "attention",
+      "description": "Missing or invalid year, title or DBLP key in the original publication scan. May overlap with skipped input records.",
+      "unit": "source records",
+      "measured": true,
+      "affectedPeople": 0,
+      "includedPeople": 0,
+      "excludedPeople": 0,
+      "scope": "All matched researchers",
+      "detailUrl": "data/coverage/papers-unresolved.d019f9c5cf72.json"
+    },
+    {
+      "id": "review-affiliation",
+      "label": "Missing display affiliation",
+      "count": 0,
+      "color": "muted",
+      "description": "Checks included researchers only. A present affiliation is not proof that it is current or correct.",
+      "unit": "cohort researchers",
+      "affectedPeople": 0,
+      "scope": "Study cohort",
+      "detailUrl": "data/coverage/papers-unresolved.d019f9c5cf72.json"
+    },
+    {
+      "id": "review-order",
+      "label": "Incomplete author order",
+      "count": 0,
+      "color": "muted",
+      "description": "Checks retained main ML papers in the study cohort. These links cannot enter author-position charts.",
+      "unit": "researcher–paper links",
+      "affectedPeople": 0,
+      "scope": "Study cohort",
+      "detailUrl": "data/coverage/papers-unresolved.d019f9c5cf72.json"
+    }
+  ],
+  "collection": {
+    "available": true,
+    "serviceObservations": 5114,
+    "records": 102836,
+    "personPaperLinks": 141056,
+    "distinctWorks": 93445
+  },
+  "limits": "Coverage is not accuracy. These checks use collected service names and scanned publications; they cannot count people or papers the sources missed. Review flags can overlap. Study exclusions and linked versions are not data errors."
+}

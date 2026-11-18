@@ -1,0 +1,34 @@
+.venv/
+
+# Large/local data products.
+data/dblp_snapshot/
+data/ror_snapshot/
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+data/*.sqlite-journal
+data/backups/
+
+# Rebuildable DBLP-derived publication corpus and reports.
+data/dblp_publications_for_db_people.csv
+data/dblp_publications_for_db_people.csv.scan.json
+data/dblp_publication_entities_for_db_people.csv
+data/publication_entity_resolution.csv
+data/reports/
+
+# Python caches.
+__pycache__/
+*.py[cod]
+
+# Local review/OS artifacts.
+.files-to-zip.txt
+Thumbs.db
+.DS_Store
+
+# Local pipeline orchestration state.
+data/.pipeline_state.json
+
+# Readable local exports used by builders; browser assets stay tracked.
+website/build/
+
+.env

@@ -1,0 +1,837 @@
+{
+  "before": 129279,
+  "after": 129362,
+  "addedByPid": {
+    "62/1373": 110
+  },
+  "removedByPid": {
+    "58/8815": 25,
+    "86/3457-20": 2
+  },
+  "added": [
+    {
+      "pid": "62/1373",
+      "key": "conf/cts/RieffelBML11",
+      "title": "Secured histories for presence systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/LeeBC18",
+      "title": "Sensing or Watching?: Balancing Utility and Privacy in Sensing Systems via Collection and Enforcement Mechanisms.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/tpsisa/JainPLM20",
+      "title": "MAFIA: Multi-layered Architecture For IoT-based Authentication.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/icdcsw/IskanderWLC11",
+      "title": "Enforcing Policy and Data Consistency of Cloud Transactions.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/JainFL23",
+      "title": "Co-Designing with Users the Explanations for a Proactive Auto-Response Messaging Agent.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tiot/XuBL24",
+      "title": "Getting it Just Right: Towards Balanced Utility, Privacy, and Equity in Shared Space Sensing.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/BauerL10",
+      "title": "Solving the access-control puzzle: finding the pieces and putting them together.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tissec/BerlatoCLR22",
+      "title": "Formal Modelling and Automated Trade-off Analysis of Enforcement Architectures for Cryptographic Access Control in the Cloud.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/waim/GongYL13",
+      "title": "Bounding Trust under Uncertain Topology Information in Reputation-Based Trust Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/LeeYG10",
+      "title": "Effective trust management through a hybrid logical and relational approach.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/huc/BiehlLFC15",
+      "title": "You're where? prove it!: towards trusted indoor location estimation of mobile devices.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/esorics/FarnanLCY11",
+      "title": "Don't Reveal My Intension: Protecting User Privacy Using Declarative Preferences during Distributed Query Processing.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ifip1-7/HinrichsGLSM11",
+      "title": "TBA : A Hybrid of Logic and Extensional Access Control Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tissec/LeeMW10",
+      "title": "On the consistency of distributed proofs with hidden subtrees.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccgrid/KoenigMLTKY05",
+      "title": "Cluster security with NVisionCC: process monitoring by leveraging emergent properties.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/fps/EtalleHLTZ12",
+      "title": "Policy Administration in Tag-Based Authorization.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/um/JainFL19",
+      "title": "Adaptive Modelling of Attentiveness to Messaging: A Hybrid Approach.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sac/DimitrovaCL19",
+      "title": "Authorization-aware optimization for multi-provider queries.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tpds/IskanderTWLC14",
+      "title": "Balancing Performance, Accuracy, and Precision for Secure Cloud Transactions.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/csfw/HinrichsMGLPZ13",
+      "title": "Application-Sensitive Access Control Evaluation Using Parameterized Expressiveness.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/fc/PatilGLK12",
+      "title": "My Privacy Policy: Exploring End-user Specification of Free-form Location Access Rules.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/dbsec/ZakiLC20",
+      "title": "Effective Access Control in Shared-Operator Multi-tenant Data Stream Management Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/GongYL12",
+      "title": "Bounding trust in reputation systems with incomplete information.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/YuanDLP26",
+      "title": "VRSafe: A Secure Virtual Keyboard to Mitigate Keystroke Inference in Virtual Reality.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/itrust/LeeW06",
+      "title": "Virtual Fingerprinting as a Foundation for Reputation in Open Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/ThomaLL16",
+      "title": "PolyStream: Cryptographically Enforced Access Controls for Outsourced Data Stream Processing.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/Lee17",
+      "title": "16th Workshop on Privacy in the Electronic Society (WPES 2017).",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/FarnanLCY13",
+      "title": "Enabling intensional access control via preference-aware query optimization.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tissec/LeeW08",
+      "title": "Enforcing Safety and Consistency Constraints in Policy-Based Authorization Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/sigmod/LeeY08",
+      "title": "Report on the Sixth ACM Workshop on Privacy in the Electronic Society (WPES 2007).",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "reference/crypt/WongchaowartL11",
+      "title": "Trust Management.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/csiirw/WinslettLP09",
+      "title": "Trust negotiation: authorization for virtual organizations.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/soups/PatilNKL12",
+      "title": "Reasons, rewards, regrets: privacy considerations in location sharing as an interactive practice.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/abs-1302-1134",
+      "title": "The Design and Demonstration of an Actor-Based, Application-Aware Access Control Evaluation Framework",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/cscw/HoyleDKLV17",
+      "title": "Viewing the Viewers: Publishers' Desires and Viewers' Privacy Concerns in Social Networks.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/AhmadABFKL22",
+      "title": "Tangible Privacy for Smart Voice Assistants: Bystanders' Perceptions of Physical Device Controls.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/dbsec/ThomaLL19",
+      "title": "Shoal: Query Optimization and Operator Placement for Access Controlled Stream Processing Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/csfw/LeeY10",
+      "title": "Towards Quantitative Analysis of Proofs of Authorization: Applications, Framework, and Techniques.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccgrid/LeeKMY05",
+      "title": "Searching for open windows and unlocked doors: port scanning in large-scale commodity clusters.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/icde/OngRFLCY15",
+      "title": "Interactive preference-aware query optimization.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/BrunelloBCLR25",
+      "title": "Relying on Trust to Balance Protection and Performance in Cryptographic Access Control.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/iconference/ThomsonLF18",
+      "title": "Ephemeral Communication and Communication Places - What Influences College-Aged Negotiation of Instant Messaging Usage Within App Ecosystems?",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/IskanderLM10",
+      "title": "Privacy and robustness for data aggregation in wireless sensor networks.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/LeeW06",
+      "title": "Safety and consistency in policy-based authorization systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/AhmadFKL20",
+      "title": "Tangible Privacy: Towards User-Centric Sensor Designs for Bystander Privacy.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/smc/LakkarajuYBL04",
+      "title": "NVisionIP: an interactive network flow visualization tool for security.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/KimL24a",
+      "title": "\"I know what you did last semester\": Understanding Privacy Expectations and Preferences in the Smart Campus.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/PiasAAKL22",
+      "title": "Decaying Photos for Enhanced Privacy: User Perceptions Towards Temporal Redactions and 'Trusted' Platforms.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/JainXDKKBL24",
+      "title": "Understanding Perceived Utility and Comfort of In-Home General-Purpose Sensing through Progressive Exposure.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ACMdis/JainFL22",
+      "title": "Laila is in a Meeting: Design and Evaluation of a Contextual Auto-Response Messaging Agent.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/GarrisonLH14",
+      "title": "An actor-based, application-aware access control evaluation framework.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/wpes/FarnanLY10",
+      "title": "Investigating privacy-aware distributed query evaluation.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/PatilNKL12",
+      "title": "\"Check out where I am!\": location-sharing motivations, preferences, and practices.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/GallLK12",
+      "title": "PlexC: a policy language for exposure control.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/abs-2604-21001",
+      "title": "VRSafe: A Secure Virtual Keyboard to Mitigate Keystroke Inference in Virtual Reality.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/csfw/GarrisonL15",
+      "title": "Decomposing, Comparing, and Synthesizing Access Control Expressiveness Simulations.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "reference/crypt/Lee11",
+      "title": "Credential-Based Access Control.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/TanakaWLYB13",
+      "title": "Insured access: an approach to ad-hoc information sharing for virtual organizations.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/colcom/IskanderLM12",
+      "title": "Confidentiality-preserving and fault-tolerant in-network aggregation for Collaborative WSNs.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/fgcs/RieffelBLM14",
+      "title": "Private aggregation for presence streams.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/JainFL19",
+      "title": "Are You There?: Identifying Unavailability in Mobile Messaging.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/puc/BiehlLF20",
+      "title": "Anchor of trust: towards collusion-resistant trusted indoor location for enterprise and industrial use.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/itrust/LeeWBW06",
+      "title": "Traust: A Trust Negotiation Based Authorization Service.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/BerlatoCLR20",
+      "title": "Exploring Architectures for Cryptographic Access Control Enforcement in the Cloud for Fun and Optimization.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/WongchaowartL10",
+      "title": "Oblivious enforcement of hidden information release policies.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/NiuJLSXZ16",
+      "title": "Panel Security and Privacy in the Age of Internet of Things: Opportunities and Challenges.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/icde/FarnanLCY14",
+      "title": "PAQO: Preference-aware query optimization for decentralized database systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/MinamiBWL11",
+      "title": "Confidentiality-preserving proof theories for distributed proof systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/PatilHSKL15",
+      "title": "Interrupt Now or Inform Later?: Comparing Immediate and Delayed Privacy Feedback.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ifiptm/LeeWP09",
+      "title": "TrustBuilder2: A Reconfigurable Framework for Trust Negotiation.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pacmhci/XuXBL25",
+      "title": "Detecting Group Configurations in Shared Spaces: A Heuristic for Understanding Space Use Behavior.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/mdm/LeePZ15",
+      "title": "Human Mobility Computing and Privacy: Fad or Reality?",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/puc/BiehlRL13",
+      "title": "When privacy and utility are in harmony: towards better design of presence technologies.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/AdamsLM11",
+      "title": "Receipt-mode trust negotiation: efficient authorization through outsourced interactions.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/DjokoJL16",
+      "title": "TPRIVEXEC: Private Execution in Virtual Memory.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/icde/ThomaLL14",
+      "title": "Automated operator placement in distributed Data Stream Management Systems subject to user constraints.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/vizsec/LakkarajuYL04",
+      "title": "NVisionIP: netflow visualizations of system state for security situational awareness.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/HoyleDKLV17",
+      "title": "Was my message read?: Privacy and Signaling on Facebook Messenger.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/AdamsL13",
+      "title": "Combining social authentication and untrusted clouds for private location sharing.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sp/GarrisonSML16",
+      "title": "On the Practicality of Cryptographically Enforcing Dynamic Access Control Policies in the Cloud.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/dsn/DjokoLL19",
+      "title": "NeXUS: Practical and Secure Access Control on Untrusted Storage Platforms using Client-Side SGX.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/iui/BiehlPL21",
+      "title": "Improving Medication Adherence Behaviors Through Personalized, Technology-Powered Interventions.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/storagess/HasanMLY05",
+      "title": "Toward a threat model for storage systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/GarrisonSLM16",
+      "title": "Dynamic and Private Cryptographic Access Control for Untrusted Clouds: Costs and Constructions (Extended Version).",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ifiptm/LeeW08",
+      "title": "Towards Standards-Compliant Trust Negotiation for Web Services.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sigmod/KatsipoulakisTG15",
+      "title": "CE-Storm: Confidential Elastic Processing of Data Streams.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/wpes/LeeTB06",
+      "title": "A privacy-preserving interdomain audit framework.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/pvldb/FarnanLCY13",
+      "title": "PAQO: A Preference-Aware Query Optimizer for PostgreSQL.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/LeeWBW06",
+      "title": "Traust: a trust negotiation-based authorization service for open systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/LeeMB09",
+      "title": "Confidentiality-preserving distributed proofs of conjunctive queries.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/chi/PatilSKL14",
+      "title": "Reflection or action?: how feedback and control affect location sharing decisions.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/GarrisonL15",
+      "title": "Decomposing, Comparing, and Synthesizing Access Control Expressiveness Simulations (Extended Version).",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/LeeMW07",
+      "title": "Lightweight cnsistency enforcement schemes for distributed proofs with hidden subtrees.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/nspw/GarrisonLH12",
+      "title": "The need for application-aware access control evaluation.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/wpes/MinamiLWB08",
+      "title": "Secure aggregation in a publish-subscribe system.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/grid/AhsantBMLJ06",
+      "title": "Toward an On-Demand Restricted Delegation Mechanism for Grids.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/abs-cs-0510046",
+      "title": "Defining a Comprehensive Threat Model for High Performance Computational Clusters",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/spc/LeeBDNHC05",
+      "title": "Supporting Dynamically Changing Authorizations in Pervasive Communication Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/sacmat/LeeY09",
+      "title": "Towards a dynamic and composable model of trust.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/GarrisonQL14",
+      "title": "On the suitability of dissemination-centric access control systems for group-centric sharing.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "series/ais/LeeSWY07",
+      "title": "Automated Trust Negotiation in Open Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/LeeW08",
+      "title": "Towards an efficient and language-agnostic compliance checker for trust negotiation systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/tissec/LeeWBW08",
+      "title": "The Traust Authorization Service.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/ThomaLL15",
+      "title": "CryptStream: Cryptographic Access Controls for Streaming Data.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/corr/abs-1012-2152",
+      "title": "Secured histories: computing group statistics on encrypted data while preserving individual privacy",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/soups/SchlegelKL11",
+      "title": "Eyeing your exposure: quantifying and controlling information sharing for improved privacy.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/GongYL11",
+      "title": "Poster: on trust evaluation with missing information in reputation systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/ccs/LeeBOG06",
+      "title": "Defeasible security policy composition for web services.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "conf/codaspy/ThomaLL19",
+      "title": "Behind Enemy Lines: Exploring Trusted Data Stream Processing on Untrusted Systems.",
+      "scope": "side"
+    },
+    {
+      "pid": "62/1373",
+      "key": "journals/cscw/JainFL21",
+      "title": "Context-based Automated Responses of Unavailability in Mobile Messaging.",
+      "scope": "side"
+    }
+  ],
+  "removed": [
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2407-12508",
+      "title": "MERLIN: Multimodal Embedding Refinement via LLM-based Iterative Navigation for Text-Video Retrieval-Rerank Pipeline.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/sigir/ChenTLJ11",
+      "title": "A toolkit for knowledge base population.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/acl-bucc/SnoverLLCTGLLLA11",
+      "title": "Cross-lingual Slot Filling from Comparable Corpora.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/emnlp/KimLPCOL24",
+      "title": "Towards Efficient Visual-Language Alignment of the Q-Former for Visual Reasoning Tasks.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/coling/LeePJQH10",
+      "title": "Enhancing Multi-lingual Information Extraction via Cross-Media Inference and Fusion.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2511-23051",
+      "title": "GOATex: Geometry & Occlusion-Aware Texturing.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2605-24630",
+      "title": "DexSIM: Real-time Dexterous Simulation with Unified Causal Video Diffusion.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/jamia/PfaffLBPPBKTRCS19",
+      "title": "Recruiting for a pragmatic trial using the electronic health record and patient portal: successes and lessons learned.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/sigcse/DicksonDL17",
+      "title": "Using Undergraduate Teaching Assistants in Small Classes.",
+      "scope": "side"
+    },
+    {
+      "pid": "86/3457-20",
+      "key": "journals/sigspatial/AndersonYZ20",
+      "title": "The 1st ACM SIGSPATIAL International Workshop on Modeling and Understanding the Spread of COVID-19.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/interspeech/FavreCKLLMNOPTVZ13",
+      "title": "Automatic human utility evaluation of ASR systems: does WER really predict performance?",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/airs/ChenTLLPJ10",
+      "title": "Top-Down and Bottom-Up: A Combined Approach to Slot Filling.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/tac/ChenTLLLSAPJ10",
+      "title": "CUNY-BLENDER TAC-KBP2010 Entity Linking and Slot Filling System Description.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "books/sp/13/JiLL13",
+      "title": "Information Network Construction and Alignment from Automatically Acquired Comparable Corpora.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/popets/MusaleL23",
+      "title": "Trust TEE?: Exploring the Impact of Trusted Execution Environments on Smart Home Privacy Norms.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/MofradLG17",
+      "title": "Leveraging Intel SGX to Create a Nondisclosure Cryptographic library.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2302-02778",
+      "title": "Reversible random number generation for adjoint Monte Carlo simulation of the heat equation.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2510-02469",
+      "title": "SIMSplat: Predictive Driving Scene Editing with Language-aligned 4D Gaussian Splatting.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2410-09489",
+      "title": "Towards Efficient Visual-Language Alignment of the Q-Former for Visual Reasoning Tasks.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/wacv/ParkLKCPCLK24",
+      "title": "VLAAD: Vision and Language Assistant for Autonomous Driving.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/emnlp/HanPLLK24",
+      "title": "MERLIN: Multimodal Embedding Refinement via LLM-based Iterative Navigation for Text-Video Retrieval-Rerank Pipeline.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/iticse/ErkanL19",
+      "title": "Connecting Majors/Non-Majors Courses Via Tabular Data.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/nips/KimKLL25",
+      "title": "GOATex: Geometry & Occlusion-Aware Texturing.",
+      "scope": "main"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/corr/abs-2511-20532",
+      "title": "MIMIC-MJX: Neuromechanical Emulation of Animal Behavior.",
+      "scope": "side"
+    },
+    {
+      "pid": "86/3457-20",
+      "key": "conf/gis/XieJ0ZYGR21",
+      "title": "Spatial-Net: A Self-Adaptive and Model-Agnostic Deep Learning Framework for Spatially Heterogeneous Datasets.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "journals/saem/LeeFNRHIS12",
+      "title": "Online monitoring of drinking water quality in a distribution network: a selection procedure for suitable water quality parameters and sensor devices.",
+      "scope": "side"
+    },
+    {
+      "pid": "58/8815",
+      "key": "conf/eccv/ParkLLCJGHMW26",
+      "title": "SIMSplat: Language-Aligned 4D Gaussian Splatting for Driving Scenario Generation.",
+      "scope": "side"
+    }
+  ]
+}

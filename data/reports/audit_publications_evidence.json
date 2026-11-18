@@ -1,0 +1,145 @@
+{
+  "baselineCommit": "5d26903",
+  "rawAuthorshipRows": 129279,
+  "resolvedPersonWorkRows": 117357,
+  "partialComponentOwnershipRows": 14,
+  "nonownedQualifyingDbVersions": [],
+  "invalidAuthorPositionRows": [],
+  "rawMainPubltypes": {
+    "": 1452
+  },
+  "orcidSuspiciousRows": [
+    {
+      "dblp_pid": "409/8145",
+      "canonical_name": "Djellel Difallah",
+      "dblp_key": "conf/kdd/FanLFDT26",
+      "author_orcid": "0000-0002-7513-6047",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "h/JosephMHellerstein",
+      "canonical_name": "Joseph M. Hellerstein",
+      "dblp_key": "journals/pacmhci/ShankarGHP24",
+      "author_orcid": "0000-0003-0802-4069",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "j/BjornTorJonsson1",
+      "canonical_name": "Björn Þór Jónsson 0001",
+      "dblp_key": "conf/mir/TranBDHHJHRSTZG26",
+      "author_orcid": "0000-0003-1304-5913",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "conf/esws/ZeakisPSK25",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "conf/icde/ZeakisCLS25",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/vldb/ZeakisPSK25",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/corr/abs-2405-14748",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "conf/icde/Skoufis024",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "conf/icde/ChatzigeorgakidisLS24",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "conf/icde/PitsilouPS24",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/corr/abs-2312-09864",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/corr/abs-2304-12329",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/is/WuTSL23",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "journals/pvldb/ZeakisPSK23",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    },
+    {
+      "dblp_pid": "s/DimitriosSkoutas",
+      "canonical_name": "Dimitrios Skoutas 0001",
+      "dblp_key": "books/sp/21/Chronis0AS21",
+      "author_orcid": "0000-0002-7953-7964",
+      "match_basis": "exact_dblp_author_signature"
+    }
+  ],
+  "orcidCaveat": "ORCID belongs to another local candidate PID; may be DBLP tag errors or split identities. Not verified false ownership; no changes applied.",
+  "nonownedDbFixture": {
+    "before": {
+      "label": "DB-focused",
+      "dbPapers": 2,
+      "mlPapers": 0,
+      "publicationYears": 2,
+      "dbPublicationYears": 2,
+      "serviceYears": 2,
+      "basis": "publication_and_service",
+      "reason": "At least twice as many DB as ML conference papers; two DB papers in two publication years plus PC service in two years.",
+      "included": true
+    },
+    "beforeIncluded": 1,
+    "after": {
+      "label": "Limited evidence",
+      "dbPapers": 0,
+      "mlPapers": 0,
+      "publicationYears": 0,
+      "dbPublicationYears": 0,
+      "serviceYears": 2,
+      "basis": "insufficient_evidence",
+      "reason": "Neither the five-paper/three-year minimum nor the repeated-PC-service fallback is met.",
+      "included": false
+    },
+    "afterIncluded": 0
+  }
+}
